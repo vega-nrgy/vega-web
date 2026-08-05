@@ -1,0 +1,188 @@
+/* Line-flow logo loader — traced from public/design/logo.jpg (outer silhouette + inner hole). */
+
+.vega-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-ink);
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.vega-loader--hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.vega-loader-stage {
+  position: relative;
+  width: 190px;
+  height: 202px;
+}
+
+.vega-logo-trace {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.vega-loader-glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 180px;
+  height: 180px;
+  margin: -90px 0 0 -90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(0 217 165 / 0.32) 0%, rgb(0 217 165 / 0) 70%);
+  opacity: 0;
+  animation: vegaGlowHold 5s ease-in-out forwards;
+}
+
+/* stroke-dasharray/dashoffset base values are set at runtime from the real
+   path length (getTotalLength) — do not hardcode --len */
+.vega-trace-path {
+  stroke: var(--color-mint);
+  stroke-width: 6;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+  filter: drop-shadow(0 0 5px rgb(0 217 165 / 0.5));
+}
+
+/* Outer silhouette fills mint; the inner hole path fills the loader's own
+   background so it visually punches through the outer fill once resolved. */
+.vega-trace-outer {
+  fill: var(--color-mint);
+  fill-opacity: 0;
+  animation:
+    vegaFlowOuter 5s cubic-bezier(0.45, 0, 0.2, 1) forwards,
+    vegaFillIn 5s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+
+.vega-trace-hole {
+  fill: var(--color-ink);
+  fill-opacity: 0;
+  animation:
+    vegaFlowHole 5s cubic-bezier(0.45, 0, 0.2, 1) forwards 0.12s,
+    vegaFillIn 5s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+
+@keyframes vegaFlowOuter {
+  0% {
+    stroke-dashoffset: var(--len);
+  }
+  24% {
+    stroke-dashoffset: 0;
+  }
+  70% {
+    stroke-dashoffset: 0;
+  }
+  94%,
+  100% {
+    stroke-dashoffset: calc(var(--len) * -1);
+  }
+}
+
+@keyframes vegaFlowHole {
+  0% {
+    stroke-dashoffset: var(--len);
+  }
+  24% {
+    stroke-dashoffset: 0;
+  }
+  70% {
+    stroke-dashoffset: 0;
+  }
+  94%,
+  100% {
+    stroke-dashoffset: calc(var(--len) * -1);
+  }
+}
+
+@keyframes vegaFillIn {
+  0%,
+  26% {
+    fill-opacity: 0;
+  }
+  36% {
+    fill-opacity: 1;
+  }
+  64% {
+    fill-opacity: 1;
+  }
+  74%,
+  100% {
+    fill-opacity: 0;
+  }
+}
+
+@keyframes vegaGlowHold {
+  0%,
+  26% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  32% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  66% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  74%,
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+.vega-loader-word {
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  letter-spacing: 0.32em;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--color-mint);
+  opacity: 0;
+  animation: vegaWordIn 5s ease forwards;
+}
+
+@keyframes vegaWordIn {
+  0%,
+  26% {
+    opacity: 0;
+  }
+  34% {
+    opacity: 1;
+  }
+  64% {
+    opacity: 1;
+  }
+  74%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* prefers-reduced-motion: skip the draw/erase sequence, hold the resolved mark briefly, fade out */
+.vega-loader--reduced .vega-trace-path {
+  animation: none !important;
+  stroke-dashoffset: 0 !important;
+}
+
+.vega-loader--reduced .vega-trace-outer,
+.vega-loader--reduced .vega-trace-hole {
+  fill-opacity: 1 !important;
+}
+
+.vega-loader--reduced .vega-loader-glow,
+.vega-loader--reduced .vega-loader-word {
+  animation: none !important;
+  opacity: 1 !important;
+}

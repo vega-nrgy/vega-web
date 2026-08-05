@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+<style>
+html,body{margin:0;height:100%}
+#map{height:100%;background:#EDF2F3}
+.leaflet-popup-content-wrapper{border-radius:14px;box-shadow:0 12px 32px -12px rgba(0,24,25,.3)}
+.leaflet-popup-content{margin:16px 18px;font-family:Manrope,sans-serif}
+.vc-id{font:500 9px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#00775C}
+.vc-name{font:700 15px Manrope,sans-serif;color:#001819;margin-top:4px}
+.vc-meta{font:400 11.5px/1.5 Manrope,sans-serif;color:#5D7071;margin-top:6px}
+.vc-link{display:inline-block;font:700 11.5px Manrope,sans-serif;color:#001819;background:#00D9A5;padding:7px 13px;border-radius:99px;text-decoration:none;margin-top:10px}
+.vc-link:hover{background:#2BE3B7}
+.vc-note{font:400 9.5px 'IBM Plex Mono',monospace;color:#9DB4B0;margin-top:8px}
+.vc-marker{background:transparent;border:none}
+.vc-dot{width:18px;height:18px;border-radius:99px;background:#00D9A5;border:3px solid #fff;box-shadow:0 0 0 2px #00D9A5,0 4px 10px rgba(0,24,25,.35)}
+.vc-dot.pending{background:#9DB4B0;box-shadow:0 0 0 2px #9DB4B0,0 4px 10px rgba(0,24,25,.35)}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+const map = L.map('map', { scrollWheelZoom: false });
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
+const stations = [
+  { id:'VC 001', name:'Vega Narketpally', lat:17.222, lng:79.207, meta:'NH-65 · Hyderabad–Vijayawada<br>3 × 180 kW DC · Opening Sep 2026', map:'https://maps.app.goo.gl/HDpiyMm8LLJXU7eZ6', live:true },
+  { id:'VC 002', name:'Vega Tekmatla — Khammam Bypass', lat:17.275, lng:80.105, meta:'Hyderabad–Visakhapatnam · via Khammam<br>3 × 180 + 1 × 240 kW DC · Opening Oct 2026', map:'https://maps.app.goo.gl/nasBZ3A7f9DvudjX8', live:true },
+  { id:'VC 003', name:'Vega Pillalamarri', lat:17.125, lng:79.605, meta:'NH-65 · Hyderabad–Vijayawada<br>4 × 180 + 2 × 240 kW DC · Opening Sep 2026', map:'https://maps.app.goo.gl/4BNxu8rbfWQ7u2nB6', live:true },
+  { id:'VC 004', name:'Vega Tallampadu', lat:17.24, lng:80.02, meta:'Hyderabad–Visakhapatnam · via Khammam<br>3 × 180 + 1 × 240 kW DC · Opening Oct 2026', map:'https://maps.app.goo.gl/SudRLnPPe1KgZBaZ9', live:true },
+  { id:'VC 005', name:'Vega Tekmatla', lat:17.30, lng:80.06, meta:'Visakhapatnam–Hyderabad · via Khammam<br>3 × 180 + 1 × 240 kW DC · Launch TBA', map:'https://maps.app.goo.gl/wB7xSW9zF5Rfi5kT8', live:false }
+];
+const bounds = [];
+stations.forEach(s => {
+  const icon = L.divIcon({ className:'vc-marker', html:'<div class="vc-dot' + (s.live ? '' : ' pending') + '"></div>', iconSize:[24,24], iconAnchor:[12,12] });
+  L.marker([s.lat, s.lng], { icon }).addTo(map).bindPopup(
+    '<div class="vc-id">' + s.id + '</div><div class="vc-name">' + s.name + '</div>' +
+    '<div class="vc-meta">' + s.meta + '</div>' +
+    '<a class="vc-link" href="' + s.map + '" target="_blank">Open exact location in Google Maps ↗</a>' +
+    '<div class="vc-note">MAP PIN IS INDICATIVE — LINK IS EXACT</div>'
+  );
+  bounds.push([s.lat, s.lng]);
+});
+map.fitBounds(bounds, { padding: [56, 56] });
+</script>
+</body>
+</html>

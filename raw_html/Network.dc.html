@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FBFBF9;font-family:Manrope,system-ui,sans-serif;color:#001819}
+a{color:#00775C;text-decoration:none}a:hover{color:#00b98e}
+@keyframes vcPulse{0%{box-shadow:0 0 0 0 rgba(0,217,165,.55)}70%{box-shadow:0 0 0 12px rgba(0,217,165,0)}100%{box-shadow:0 0 0 0 rgba(0,217,165,0)}}
+</style>
+</helmet>
+
+<!-- NAV -->
+<div style="position:sticky;top:0;z-index:50;background:rgba(0,24,25,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)" data-screen-label="Nav">
+  <div style="max-width:1240px;margin:0 auto;padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between">
+    <a href="Home.dc.html" style="display:flex;align-items:baseline;gap:8px;text-decoration:none"><span style="font:700 17px Sora,sans-serif;color:#fff;letter-spacing:.12em">VEGA</span><span style="font:500 11px 'IBM Plex Mono',monospace;color:#00D9A5;letter-spacing:.3em">CHARGE</span></a>
+    <div style="display:flex;align-items:center;gap:32px">
+      <a href="About.dc.html" style="font:600 13.5px Manrope,sans-serif;white-space:nowrap;color:#C7D4D2" style-hover="color:#fff">About</a>
+      <a href="Network.dc.html" style="font:600 13.5px Manrope,sans-serif;white-space:nowrap;color:#fff;border-bottom:2px solid #00D9A5;padding-bottom:2px" style-hover="color:#fff">Our Network</a>
+      <a href="Solutions.dc.html" style="font:600 13.5px Manrope,sans-serif;white-space:nowrap;color:#C7D4D2" style-hover="color:#fff">Solutions</a>
+      <a href="Contact.dc.html" style="font:600 13.5px Manrope,sans-serif;white-space:nowrap;color:#C7D4D2" style-hover="color:#fff">Contact</a>
+      <a href="Contact.dc.html" style="font:700 13px Manrope,sans-serif;background:#00D9A5;color:#001819;padding:10px 20px;border-radius:99px;white-space:nowrap" style-hover="background:#2BE3B7;color:#001819">Partner with Us</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEAD + MAP -->
+<div style="max-width:1240px;margin:0 auto;padding:104px 48px 0" data-screen-label="Page head">
+  <div style="font:400 11px 'IBM Plex Mono',monospace;color:#00775C;letter-spacing:.18em">OUR NETWORK</div>
+  <h1 style="font:600 60px/1.06 Sora,sans-serif;letter-spacing:-.035em;margin:24px 0 0;max-width:920px;text-wrap:balance">Charging stops built for the road — and the driver.</h1>
+  <p style="font:400 17px/1.65 Manrope,sans-serif;color:#5D7071;margin:26px 0 0;max-width:640px">Every Vega Charge station is more than a power socket on a highway. It's a rest stop, a service point, and a community hub — built to global standards, designed for Indian conditions.</p>
+  <!-- corridor map -->
+  <div style="background:#001819;border-radius:28px;padding:48px 52px 40px;margin-top:56px;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:auto 0 0 0;height:2px;background:linear-gradient(90deg,transparent,#00D9A5 30%,#00D9A5 70%,transparent)"></div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px">
+      <div style="font:400 10px 'IBM Plex Mono',monospace;color:#00D9A5;letter-spacing:.16em">2 CORRIDORS · 5 STATIONS · TELANGANA &amp; ANDHRA PRADESH</div>
+      <div style="font:400 10px 'IBM Plex Mono',monospace;color:#5D7071;letter-spacing:.12em">INDIA'S HIGHWAY CHARGING BACKBONE</div>
+    </div>
+    <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:#9DB4B0;letter-spacing:.14em;margin-top:44px">NH-65 · HYDERABAD ⟷ VIJAYAWADA · 275 KM</div>
+    <div style="position:relative;margin-top:20px;height:72px">
+      <div style="position:absolute;left:0;right:0;top:11px;height:3px;background:rgba(255,255,255,.14);border-radius:3px"></div>
+      <div style="position:absolute;left:0;right:42%;top:11px;height:3px;background:#00D9A5;border-radius:3px;opacity:.5"></div>
+      <div style="position:absolute;left:0;top:5px;width:15px;height:15px;border-radius:99px;background:#fff"></div>
+      <div style="position:absolute;left:0;top:34px;font:600 13px Manrope,sans-serif;color:#fff">Hyderabad</div>
+      <div style="position:absolute;left:38%;top:2px;width:21px;height:21px;border-radius:99px;background:#00D9A5;border:4px solid #001819;box-shadow:0 0 0 1px #00D9A5;animation:vcPulse 2.2s infinite"></div>
+      <div style="position:absolute;left:31%;top:34px"><div style="font:600 13px Manrope,sans-serif;color:#00D9A5">Narketpally</div><div style="font:400 9px 'IBM Plex Mono',monospace;color:#9DB4B0;letter-spacing:.08em;margin-top:2px">VC 001 · FLAGSHIP</div></div>
+      <div style="position:absolute;left:56%;top:5px;width:15px;height:15px;border-radius:99px;background:#00D9A5;border:3px solid #001819;box-shadow:0 0 0 1px #00D9A5"></div>
+      <div style="position:absolute;left:51%;top:34px"><div style="font:600 13px Manrope,sans-serif;color:#C7D4D2">Pillalamarri</div><div style="font:400 9px 'IBM Plex Mono',monospace;color:#9DB4B0;letter-spacing:.08em;margin-top:2px">VC 003</div></div>
+      <div style="position:absolute;right:0;top:5px;width:15px;height:15px;border-radius:99px;background:#fff"></div>
+      <div style="position:absolute;right:0;top:34px;font:600 13px Manrope,sans-serif;color:#fff;text-align:right">Vijayawada</div>
+    </div>
+    <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:#9DB4B0;letter-spacing:.14em;margin-top:36px">HYDERABAD ⟷ VISAKHAPATNAM · VIA KHAMMAM</div>
+    <div style="position:relative;margin-top:20px;height:72px">
+      <div style="position:absolute;left:0;right:0;top:11px;height:3px;background:rgba(255,255,255,.14);border-radius:3px"></div>
+      <div style="position:absolute;left:0;right:48%;top:11px;height:3px;background:#00D9A5;border-radius:3px;opacity:.5"></div>
+      <div style="position:absolute;left:0;top:5px;width:15px;height:15px;border-radius:99px;background:#fff"></div>
+      <div style="position:absolute;left:0;top:34px;font:600 13px Manrope,sans-serif;color:#fff">Hyderabad</div>
+      <div style="position:absolute;left:30%;top:5px;width:15px;height:15px;border-radius:99px;background:#00D9A5;border:3px solid #001819;box-shadow:0 0 0 1px #00D9A5"></div>
+      <div style="position:absolute;left:24%;top:34px"><div style="font:600 13px Manrope,sans-serif;color:#C7D4D2">Tekmatla</div><div style="font:400 9px 'IBM Plex Mono',monospace;color:#9DB4B0;letter-spacing:.08em;margin-top:2px">VC 005 · VC 002</div></div>
+      <div style="position:absolute;left:52%;top:5px;width:15px;height:15px;border-radius:99px;background:#00D9A5;border:3px solid #001819;box-shadow:0 0 0 1px #00D9A5"></div>
+      <div style="position:absolute;left:46%;top:34px"><div style="font:600 13px Manrope,sans-serif;color:#C7D4D2">Tallampadu</div><div style="font:400 9px 'IBM Plex Mono',monospace;color:#9DB4B0;letter-spacing:.08em;margin-top:2px">VC 004</div></div>
+      <div style="position:absolute;right:0;top:5px;width:15px;height:15px;border-radius:99px;background:#fff"></div>
+      <div style="position:absolute;right:0;top:34px;font:600 13px Manrope,sans-serif;color:#fff;text-align:right">Visakhapatnam</div>
+    </div>
+    <div style="display:flex;gap:24px;margin-top:32px;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:7px"><span style="width:9px;height:9px;border-radius:99px;background:#00D9A5;animation:vcPulse 2.2s infinite"></span><span style="font:400 11.5px Manrope,sans-serif;color:#9DB4B0">Flagship — {{ stationStatusLower }}</span></div>
+      <div style="display:flex;align-items:center;gap:7px"><span style="width:9px;height:9px;border-radius:99px;background:#00D9A5"></span><span style="font:400 11.5px Manrope,sans-serif;color:#9DB4B0">Site secured — permissions &amp; planning</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- LIVE MAP -->
+<div style="max-width:1240px;margin:0 auto;padding:56px 48px 0" data-screen-label="Station map">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px">
+    <div style="font:400 10px 'IBM Plex Mono',monospace;color:#00775C;letter-spacing:.16em">STATION LOCATIONS · TAP A PIN</div>
+    <div style="font:400 10px 'IBM Plex Mono',monospace;color:#9DB4B0;letter-spacing:.1em">PINS INDICATIVE — POPUPS LINK EXACT GOOGLE MAPS LOCATIONS</div>
+  </div>
+  <div style="border-radius:28px;overflow:hidden;border:1px solid #E5E9E7;margin-top:20px;box-shadow:0 12px 32px -12px rgba(0,24,25,.1)">
+    <iframe src="network-map.html" title="Vega Charge station map" style="display:block;width:100%;height:520px;border:none"></iframe>
+  </div>
+  <div style="display:flex;gap:24px;margin-top:16px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:7px"><span style="width:10px;height:10px;border-radius:99px;background:#00D9A5;border:2px solid #fff;box-shadow:0 0 0 1px #00D9A5"></span><span style="font:400 11.5px Manrope,sans-serif;color:#5D7071">Opening 2026 — site secured</span></div>
+    <div style="display:flex;align-items:center;gap:7px"><span style="width:10px;height:10px;border-radius:99px;background:#9DB4B0;border:2px solid #fff;box-shadow:0 0 0 1px #9DB4B0"></span><span style="font:400 11.5px Manrope,sans-serif;color:#5D7071">In land acquisition</span></div>
+  </div>
+</div>
+
+<!-- 01 STATION FEATURES -->
+<div style="max-width:1240px;margin:0 auto;padding:112px 48px 0" data-screen-label="01 Station features">
+  <div style="font:400 10px 'IBM Plex Mono',monospace;color:#00775C;letter-spacing:.16em;border-top:1px solid #E5E9E7;padding-top:18px">01 — AT EVERY STATION</div>
+  <h2 style="font:600 44px/1.12 Sora,sans-serif;letter-spacing:-.03em;margin:28px 0 0">What's at every Vega Charge station.</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:44px">
+    <div style="background:#fff;border:1px solid #E5E9E7;border-radius:20px;padding:28px;transition:box-shadow .2s,transform .2s" style-hover="transform:translateY(-2px);box-shadow:0 12px 32px -12px rgba(0,24,25,.14)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#001819" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 5 13h6l-1 9 8-11h-6z"></path></svg>
+      <div style="font:600 17px Sora,sans-serif;margin-top:16px">Fast DC charging</div>
+      <p style="font:400 13.5px/1.6 Manrope,sans-serif;color:#5D7071;margin:8px 0 0">180–240 kW DC fast chargers · CCS2, CHAdeMO, Bharat DC-001 · 100–150 km of range in 30 minutes.</p>
+    </div>
+    <div style="background:#fff;border:1px solid #E5E9E7;border-radius:20px;padding:28px;transition:box-shadow .2s,transform .2s" style-hover="transform:translateY(-2px);box-shadow:0 12px 32px -12px rgba(0,24,25,.14)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#001819" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4M3 18h18M6 12V8a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v4"></path></svg>
+      <div style="font:600 17px Sora,sans-serif;margin-top:16px">Waiting lounge</div>
+      <p style="font:400 13.5px/1.6 Manrope,sans-serif;color:#5D7071;margin:8px 0 0">Climate-controlled, with seating and wi-fi — designed for a comfortable 20–30 minute break.</p>
+    </div>
+    <div style="background:#fff;border:1px solid #E5E9E7;border-radius:20px;padding:28px;transition:box-shadow .2s,transform .2s" style-hover="transform:translateY(-2px);box-shadow:0 12px 32px -12px rgba(0,24,25,.14)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#001819" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4 5 6.5 5 9.5a5 5 0 0 1-10 0C7 9.5 9 7 12 3z"></path></svg>
+      <div style="font:600 17px Sora,sans-serif;margin-top:16px">Clean washrooms</div>
+      <p style="font:400 13.5px/1.6 Manrope,sans-serif;color:#5D7071;margin:8px 0 0">Maintained 24×7 and separately managed — driver and family-friendly.</p>
+    </div>
+    <div style="background:#fff;border:1px solid #E5E9E7;border-radius:20px;padding:28px;transition:box-shadow .2s,transform .2s" style-hover="transform:translateY(-2px);box-shadow:0 12px 32px -12px rgba(0,24,25,.14)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#001819" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.5"></circle></svg>
+      <div style="font:600 17px Sora,sans-serif;margin-top:16px">Children's play area</div>
+      <p style="font:400 13.5px/1.6 Manrope,sans-serif;color:#5D7071;margin:8px 0 0">Safe and enclosed — so the whole family travels without stress.</p>
+    </div>
+    <div style="background:#fff;border:1px solid #E5E9E7;border-radius:20px;padding:28px;transition:box-shadow .2s,transform .2s" style-hover="transform:translateY(-2px);box-shadow:0 12px 32px -12px rgba(0,24,25,.14)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#001819" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13a3 3 0 0 1 0 6H4zM4 8v10M8 4v4M13 4v4"></path></svg>
+      <div style="font:600 17px Sora,sans-serif;margin-top:16px">Commercial zone</div>
+      <p style="font:400 13.5px/1.6 Manrope,sans-serif;color:#5D7071;margin:8px 0 0">Café, snacks, or partner retail — amenities that make the stop worthwhile.</p>
+    </div>
+    <div style="background:#fff;border:1px solid #E5E9E7;border-radius:20px;padding:28px;transition:box-shadow .2s,transform .2s" style-hover="transform:translateY(-2px);box-shadow:0 12px 32px -12px rgba(0,24,25,.14)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#001819" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+      <div style="font:600 17px Sora,sans-serif;margin-top:16px">24×7 operation</div>
+      <p style="font:400 13.5px/1.6 Manrope,sans-serif;color:#5D7071;margin:8px 0 0">Staffed and monitored round the clock, with remote support available.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 02 FLAGSHIP -->
+<div style="background:#EDF2F3;margin-top:112px" data-screen-label="02 Flagship station">
+  <div style="max-width:1240px;margin:0 auto;padding:96px 48px">
+    <div style="font:400 10px 'IBM Plex Mono',monospace;color:#00775C;letter-spacing:.16em">02 — FLAGSHIP STATION</div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:32px;margin-top:28px;flex-wrap:wrap">
+      <h2 style="font:600 44px/1.12 Sora,sans-serif;letter-spacing:-.03em;margin:0">Narketpalle, NH-65</h2>
+      <div style="display:flex;align-items:center;gap:8px"><span style="width:9px;height:9px;border-radius:99px;background:#00D9A5;animation:vcPulse 2.2s infinite"></span><span style="font:700 13px Manrope,sans-serif;color:#00775C">{{ stationStatus }}</span></div>
+    </div>
+    <div style="border-radius:28px;overflow:hidden;margin-top:36px;position:relative">
+      <img src="uploads/station_render-1784703194565.jpg" alt="Narketpalle flagship station render" style="width:100%;height:460px;object-fit:cover;display:block">
+      <div style="position:absolute;left:20px;bottom:16px;font:400 9.5px 'IBM Plex Mono',monospace;color:#fff;letter-spacing:.1em;background:rgba(0,24,25,.55);padding:6px 10px;border-radius:6px">STATION 01 · NARKETPALLE · NH-65 · RENDER</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:48px;margin-top:44px;align-items:start">
+      <p style="font:400 16px/1.7 Manrope,sans-serif;color:#33484A;margin:0;max-width:560px">Narketpalle sits on one of Telangana's busiest freight and passenger corridors — midway between Hyderabad and the AP border. It's the perfect first stop for India's growing EV highway network.</p>
+      <div style="background:#fff;border-radius:20px;padding:26px 28px">
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid #E5E9E7;padding:10px 0"><span style="font:400 12.5px Manrope,sans-serif;color:#5D7071">Location</span><a href="https://maps.app.goo.gl/HDpiyMm8LLJXU7eZ6" target="_blank" style="font:600 12.5px Manrope,sans-serif;color:#00775C;text-align:right">NH-65, Narketpally, Nalgonda ↗</a></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid #E5E9E7;padding:10px 0"><span style="font:400 12.5px Manrope,sans-serif;color:#5D7071">Station ID</span><span style="font:600 12.5px Manrope,sans-serif">VC 001</span></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid #E5E9E7;padding:10px 0"><span style="font:400 12.5px Manrope,sans-serif;color:#5D7071">Site area</span><span style="font:600 12.5px Manrope,sans-serif">2,200 sq. yards · 103 ft frontage</span></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid #E5E9E7;padding:10px 0"><span style="font:400 12.5px Manrope,sans-serif;color:#5D7071">Chargers</span><span style="font:600 12.5px Manrope,sans-serif">3 × 180 kW DC Fast</span></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid #E5E9E7;padding:10px 0"><span style="font:400 12.5px Manrope,sans-serif;color:#5D7071">Corridor traffic</span><span style="font:600 12.5px Manrope,sans-serif">&gt;40,000 vehicles / day</span></div>
+        <div style="display:flex;justify-content:space-between;padding:10px 0"><span style="font:400 12.5px Manrope,sans-serif;color:#5D7071">Standards</span><span style="font:600 12.5px Manrope,sans-serif">CCS2 · CHAdeMO · Bharat DC-001</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 WHAT'S NEXT -->
+<div style="max-width:1240px;margin:0 auto;padding:112px 48px 0" data-screen-label="03 Expansion">
+  <div style="font:400 10px 'IBM Plex Mono',monospace;color:#00775C;letter-spacing:.16em;border-top:1px solid #E5E9E7;padding-top:18px">03 — WHAT'S NEXT</div>
+  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:32px;margin-top:28px;flex-wrap:wrap">
+    <h2 style="font:600 40px/1.12 Sora,sans-serif;letter-spacing:-.03em;margin:0">Five stations. Two corridors.</h2>
+    <span style="font:400 11px 'IBM Plex Mono',monospace;color:#5D7071;letter-spacing:.1em">ALL LOCATIONS OPEN IN GOOGLE MAPS ↗</span>
+  </div>
+  <div style="border-top:1px solid #E5E9E7;margin-top:36px">
+    <sc-for list="{{ stations }}" as="st" hint-placeholder-count="5">
+      <a href="{{ st.map }}" target="_blank" style="display:grid;grid-template-columns:64px 1.5fr 1fr 1fr 150px;gap:20px;align-items:center;padding:24px 8px;border-bottom:1px solid #E5E9E7;text-decoration:none;transition:background .2s" style-hover="background:#F4F7F6">
+        <span style="font:400 11px 'IBM Plex Mono',monospace;color:#00775C;letter-spacing:.1em">{{ st.id }}</span>
+        <div><div style="font:600 18px Sora,sans-serif;color:#001819;letter-spacing:-.01em">{{ st.name }} <span style="font:600 13px Manrope,sans-serif;color:#00775C">↗</span></div><div style="font:400 12.5px Manrope,sans-serif;color:#5D7071;margin-top:3px">{{ st.corridor }}</div></div>
+        <div><div style="font:600 13px Manrope,sans-serif;color:#33484A">{{ st.chargers }}</div><div style="font:400 11.5px Manrope,sans-serif;color:#9DB4B0;margin-top:2px">{{ st.area }}</div></div>
+        <div><div style="font:600 13px Manrope,sans-serif;color:#33484A">{{ st.traffic }}</div><div style="font:400 11.5px Manrope,sans-serif;color:#9DB4B0;margin-top:2px">{{ st.launch }}</div></div>
+        <span style="justify-self:end;display:inline-flex;align-items:center;gap:7px;white-space:nowrap"><span style="width:8px;height:8px;border-radius:99px;background:{{ st.dotColor }}"></span><span style="font:600 11px 'IBM Plex Mono',monospace;color:#5D7071;letter-spacing:.08em">{{ st.status }}</span></span>
+      </a>
+    </sc-for>
+    <div style="padding:22px 8px;font:400 13.5px/1.6 Manrope,sans-serif;color:#5D7071">Retail space at every station · Follow corridor expansion updates on <a href="https://linkedin.com/company/veganrgy" style="font-weight:700">LinkedIn →</a></div>
+  </div>
+</div>
+
+<!-- CTA + FOOTER -->
+<div style="max-width:1240px;margin:0 auto;padding:112px 48px" data-screen-label="Final CTA">
+  <div style="background:#001819;border-radius:28px;padding:64px;position:relative;overflow:hidden;display:flex;justify-content:space-between;align-items:center;gap:48px;flex-wrap:wrap">
+    <div style="position:absolute;inset:auto 0 0 0;height:2px;background:linear-gradient(90deg,transparent,#00D9A5 30%,#00D9A5 70%,transparent)"></div>
+    <div>
+      <h2 style="font:600 36px/1.15 Sora,sans-serif;color:#fff;letter-spacing:-.03em;margin:0">Own highway-adjacent land?</h2>
+      <p style="font:400 15px/1.6 Manrope,sans-serif;color:#9DB4B0;margin:12px 0 0;max-width:460px">Partner with us to host a Vega Charge station on your site.</p>
+    </div>
+    <a href="Contact.dc.html" style="font:700 14px Manrope,sans-serif;background:#00D9A5;color:#001819;padding:14px 26px;border-radius:99px;white-space:nowrap" style-hover="background:#2BE3B7;color:#001819">Host a Station</a>
+  </div>
+</div>
+
+<div style="background:#001819" data-screen-label="Footer">
+  <div style="max-width:1240px;margin:0 auto;padding:72px 48px 40px">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:48px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:8px"><span style="font:700 18px Sora,sans-serif;color:#fff;letter-spacing:.12em">VEGA</span><span style="font:500 11px 'IBM Plex Mono',monospace;color:#00D9A5;letter-spacing:.3em">CHARGE</span></div>
+        <p style="font:400 13px/1.6 Manrope,sans-serif;color:#9DB4B0;margin:16px 0 0;max-width:300px">Vega Charge is the highway brand of Vega Nrgy Private Limited — a technology-led EV charging infrastructure company.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:#5D7071;letter-spacing:.16em">COMPANY</div>
+        <a href="About.dc.html" style="font:500 13px Manrope,sans-serif;color:#C7D4D2" style-hover="color:#fff">About Us</a>
+        <a href="Network.dc.html" style="font:500 13px Manrope,sans-serif;color:#C7D4D2" style-hover="color:#fff">Our Network</a>
+        <a href="Solutions.dc.html" style="font:500 13px Manrope,sans-serif;color:#C7D4D2" style-hover="color:#fff">Solutions</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:#5D7071;letter-spacing:.16em">PARTNER</div>
+        <a href="Solutions.dc.html" style="font:500 13px Manrope,sans-serif;color:#C7D4D2" style-hover="color:#fff">Fleet Operators</a>
+        <a href="Solutions.dc.html" style="font:500 13px Manrope,sans-serif;color:#C7D4D2" style-hover="color:#fff">Commercial Charging</a>
+        <a href="Contact.dc.html" style="font:500 13px Manrope,sans-serif;color:#C7D4D2" style-hover="color:#fff">Site Partnerships</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:#5D7071;letter-spacing:.16em">CONTACT</div>
+        <a href="mailto:info@vegacharge.in" style="font:500 13px Manrope,sans-serif;color:#C7D4D2" style-hover="color:#fff">info@vegacharge.in</a>
+        <a href="https://linkedin.com/company/veganrgy" style="font:500 13px Manrope,sans-serif;color:#C7D4D2" style-hover="color:#fff">LinkedIn</a>
+        <span style="font:400 12px/1.5 Manrope,sans-serif;color:#5D7071">Vega Nrgy Private Limited, Hyderabad</span>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.1);margin-top:48px;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <span style="font:400 11.5px Manrope,sans-serif;color:#5D7071">© 2026 Vega Nrgy Private Limited. All rights reserved.</span>
+      <span style="font:400 10px 'IBM Plex Mono',monospace;color:#5D7071;letter-spacing:.14em">NH-65 · TELANGANA · ANDHRA PRADESH</span>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;stationStatus&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Live soon&quot;,&quot;Under construction&quot;,&quot;Live now&quot;],&quot;default&quot;:&quot;Live soon&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const status = this.props.stationStatus ?? 'Live soon';
+    const stations = [
+      { id: 'VC 001', name: 'Vega Narketpally', corridor: 'NH-65 · Hyderabad–Vijayawada · Nalgonda, TS', chargers: '3 × 180 kW DC', area: '2,200 sq. yd · 103 ft frontage', traffic: '>40,000 vehicles/day', launch: 'Opening Sep 2026', status: 'PLANNING', dotColor: '#00D9A5', map: 'https://maps.app.goo.gl/HDpiyMm8LLJXU7eZ6' },
+      { id: 'VC 002', name: 'Vega Tekmatla — Khammam Bypass', corridor: 'Hyderabad–Visakhapatnam · via Khammam', chargers: '3 × 180 + 1 × 240 kW DC', area: '3,630 sq. yd · 170 ft frontage', traffic: '>20,000 vehicles/day', launch: 'Opening Oct 2026', status: 'PLANNING', dotColor: '#00D9A5', map: 'https://maps.app.goo.gl/nasBZ3A7f9DvudjX8' },
+      { id: 'VC 003', name: 'Vega Pillalamarri', corridor: 'NH-65 · Hyderabad–Vijayawada', chargers: '4 × 180 + 2 × 240 kW DC', area: '3,270 sq. yd · 172 ft frontage', traffic: '>25,000 vehicles/day', launch: 'Opening Sep 2026', status: 'PLANNING', dotColor: '#00D9A5', map: 'https://maps.app.goo.gl/4BNxu8rbfWQ7u2nB6' },
+      { id: 'VC 004', name: 'Vega Tallampadu', corridor: 'Hyderabad–Visakhapatnam · via Khammam', chargers: '3 × 180 + 1 × 240 kW DC', area: '7,260 sq. yd · 316 ft frontage', traffic: '>20,000 vehicles/day', launch: 'Opening Oct 2026', status: 'PLANNING', dotColor: '#00D9A5', map: 'https://maps.app.goo.gl/SudRLnPPe1KgZBaZ9' },
+      { id: 'VC 005', name: 'Vega Tekmatla', corridor: 'Visakhapatnam–Hyderabad · via Khammam', chargers: '3 × 180 + 1 × 240 kW DC', area: '4,840 sq. yd · 120+ ft frontage', traffic: '>20,000 vehicles/day', launch: 'Launch date TBA', status: 'ACQUISITION', dotColor: '#9DB4B0', map: 'https://maps.app.goo.gl/wB7xSW9zF5Rfi5kT8' }
+    ];
+    return { stationStatus: status, stationStatusUpper: status.toUpperCase(), stationStatusLower: status.toLowerCase(), stations };
+  }
+}
+</script>
+</body>
+</html>

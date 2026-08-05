@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EDF0EF;font-family:Manrope,system-ui,sans-serif}
+a{color:#00775C;text-decoration:none}a:hover{color:#00D9A5}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#001819;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 Manrope,sans-serif;color:#001819}
+.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,24,25,.08);color:#001819;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 Manrope,sans-serif;color:rgba(0,24,25,.55)}
+.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,24,25,.08);border-radius:10px;box-shadow:0 1px 3px rgba(0,24,25,.06);overflow:hidden}
+.dv-opt:target .dv-oid{background:#00D9A5;color:#001819}
+.dv-next{margin:22px 0 0;font:12px/1.5 Manrope,sans-serif;color:rgba(0,24,25,.5)}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Vega Charge — brand study &amp; three design directions</span></div>
+
+<!-- BRAND STUDY STRIP -->
+<div style="display:flex;gap:28px;flex-wrap:wrap;align-items:stretch;margin-bottom:34px">
+  <div style="width:420px;border-radius:14px;overflow:hidden;border:1px solid rgba(0,24,25,.1)"><img src="uploads/station_render-1784703194565.jpg" alt="Station render" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+  <div style="width:190px;border-radius:14px;background:#001819;display:flex;align-items:center;justify-content:center;padding:20px"><img src="uploads/logo-1784703188368.jpg" alt="Vega Charge logo" style="width:100%;display:block;border-radius:8px"></div>
+  <div style="flex:1;min-width:380px;max-width:560px;background:#fff;border:1px solid rgba(0,24,25,.08);border-radius:14px;padding:26px 28px">
+    <div style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#5D7071;text-transform:uppercase;margin-bottom:12px">What the station teaches the website</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;font:400 12.5px/1.5 Manrope,sans-serif;color:#33484A">
+      <div><strong style="color:#001819">Canopy geometry</strong><br>One continuous rounded slab — large radii on big surfaces, not small chips. Cards inherit 20–28px radii.</div>
+      <div><strong style="color:#001819">Edge lighting</strong><br>Mint appears only as a thin illuminated line tracing an edge — never as a fill. Our accent = 2px lines, underlines, live indicators.</div>
+      <div><strong style="color:#001819">Horizontality</strong><br>The canopy is a wide horizontal band over vertical columns. Layouts run wide: horizontal sections, long stats strips, side-by-side splits.</div>
+      <div><strong style="color:#001819">Material calm</strong><br>Two materials, matte, no ornament. Two surface tones per page max; soft shadows; engineered, not decorated.</div>
+    </div>
+  </div>
+</div>
+
+<!-- OPTIONS -->
+<div class="dv-opts">
+
+<!-- 1a BRIGHT INFRASTRUCTURE -->
+<div class="dv-opt" id="1a">
+  <div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Bright Infrastructure — Apple restraint × Fastned clarity (closest to brief)</div>
+  <div class="dv-card" style="width:480px">
+    <div style="padding:24px 26px 20px;border-bottom:1px solid #EDF2F3">
+      <div style="font:700 22px/1.2 Manrope,sans-serif;color:#001819;letter-spacing:-.02em">Bright Infrastructure</div>
+      <div style="font:400 12.5px/1.55 Manrope,sans-serif;color:#5D7071;margin-top:6px">Predominantly warm white. Ink reserved for hero, nav, footer, CTA bands. Mint only as edge-light lines and live dots. Quiet, confident, institutional.</div>
+    </div>
+    <div style="display:flex;height:52px">
+      <div style="flex:2.6;background:#F8FAF9;border-right:1px solid #EDF2F3"></div>
+      <div style="flex:1.4;background:#EDF2F3"></div>
+      <div style="flex:1.2;background:#001819"></div>
+      <div style="flex:.14;background:#00D9A5"></div>
+    </div>
+    <div style="padding:20px 26px;display:flex;flex-direction:column;gap:6px;border-bottom:1px solid #EDF2F3">
+      <div style="font:800 30px/1.08 Manrope,sans-serif;color:#001819;letter-spacing:-.03em">Charging India Forward</div>
+      <div style="font:400 13px/1.6 Manrope,sans-serif;color:#5D7071">Manrope everywhere — ExtraBold tight-tracked display, Regular body. Numbers get tabular figures.</div>
+    </div>
+    <!-- mini hero -->
+    <div style="margin:20px 26px;border-radius:18px;overflow:hidden;position:relative;background:#001819">
+      <div style="height:170px;background:repeating-linear-gradient(-45deg,#0A2426 0 14px,#0C282A 14px 28px);display:flex;align-items:center;justify-content:center"><span style="font:400 10px 'IBM Plex Mono',monospace;color:#7FD4C0;letter-spacing:.1em">[ dusk highway photo · station foreground ]</span></div>
+      <div style="position:absolute;inset:auto 0 0 0;height:2px;background:linear-gradient(90deg,transparent,#00D9A5 30%,#00D9A5 70%,transparent)"></div>
+      <div style="position:absolute;left:18px;bottom:16px;right:18px">
+        <div style="font:800 20px/1.1 Manrope,sans-serif;color:#fff;letter-spacing:-.02em">Charging India Forward</div>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <span style="font:700 10.5px Manrope,sans-serif;background:#00D9A5;color:#001819;padding:7px 12px;border-radius:99px;white-space:nowrap">Find a Station</span>
+          <span style="font:700 10.5px Manrope,sans-serif;color:#fff;border:1px solid rgba(255,255,255,.35);padding:7px 12px;border-radius:99px;white-space:nowrap">Partner with Us</span>
+        </div>
+      </div>
+    </div>
+    <!-- components row -->
+    <div style="display:flex;gap:12px;padding:0 26px 22px">
+      <div style="flex:1;background:#F8FAF9;border:1px solid #D8E2E2;border-radius:16px;padding:14px">
+        <div style="width:22px;height:2px;background:#00D9A5;border-radius:2px;margin-bottom:10px"></div>
+        <div style="font:700 13px Manrope,sans-serif;color:#001819">Fast. Really fast.</div>
+        <div style="font:400 11px/1.5 Manrope,sans-serif;color:#5D7071;margin-top:4px">120 kW DC · 100–150 km in 30 min</div>
+      </div>
+      <div style="flex:1;background:#fff;border:1px solid #D8E2E2;border-radius:16px;padding:14px">
+        <div style="font:500 9px 'IBM Plex Mono',monospace;color:#5D7071;letter-spacing:.12em">NH-65 · NARKETPALLE</div>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-top:8px"><span style="font:800 24px Manrope,sans-serif;color:#001819;letter-spacing:-.02em">3×120</span><span style="font:600 10px Manrope,sans-serif;color:#5D7071">kW DC</span></div>
+        <div style="display:flex;align-items:center;gap:5px;margin-top:8px"><span style="width:6px;height:6px;border-radius:99px;background:#00D9A5"></span><span style="font:600 10px Manrope,sans-serif;color:#00775C">Live soon</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 1b EDITORIAL CORRIDOR -->
+<div class="dv-opt" id="1b">
+  <div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Editorial Corridor — Stripe layout craft × Porsche magazine composition</div>
+  <div class="dv-card" style="width:480px;background:#FBFBF9">
+    <div style="padding:24px 26px 20px;border-bottom:1px solid #E5E9E7">
+      <div style="font:700 22px/1.2 Sora,sans-serif;color:#001819;letter-spacing:-.02em">Editorial Corridor</div>
+      <div style="font:400 12.5px/1.55 Manrope,sans-serif;color:#5D7071;margin-top:6px">A magazine about infrastructure. Numbered chapters, hairline rules, asymmetric grids, mono data captions. Mint as an underline and index colour only.</div>
+    </div>
+    <div style="display:flex;height:52px">
+      <div style="flex:3;background:#FBFBF9;border-right:1px solid #E5E9E7"></div>
+      <div style="flex:1.3;background:#EDF2F3"></div>
+      <div style="flex:1.2;background:#001819"></div>
+      <div style="flex:.14;background:#00D9A5"></div>
+    </div>
+    <div style="padding:20px 26px;border-bottom:1px solid #E5E9E7">
+      <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:#00775C;letter-spacing:.16em">01 — THE PROBLEM</div>
+      <div style="font:600 28px/1.12 Sora,sans-serif;color:#001819;letter-spacing:-.025em;margin-top:8px">Drive without doubt.</div>
+      <div style="font:400 13px/1.6 Manrope,sans-serif;color:#5D7071;margin-top:6px">Sora for display — geometric, engineered. Manrope for reading. IBM Plex Mono for indices, coordinates, specs.</div>
+    </div>
+    <!-- editorial split -->
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:1px;background:#E5E9E7;border-bottom:1px solid #E5E9E7">
+      <div style="background:repeating-linear-gradient(-45deg,#EDF2F3 0 14px,#F3F6F5 14px 28px);min-height:150px;display:flex;align-items:center;justify-content:center"><span style="font:400 9.5px 'IBM Plex Mono',monospace;color:#5D7071;letter-spacing:.08em">[ b/w highway drone shot ]</span></div>
+      <div style="background:#FBFBF9;padding:18px">
+        <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:#5D7071;letter-spacing:.1em">NH-65 · KM 128</div>
+        <div style="font:600 15px/1.3 Sora,sans-serif;color:#001819;margin-top:8px">Hundreds of kilometres.<br>Almost no reliable fast charging.</div>
+        <div style="width:34px;height:2px;background:#00D9A5;margin-top:12px"></div>
+        <div style="font:400 11px/1.55 Manrope,sans-serif;color:#5D7071;margin-top:10px">So we decided to build the stops.</div>
+      </div>
+    </div>
+    <!-- index table -->
+    <div style="padding:16px 26px 22px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid #E5E9E7"><span style="font:600 12px Sora,sans-serif;color:#001819">Highway Charging</span><span style="font:400 9.5px 'IBM Plex Mono',monospace;color:#00775C">01 →</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid #E5E9E7"><span style="font:600 12px Sora,sans-serif;color:#001819">Commercial Charging</span><span style="font:400 9.5px 'IBM Plex Mono',monospace;color:#00775C">02 →</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:9px 0"><span style="font:600 12px Sora,sans-serif;color:#001819">Fleet Operators</span><span style="font:400 9.5px 'IBM Plex Mono',monospace;color:#00775C">03 →</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 1c ENGINEERED DUSK -->
+<div class="dv-opt" id="1c">
+  <div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Engineered Dusk — IONITY cinematics × ABB enterprise gravity</div>
+  <div class="dv-card" style="width:480px">
+    <div style="padding:24px 26px 20px;border-bottom:1px solid #EDF2F3">
+      <div style="font:700 22px/1.2 Manrope,sans-serif;color:#001819;letter-spacing:-.02em">Engineered Dusk</div>
+      <div style="font:400 12.5px/1.55 Manrope,sans-serif;color:#5D7071;margin-top:6px">Still a bright site — but cinematic ink sections carry the story moments (hero, station experience, investment band). Edge-light motif at full strength: mint traces card and section edges like the canopy at night.</div>
+    </div>
+    <div style="display:flex;height:52px">
+      <div style="flex:2;background:#001819"></div>
+      <div style="flex:.14;background:#00D9A5"></div>
+      <div style="flex:2;background:#F8FAF9;border-right:1px solid #EDF2F3"></div>
+      <div style="flex:1.4;background:#EDF2F3"></div>
+    </div>
+    <!-- dark cinematic band -->
+    <div style="background:#001819;padding:22px 26px">
+      <div style="font:500 9px 'IBM Plex Mono',monospace;color:#00D9A5;letter-spacing:.16em">STATION EXPERIENCE</div>
+      <div style="font:800 24px/1.12 Manrope,sans-serif;color:#fff;letter-spacing:-.025em;margin-top:8px">More than a charge.<br>A promise.</div>
+      <div style="display:flex;gap:10px;margin-top:16px">
+        <div style="flex:1;border:1px solid rgba(0,217,165,.25);border-top:2px solid #00D9A5;border-radius:12px;padding:12px;background:rgba(0,217,165,.04)">
+          <div style="font:800 18px Manrope,sans-serif;color:#00D9A5">24×7</div>
+          <div style="font:400 10px/1.4 Manrope,sans-serif;color:#9DB4B0;margin-top:2px">Staffed &amp; monitored</div>
+        </div>
+        <div style="flex:1;border:1px solid rgba(0,217,165,.25);border-top:2px solid #00D9A5;border-radius:12px;padding:12px;background:rgba(0,217,165,.04)">
+          <div style="font:800 18px Manrope,sans-serif;color:#00D9A5">30<span style="font-size:11px">min</span></div>
+          <div style="font:400 10px/1.4 Manrope,sans-serif;color:#9DB4B0;margin-top:2px">100–150 km of range</div>
+        </div>
+        <div style="flex:1;border:1px solid rgba(0,217,165,.25);border-top:2px solid #00D9A5;border-radius:12px;padding:12px;background:rgba(0,217,165,.04)">
+          <div style="font:800 18px Manrope,sans-serif;color:#00D9A5">3</div>
+          <div style="font:400 10px/1.4 Manrope,sans-serif;color:#9DB4B0;margin-top:2px">Charging standards</div>
+        </div>
+      </div>
+    </div>
+    <!-- bright continuation -->
+    <div style="padding:20px 26px 22px;background:#F8FAF9">
+      <div style="font:400 13px/1.6 Manrope,sans-serif;color:#5D7071">Body sections stay bright and enterprise-calm — ABB-style spec tables, precise grids — so the dark bands land as moments, not a theme.</div>
+      <div style="display:flex;justify-content:space-between;margin-top:14px;background:#fff;border:1px solid #D8E2E2;border-radius:14px;padding:13px 16px">
+        <div><div style="font:500 9px 'IBM Plex Mono',monospace;color:#5D7071;letter-spacing:.1em">CONNECTORS</div><div style="font:700 12px Manrope,sans-serif;color:#001819;margin-top:3px">CCS2 · CHAdeMO · Bharat DC-001</div></div>
+        <div style="display:flex;align-items:center;gap:5px"><span style="width:6px;height:6px;border-radius:99px;background:#00D9A5;box-shadow:0 0 6px #00D9A5"></span><span style="font:600 10px Manrope,sans-serif;color:#00775C">Online</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<p class="dv-next">Try next: "go with <a class="dv-oid" href="#1a">1a</a>" · "<a class="dv-oid" href="#1a">1a</a> layout but Sora headlines from <a class="dv-oid" href="#1b">1b</a>" · "<a class="dv-oid" href="#1a">1a</a> with the dark story bands from <a class="dv-oid" href="#1c">1c</a>"</p>
+</section>
+
+</x-dc>
+</body>
+</html>

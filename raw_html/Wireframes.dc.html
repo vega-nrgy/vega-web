@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f0eee9;font-family:system-ui,sans-serif}
+a{color:#00775C;text-decoration:none}a:hover{color:#00b98e}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}
+.dv-opt:target .dv-oid{background:#00b98e;color:#fff}
+.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+/* wireframe vocabulary */
+.wf{padding:14px;display:flex;flex-direction:column;gap:10px}
+.ws{border:1.5px solid #444;border-radius:8px;padding:10px;position:relative;background:#fff}
+.ws.dark{background:#dfe5e4;background-image:repeating-linear-gradient(45deg,#d2dad8 0 6px,#dfe5e4 6px 12px)}
+.wtag{font:500 8.5px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#888;text-transform:uppercase;margin-bottom:7px}
+.wimg{border:1.5px dashed #999;border-radius:6px;display:flex;align-items:center;justify-content:center;font:500 13px Caveat,cursive;color:#777;background:#fafaf8}
+.wt{background:#333;border-radius:3px;height:8px}
+.wl{background:#c9c9c9;border-radius:3px;height:5px}
+.wbtn{border-radius:99px;height:14px;width:52px;background:#00b98e}
+.wbtn.ghost{background:#fff;border:1.5px solid #444}
+.wrow{display:flex;gap:6px}
+.wcol{flex:1;display:flex;flex-direction:column;gap:5px}
+.wbox{border:1.5px solid #bbb;border-radius:6px;padding:7px;display:flex;flex-direction:column;gap:5px}
+.wnote{font:600 12.5px Caveat,cursive;color:#2a78d6}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Wireframes — all 5 pages (structure per content doc + homepage brief)</span></div>
+<div class="dv-opts">
+
+<!-- 1a HOMEPAGE -->
+<div class="dv-opt" id="1a">
+  <div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Homepage</div>
+  <div class="dv-card" style="width:330px"><div class="wf">
+    <div class="ws dark"><div class="wtag">Hero — full-bleed ink · dusk photo</div>
+      <div class="wimg" style="height:90px">highway + station at dusk</div>
+      <div class="wt" style="width:75%;margin-top:8px;height:11px"></div>
+      <div class="wt" style="width:45%;height:11px"></div>
+      <div class="wl" style="width:60%;margin-top:3px"></div>
+      <div class="wrow" style="margin-top:6px"><div class="wbtn"></div><div class="wbtn ghost"></div></div>
+      <div class="wbox" style="position:absolute;right:8px;bottom:8px;width:92px;background:#fff"><div class="wtag" style="margin:0">metrics card</div><div class="wt" style="width:60%"></div><div class="wl"></div><div class="wl" style="width:70%"></div></div>
+      <div class="wnote" style="position:absolute;left:10px;bottom:-2px">floating metrics ↘</div>
+    </div>
+    <div class="ws"><div class="wtag">Problem — 01 chapter strip</div>
+      <div class="wrow"><div class="wcol"><div class="wt" style="width:80%"></div><div class="wl"></div><div class="wl" style="width:85%"></div></div><div class="wcol" style="flex:.7"><div class="wnote">big editorial claim, ¾ width</div></div></div>
+      <div class="wrow" style="margin-top:4px"><div class="wbox" style="flex:1"><div class="wl" style="width:70%"></div></div><div class="wbox" style="flex:1"><div class="wl" style="width:70%"></div></div><div class="wbox" style="flex:1"><div class="wl" style="width:70%"></div></div></div>
+    </div>
+    <div class="ws"><div class="wtag">Why Vega — 3 value props · asymmetric</div>
+      <div class="wrow"><div class="wbox" style="flex:1.6"><div class="wt" style="width:55%"></div><div class="wl"></div><div class="wl" style="width:80%"></div></div><div class="wcol"><div class="wbox"><div class="wt" style="width:70%"></div><div class="wl"></div></div><div class="wbox"><div class="wt" style="width:70%"></div><div class="wl"></div></div></div></div>
+      <div class="wnote">"Fast. Really fast." leads at 1.6×</div>
+    </div>
+    <div class="ws"><div class="wtag">Network — 02 · corridor map</div>
+      <div class="wrow"><div class="wimg" style="flex:1.5;height:80px">NH-65 corridor map · pulsing pin</div><div class="wcol" style="flex:1"><div class="wt" style="width:80%"></div><div class="wl"></div><div class="wbox"><div class="wtag" style="margin:0">Narketpalle · live soon</div><div class="wl" style="width:70%"></div></div></div></div>
+    </div>
+    <div class="ws"><div class="wtag">Solutions index — 3 rows</div>
+      <div class="wl" style="height:1.5px;background:#ddd"></div>
+      <div class="wrow" style="justify-content:space-between"><div class="wt" style="width:45%"></div><div class="wnote">→</div></div>
+      <div class="wl" style="height:1.5px;background:#ddd"></div>
+      <div class="wrow" style="justify-content:space-between"><div class="wt" style="width:52%"></div><div class="wnote">→</div></div>
+      <div class="wl" style="height:1.5px;background:#ddd"></div>
+      <div class="wrow" style="justify-content:space-between"><div class="wt" style="width:40%"></div><div class="wnote">→</div></div>
+    </div>
+    <div class="ws dark"><div class="wtag">Station experience — ink band · 03</div>
+      <div class="wrow"><div class="wcol"><div class="wt" style="width:70%;background:#111"></div><div class="wl" style="width:85%"></div></div><div class="wimg" style="flex:1;height:52px">lounge / amenities</div></div>
+      <div class="wrow" style="margin-top:4px"><div class="wbox" style="flex:1;background:#fff"><div class="wl"></div></div><div class="wbox" style="flex:1;background:#fff"><div class="wl"></div></div><div class="wbox" style="flex:1;background:#fff"><div class="wl"></div></div></div>
+    </div>
+    <div class="ws"><div class="wtag">Stats strip — animated counters</div>
+      <div class="wrow" style="justify-content:space-around"><div class="wt" style="width:16%;height:14px"></div><div class="wt" style="width:16%;height:14px"></div><div class="wt" style="width:16%;height:14px"></div></div>
+    </div>
+    <div class="ws"><div class="wtag">Testimonial — placeholder pull quote</div><div class="wl" style="width:88%"></div><div class="wl" style="width:70%"></div></div>
+    <div class="ws dark"><div class="wtag">Final CTA band — ink</div><div class="wt" style="width:55%"></div><div class="wrow" style="margin-top:5px"><div class="wbtn"></div><div class="wbtn ghost"></div></div></div>
+    <div class="ws"><div class="wtag">Footer — sitemap · contact · legal</div><div class="wrow"><div class="wcol"><div class="wl"></div><div class="wl" style="width:70%"></div></div><div class="wcol"><div class="wl"></div><div class="wl" style="width:70%"></div></div><div class="wcol"><div class="wl"></div><div class="wl" style="width:70%"></div></div></div></div>
+  </div></div>
+</div>
+
+<!-- 1b ABOUT -->
+<div class="dv-opt" id="1b">
+  <div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>About Us</div>
+  <div class="dv-card" style="width:330px"><div class="wf">
+    <div class="ws"><div class="wtag">Page head — editorial, no photo</div>
+      <div class="wt" style="width:85%;height:12px"></div><div class="wt" style="width:55%;height:12px"></div>
+      <div class="wl" style="width:75%;margin-top:4px"></div><div class="wl" style="width:65%"></div>
+      <div class="wnote">"We're building the roads India's EVs deserve."</div>
+    </div>
+    <div class="ws"><div class="wtag">Our story — 01 · text + image split</div>
+      <div class="wrow"><div class="wcol" style="flex:1.2"><div class="wt" style="width:60%"></div><div class="wl"></div><div class="wl"></div><div class="wl" style="width:80%"></div><div class="wl" style="width:90%"></div></div><div class="wimg" style="flex:1;height:85px">NH-65 photo</div></div>
+      <div class="wnote">narrative: the 150 km fear → "so we built the stops"</div>
+    </div>
+    <div class="ws"><div class="wtag">Vision · Mission · How · Why — 2×2</div>
+      <div class="wrow"><div class="wbox" style="flex:1"><div class="wt" style="width:45%"></div><div class="wl"></div><div class="wl" style="width:75%"></div></div><div class="wbox" style="flex:1"><div class="wt" style="width:45%"></div><div class="wl"></div><div class="wl" style="width:75%"></div></div></div>
+      <div class="wrow"><div class="wbox" style="flex:1"><div class="wt" style="width:45%"></div><div class="wl"></div><div class="wl" style="width:75%"></div></div><div class="wbox" style="flex:1"><div class="wt" style="width:45%"></div><div class="wl"></div><div class="wl" style="width:75%"></div></div></div>
+    </div>
+    <div class="ws"><div class="wtag">Brand distinction — Nrgy vs Charge</div>
+      <div class="wrow"><div class="wbox" style="flex:1"><div class="wtag" style="margin:0">Vega Nrgy</div><div class="wl"></div><div class="wl" style="width:70%"></div></div><div class="wbox" style="flex:1;border-color:#00b98e"><div class="wtag" style="margin:0;color:#00775C">Vega Charge</div><div class="wl"></div><div class="wl" style="width:70%"></div></div></div>
+      <div class="wnote">parent (B2B) vs highway brand — side by side</div>
+    </div>
+    <div class="ws"><div class="wtag">Team — placeholder grid</div>
+      <div class="wrow"><div class="wimg" style="flex:1;height:56px">founder</div><div class="wimg" style="flex:1;height:56px">founder</div><div class="wimg" style="flex:1;height:56px">+</div></div>
+    </div>
+    <div class="ws dark"><div class="wtag">CTA band + footer</div><div class="wt" style="width:50%"></div><div class="wrow" style="margin-top:5px"><div class="wbtn"></div></div></div>
+  </div></div>
+</div>
+
+<!-- 1c OUR NETWORK -->
+<div class="dv-opt" id="1c">
+  <div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Our Network</div>
+  <div class="dv-card" style="width:330px"><div class="wf">
+    <div class="ws"><div class="wtag">Page head + corridor map</div>
+      <div class="wt" style="width:80%;height:12px"></div><div class="wl" style="width:70%"></div>
+      <div class="wimg" style="height:95px;margin-top:6px">full-width NH-65 map · station pins · km markers</div>
+      <div class="wnote">map is the hero here</div>
+    </div>
+    <div class="ws"><div class="wtag">Station features — 6 icons · 2×3 grid</div>
+      <div class="wrow"><div class="wbox" style="flex:1"><div class="wl" style="width:40%;background:#00b98e"></div><div class="wt" style="width:70%"></div><div class="wl"></div></div><div class="wbox" style="flex:1"><div class="wl" style="width:40%;background:#00b98e"></div><div class="wt" style="width:70%"></div><div class="wl"></div></div><div class="wbox" style="flex:1"><div class="wl" style="width:40%;background:#00b98e"></div><div class="wt" style="width:70%"></div><div class="wl"></div></div></div>
+      <div class="wrow"><div class="wbox" style="flex:1"><div class="wl" style="width:40%;background:#00b98e"></div><div class="wt" style="width:70%"></div><div class="wl"></div></div><div class="wbox" style="flex:1"><div class="wl" style="width:40%;background:#00b98e"></div><div class="wt" style="width:70%"></div><div class="wl"></div></div><div class="wbox" style="flex:1"><div class="wl" style="width:40%;background:#00b98e"></div><div class="wt" style="width:70%"></div><div class="wl"></div></div></div>
+      <div class="wnote">lounge · washrooms · play area · café · 24×7 · DC fast</div>
+    </div>
+    <div class="ws"><div class="wtag">Flagship — Narketpalle · editorial feature</div>
+      <div class="wimg" style="height:70px">station render · wide crop</div>
+      <div class="wrow" style="margin-top:5px"><div class="wcol" style="flex:1.3"><div class="wt" style="width:65%"></div><div class="wl"></div><div class="wl" style="width:85%"></div></div><div class="wbox" style="flex:1"><div class="wtag" style="margin:0">spec card</div><div class="wl" style="width:80%"></div><div class="wl" style="width:60%"></div><div class="wl" style="width:70%"></div></div></div>
+    </div>
+    <div class="ws"><div class="wtag">Future stations — 4 rows · "coming soon"</div>
+      <div class="wl" style="height:1.5px;background:#ddd"></div>
+      <div class="wrow" style="justify-content:space-between"><div class="wt" style="width:40%"></div><div class="wl" style="width:18%"></div></div>
+      <div class="wl" style="height:1.5px;background:#ddd"></div>
+      <div class="wrow" style="justify-content:space-between"><div class="wt" style="width:48%"></div><div class="wl" style="width:18%"></div></div>
+      <div class="wl" style="height:1.5px;background:#ddd"></div>
+      <div class="wrow" style="justify-content:space-between"><div class="wt" style="width:36%"></div><div class="wl" style="width:18%"></div></div>
+      <div class="wnote">5 stations total per content doc — details TBD</div>
+    </div>
+    <div class="ws dark"><div class="wtag">CTA — host a station + footer</div><div class="wt" style="width:55%"></div><div class="wrow" style="margin-top:5px"><div class="wbtn"></div><div class="wbtn ghost"></div></div></div>
+  </div></div>
+</div>
+
+<!-- 1d SOLUTIONS -->
+<div class="dv-opt" id="1d">
+  <div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Solutions</div>
+  <div class="dv-card" style="width:330px"><div class="wf">
+    <div class="ws"><div class="wtag">Page head + sticky chapter nav</div>
+      <div class="wt" style="width:75%;height:12px"></div><div class="wl" style="width:60%"></div>
+      <div class="wrow" style="margin-top:6px"><div class="wbtn ghost" style="width:70px"></div><div class="wbtn ghost" style="width:78px"></div><div class="wbtn ghost" style="width:60px"></div></div>
+      <div class="wnote">01 Highway · 02 Commercial · 03 Fleet — anchors</div>
+    </div>
+    <div class="ws"><div class="wtag">01 Highway charging — image left</div>
+      <div class="wrow"><div class="wimg" style="flex:1;height:75px">station photo</div><div class="wcol" style="flex:1.2"><div class="wt" style="width:75%"></div><div class="wl"></div><div class="wl" style="width:85%"></div><div class="wl" style="width:60%"></div><div class="wbtn" style="margin-top:3px"></div></div></div>
+      <div class="wnote">offer list as checked rows, not icon grid</div>
+    </div>
+    <div class="ws"><div class="wtag">02 Commercial — image right (alternate)</div>
+      <div class="wrow"><div class="wcol" style="flex:1.2"><div class="wt" style="width:70%"></div><div class="wl"></div><div class="wl" style="width:85%"></div><div class="wl" style="width:60%"></div><div class="wbtn" style="margin-top:3px"></div></div><div class="wimg" style="flex:1;height:75px">hotel / dhaba</div></div>
+      <div class="wnote">"Who it's for" chips: hotels · fuel stns · malls…</div>
+    </div>
+    <div class="ws"><div class="wtag">03 Fleet — image left + dashboard</div>
+      <div class="wrow"><div class="wimg" style="flex:1;height:75px">fleet dashboard UI</div><div class="wcol" style="flex:1.2"><div class="wt" style="width:70%"></div><div class="wl"></div><div class="wl" style="width:85%"></div><div class="wbtn" style="margin-top:3px"></div></div></div>
+      <div class="wnote">fleet proposal CTA — highest-value lead</div>
+    </div>
+    <div class="ws"><div class="wtag">Enquiry form — 2-col</div>
+      <div class="wrow"><div class="wbox" style="flex:1"><div class="wl" style="width:50%"></div></div><div class="wbox" style="flex:1"><div class="wl" style="width:50%"></div></div></div>
+      <div class="wrow"><div class="wbox" style="flex:1"><div class="wl" style="width:50%"></div></div><div class="wbox" style="flex:1"><div class="wl" style="width:50%"></div></div></div>
+      <div class="wbox"><div class="wl" style="width:35%"></div><div class="wl" style="width:90%"></div></div>
+      <div class="wbtn" style="margin-top:2px"></div>
+    </div>
+    <div class="ws dark"><div class="wtag">Footer</div><div class="wl" style="width:60%"></div></div>
+  </div></div>
+</div>
+
+<!-- 1e CONTACT -->
+<div class="dv-opt" id="1e">
+  <div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>Contact</div>
+  <div class="dv-card" style="width:330px"><div class="wf">
+    <div class="ws"><div class="wtag">Page head — "Let's talk."</div>
+      <div class="wt" style="width:40%;height:12px"></div><div class="wl" style="width:80%"></div><div class="wl" style="width:65%"></div>
+    </div>
+    <div class="ws"><div class="wtag">Split: categories left · form right</div>
+      <div class="wrow">
+        <div class="wcol" style="flex:1">
+          <div class="wbox"><div class="wt" style="width:75%"></div><div class="wl"></div></div>
+          <div class="wbox"><div class="wt" style="width:70%"></div><div class="wl"></div></div>
+          <div class="wbox"><div class="wt" style="width:65%"></div><div class="wl"></div></div>
+          <div class="wbox"><div class="wt" style="width:60%"></div><div class="wl"></div></div>
+        </div>
+        <div class="wcol" style="flex:1.2">
+          <div class="wbox"><div class="wl" style="width:40%"></div></div>
+          <div class="wbox"><div class="wl" style="width:40%"></div></div>
+          <div class="wbox"><div class="wl" style="width:45%"></div></div>
+          <div class="wbox"><div class="wl" style="width:35%"></div><div class="wl" style="width:90%"></div><div class="wl" style="width:85%"></div></div>
+          <div class="wbtn"></div>
+        </div>
+      </div>
+      <div class="wnote">enquiry type pre-selects when arriving from a category</div>
+    </div>
+    <div class="ws"><div class="wtag">Contact details + map/office</div>
+      <div class="wrow"><div class="wcol"><div class="wl" style="width:75%"></div><div class="wl" style="width:60%"></div><div class="wl" style="width:70%"></div></div><div class="wimg" style="flex:1;height:50px">office / map</div></div>
+    </div>
+    <div class="ws"><div class="wtag">Why Vega Nrgy — 5 promise rows</div>
+      <div class="wl" style="height:1.5px;background:#ddd"></div>
+      <div class="wrow" style="justify-content:space-between"><div class="wt" style="width:55%"></div></div>
+      <div class="wl" style="height:1.5px;background:#ddd"></div>
+      <div class="wrow" style="justify-content:space-between"><div class="wt" style="width:48%"></div></div>
+      <div class="wl" style="height:1.5px;background:#ddd"></div>
+      <div class="wrow" style="justify-content:space-between"><div class="wt" style="width:60%"></div></div>
+      <div class="wnote">"More than a charge. A promise." — could also live on About</div>
+    </div>
+    <div class="ws dark"><div class="wtag">Footer</div><div class="wl" style="width:60%"></div></div>
+  </div></div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "approve wireframes, build the hi-fi homepage" · "move the promise section in <a class="dv-oid" href="#1e">1e</a> to About" · "add a fleet dashboard section to <a class="dv-oid" href="#1a">1a</a>"</p>
+</section>
+
+</x-dc>
+</body>
+</html>
