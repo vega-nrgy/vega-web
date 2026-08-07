@@ -47,7 +47,8 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-6 lg:px-8">
-        <Link to="/" aria-label="Vega Charge — home" className="rounded-sm">
+        <Link to="/" aria-label="Vega Charge — home" className="flex items-center gap-2.5 rounded-sm">
+          <img src="/media/vega-mark.png" alt="" className="h-7 w-auto" />
           <Wordmark />
         </Link>
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
