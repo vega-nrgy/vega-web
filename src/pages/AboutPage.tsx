@@ -5,8 +5,16 @@ import { OurStory } from '../components/sections/about/OurStory'
 import { VisionMission } from '../components/sections/about/VisionMission'
 import { BrandDistinction } from '../components/sections/about/BrandDistinction'
 import { Team } from '../components/sections/about/Team'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 export function AboutPage() {
+  usePageMeta({
+    title: "About Us — Vega Nrgy Private Limited | Vega Charge",
+    description:
+      "Vega Nrgy Private Limited is building Vega Charge, India's highway EV fast-charging network — solving range anxiety across Telangana, Andhra Pradesh, and beyond.",
+    path: '/about',
+  })
+
   return (
     <>
       <PageIntro eyebrow="ABOUT US · VEGA NRGY PRIVATE LIMITED" heading="We're building the roads India's EVs deserve.">

@@ -3,6 +3,7 @@ import { HighwayCharging } from '../components/sections/solutions/HighwayChargin
 import { CommercialCharging } from '../components/sections/solutions/CommercialCharging'
 import { FleetOperators } from '../components/sections/solutions/FleetOperators'
 import { EnquiryForm } from '../components/sections/solutions/EnquiryForm'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const QUICK_NAV = [
   { href: '#highway', index: '01', label: 'Highway Charging' },
@@ -11,6 +12,13 @@ const QUICK_NAV = [
 ]
 
 export function SolutionsPage() {
+  usePageMeta({
+    title: 'Solutions — Highway, Commercial & Fleet EV Charging | Vega Charge',
+    description:
+      'Highway charging, commercial partnerships, and fleet solutions from Vega Charge — 180–240 kW DC fast chargers built for Indian highways and businesses.',
+    path: '/solutions',
+  })
+
   return (
     <>
       <PageIntro eyebrow="SOLUTIONS" heading="Powering every journey, for every need.">

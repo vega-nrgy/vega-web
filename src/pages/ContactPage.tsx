@@ -3,8 +3,16 @@ import { Section } from '../components/ui/Section'
 import { ContactForm } from '../components/sections/contact/ContactForm'
 import { ContactDetails } from '../components/sections/contact/ContactDetails'
 import { WhyVegaNrgy } from '../components/sections/contact/WhyVegaNrgy'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 export function ContactPage() {
+  usePageMeta({
+    title: 'Contact Us — Partner With Vega Charge',
+    description:
+      'Get in touch with Vega Charge for fleet charging, site partnerships, investor relations, or general enquiries. We respond within 24 hours.',
+    path: '/contact',
+  })
+
   return (
     <>
       <PageIntro eyebrow="CONTACT" heading="Let's talk.">
