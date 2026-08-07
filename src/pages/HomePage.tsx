@@ -12,12 +12,12 @@ export function HomePage() {
   return (
     <>
       <Hero />
+      <StatsStrip />
       <ProblemStrip />
       <ValueProps />
       <NetworkMap />
       <SolutionsIndex />
       <StationExperience />
-      <StatsStrip />
       <Testimonial />
       <FooterCta />
     </>
