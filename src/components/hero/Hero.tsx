@@ -3,7 +3,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { Button } from "../ui/Button";
 import { fadeOnly, fadeUp, staggerChildren } from "../../lib/variants";
 import { HeroVideo } from "./HeroVideo";
-import { LOADER_DURATION_MS } from "../loader/Loader";
+import { hasLoaderPlayed, LOADER_DURATION_MS } from "../loader/Loader";
 
 const DAY_IMG = "/media/hero-day.jpg";
 const HEADLINE = "Charging India Forward";
@@ -57,7 +57,7 @@ export function Hero() {
   const item = reduced ? fadeOnly : fadeUp;
   const { typed, done: typingDone } = useTypewriter(HEADLINE, {
     enabled: !reduced,
-    startDelay: LOADER_DURATION_MS + 200,
+    startDelay: hasLoaderPlayed ? undefined : LOADER_DURATION_MS + 200,
   });
 
   const pinRef = useRef<HTMLElement>(null);

@@ -16,6 +16,12 @@ const FADE_MS = 700;
    (e.g. the hero headline typewriter) should wait for this before starting. */
 export const LOADER_DURATION_MS = HOLD_MS + FADE_MS;
 
+/* The loader is mounted once at the app root (see main.tsx) and only ever
+   plays on the initial page load, not on client-side route changes. Other
+   components (e.g. Hero, remounted on every visit to "/") read this to know
+   whether they still need to wait out the loader or can animate immediately. */
+export let hasLoaderPlayed = false;
+
 export function Loader() {
   const reduced = useReducedMotion();
   const [phase, setPhase] = useState<"playing" | "hiding" | "done">("playing");
@@ -41,7 +47,10 @@ export function Loader() {
 
   useEffect(() => {
     if (phase !== "hiding") return;
-    const timer = setTimeout(() => setPhase("done"), FADE_MS);
+    const timer = setTimeout(() => {
+      hasLoaderPlayed = true;
+      setPhase("done");
+    }, FADE_MS);
     return () => clearTimeout(timer);
   }, [phase]);
 
