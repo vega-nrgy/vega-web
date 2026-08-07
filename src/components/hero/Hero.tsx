@@ -12,11 +12,11 @@ const HEADLINE = "Charging India Forward";
    bottom-left) so the transition moves each vertex in a straight horizontal
    line instead of cutting diagonally across the frame. */
 const CLIP_HIDDEN = "polygon(0 0,0 0,0 100%,0 100%)";
-const CLIP_FULL = "polygon(0 0,100% 0,100% 100%,0 100%)";
+// const CLIP_FULL = "polygon(0 0,100% 0,100% 100%,0 100%)";
 
-const NIGHT_OUT_AT = 0.32;
-const WIPE_AT = 0.45;
-const DAY_IN_AT = 0.55;
+// const NIGHT_OUT_AT = 0.32;
+// const WIPE_AT = 0.45;
+// const DAY_IN_AT = 0.55;
 
 /* Types `text` out one character at a time. Disabled (enabled=false) shows
    the full string immediately, e.g. for prefers-reduced-motion. */
@@ -63,7 +63,7 @@ export function Hero() {
   const pinRef = useRef<HTMLElement>(null);
   const dayLayerRef = useRef<HTMLDivElement>(null);
   const nightCopyRef = useRef<HTMLDivElement>(null);
-  const dayCopyRef = useRef<HTMLDivElement>(null);
+  // const dayCopyRef = useRef<HTMLDivElement>(null);
 
   // useEffect(() => {
   //   function onScroll() {
@@ -96,7 +96,7 @@ export function Hero() {
       id="top"
       ref={pinRef}
       aria-labelledby="hero-heading"
-      className="relative isolate h-[300svh] bg-ink"
+      className="relative isolate h-svh bg-ink"
     >
       <div className="sticky top-0 h-svh w-full overflow-hidden">
         <div className="absolute inset-0 opacity-55">
