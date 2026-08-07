@@ -20,7 +20,10 @@ const DAY_IN_AT = 0.55;
 
 /* Types `text` out one character at a time. Disabled (enabled=false) shows
    the full string immediately, e.g. for prefers-reduced-motion. */
-function useTypewriter(text: string, { speed = 45, startDelay = 500, enabled = true } = {}) {
+function useTypewriter(
+  text: string,
+  { speed = 45, startDelay = 500, enabled = true } = {},
+) {
   const [count, setCount] = useState(enabled ? 0 : text.length);
 
   useEffect(() => {
@@ -62,30 +65,31 @@ export function Hero() {
   const nightCopyRef = useRef<HTMLDivElement>(null);
   const dayCopyRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    function onScroll() {
-      const pin = pinRef.current;
-      const day = dayLayerRef.current;
-      if (!pin || !day) return;
+  // useEffect(() => {
+  //   function onScroll() {
+  //     const pin = pinRef.current;
+  //     const day = dayLayerRef.current;
+  //     if (!pin || !day) return;
 
-      const rect = pin.getBoundingClientRect();
-      const total = pin.offsetHeight - window.innerHeight;
-      const scrolled = Math.min(Math.max(-rect.top, 0), total);
-      const progress = total > 0 ? scrolled / total : 0;
+  //     const rect = pin.getBoundingClientRect();
+  //     const total = pin.offsetHeight - window.innerHeight;
+  //     const scrolled = Math.min(Math.max(-rect.top, 0), total);
+  //     const progress = total > 0 ? scrolled / total : 0;
 
-      day.style.clipPath = progress >= WIPE_AT ? CLIP_FULL : CLIP_HIDDEN;
-      if (nightCopyRef.current) {
-        nightCopyRef.current.style.opacity = progress >= NIGHT_OUT_AT ? "0" : "1";
-      }
-      if (dayCopyRef.current) {
-        dayCopyRef.current.style.opacity = progress >= DAY_IN_AT ? "1" : "0";
-      }
-    }
+  //     day.style.clipPath = progress >= WIPE_AT ? CLIP_FULL : CLIP_HIDDEN;
+  //     if (nightCopyRef.current) {
+  //       nightCopyRef.current.style.opacity =
+  //         progress >= NIGHT_OUT_AT ? "0" : "1";
+  //     }
+  //     if (dayCopyRef.current) {
+  //       dayCopyRef.current.style.opacity = progress >= DAY_IN_AT ? "1" : "0";
+  //     }
+  //   }
 
-    onScroll();
-    document.addEventListener("scroll", onScroll, { passive: true });
-    return () => document.removeEventListener("scroll", onScroll);
-  }, []);
+  //   onScroll();
+  //   document.addEventListener("scroll", onScroll, { passive: true });
+  //   return () => document.removeEventListener("scroll", onScroll);
+  // }, []);
 
   return (
     <section
@@ -159,7 +163,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <div
+        {/* <div
           ref={dayCopyRef}
           className="absolute inset-0 z-2 mx-auto flex h-full max-w-7xl items-end px-6 pb-18 pt-28 opacity-0 transition-opacity duration-500 ease-out lg:px-8"
         >
@@ -176,9 +180,9 @@ export function Hero() {
               highway corridors across Telangana, Andhra Pradesh, and beyond.
             </p>
           </div>
-        </div>
+        </div> */}
 
-        <div
+        {/* <div
           className="absolute bottom-[14%] right-[6%] z-2 flex flex-col items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-white/60"
           aria-hidden="true"
         >
@@ -186,7 +190,7 @@ export function Hero() {
           <div className="relative h-[34px] w-px overflow-hidden bg-white/40">
             <div className="absolute left-0 top-[-100%] h-full w-full animate-scroll-down bg-mint motion-reduce:animate-none" />
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
