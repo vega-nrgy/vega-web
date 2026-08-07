@@ -6,8 +6,29 @@ import { StationMap } from '../components/sections/network/StationMap'
 import { StationFeatures } from '../components/sections/network/StationFeatures'
 import { FlagshipStation } from '../components/sections/network/FlagshipStation'
 import { StationList } from '../components/sections/network/StationList'
+import { usePageMeta } from '../hooks/usePageMeta'
+import { buildStationSchema } from '../lib/seo'
+import { getStationBySlug } from '../lib/stations'
+
+const NARKETPALLY = getStationBySlug('narketpally')!
 
 export function NetworkPage() {
+  usePageMeta({
+    title: 'Our Network — Highway EV Charging Stations | Vega Charge',
+    description:
+      "Explore Vega Charge's growing network of highway EV charging stations across Telangana and Andhra Pradesh, including the flagship Narketpalle station on NH-65.",
+    path: '/network',
+    jsonLd: buildStationSchema({
+      name: 'Narketpally',
+      id: NARKETPALLY.id,
+      addressLocality: 'Narketpally',
+      addressRegion: 'Telangana',
+      lat: NARKETPALLY.lat,
+      lng: NARKETPALLY.lng,
+      amenityFeature: ['Waiting lounge', 'Washrooms', "Children's play area", 'Café & retail', '24×7 staffed'],
+    }),
+  })
+
   return (
     <>
       <PageIntro eyebrow="OUR NETWORK" heading="Charging stops built for the road — and the driver.">
