@@ -1,74 +1,5 @@
 import { Section } from '../../ui/Section'
-
-type StationRow = {
-  id: string
-  name: string
-  corridor: string
-  chargers: string
-  area: string
-  traffic: string
-  launch: string
-  status: 'PLANNING' | 'ACQUISITION'
-  map: string
-}
-
-const STATIONS: StationRow[] = [
-  {
-    id: 'VC 001',
-    name: 'Vega Narketpally',
-    corridor: 'NH-65 · Hyderabad–Vijayawada · Nalgonda, TS',
-    chargers: '3 × 180 kW DC',
-    area: '2,200 sq. yd · 103 ft frontage',
-    traffic: '>40,000 vehicles/day',
-    launch: 'Opening Sep 2026',
-    status: 'PLANNING',
-    map: 'https://maps.app.goo.gl/HDpiyMm8LLJXU7eZ6',
-  },
-  {
-    id: 'VC 002',
-    name: 'Vega Tekmatla — Khammam Bypass',
-    corridor: 'Hyderabad–Visakhapatnam · via Khammam',
-    chargers: '3 × 180 + 1 × 240 kW DC',
-    area: '3,630 sq. yd · 170 ft frontage',
-    traffic: '>20,000 vehicles/day',
-    launch: 'Opening Oct 2026',
-    status: 'PLANNING',
-    map: 'https://maps.app.goo.gl/nasBZ3A7f9DvudjX8',
-  },
-  {
-    id: 'VC 003',
-    name: 'Vega Pillalamarri',
-    corridor: 'NH-65 · Hyderabad–Vijayawada',
-    chargers: '4 × 180 + 2 × 240 kW DC',
-    area: '3,270 sq. yd · 172 ft frontage',
-    traffic: '>25,000 vehicles/day',
-    launch: 'Opening Sep 2026',
-    status: 'PLANNING',
-    map: 'https://maps.app.goo.gl/4BNxu8rbfWQ7u2nB6',
-  },
-  {
-    id: 'VC 004',
-    name: 'Vega Tallampadu',
-    corridor: 'Hyderabad–Visakhapatnam · via Khammam',
-    chargers: '3 × 180 + 1 × 240 kW DC',
-    area: '7,260 sq. yd · 316 ft frontage',
-    traffic: '>20,000 vehicles/day',
-    launch: 'Opening Oct 2026',
-    status: 'PLANNING',
-    map: 'https://maps.app.goo.gl/SudRLnPPe1KgZBaZ9',
-  },
-  {
-    id: 'VC 005',
-    name: 'Vega Tekmatla',
-    corridor: 'Visakhapatnam–Hyderabad · via Khammam',
-    chargers: '3 × 180 + 1 × 240 kW DC',
-    area: '4,840 sq. yd · 120+ ft frontage',
-    traffic: '>20,000 vehicles/day',
-    launch: 'Launch date TBA',
-    status: 'ACQUISITION',
-    map: 'https://maps.app.goo.gl/wB7xSW9zF5Rfi5kT8',
-  },
-]
+import { STATIONS } from '../../../lib/stations'
 
 export function StationList() {
   return (
@@ -87,7 +18,7 @@ export function StationList() {
           {STATIONS.map((s) => (
             <li key={s.id} className="border-b border-hairline">
               <a
-                href={s.map}
+                href={s.mapUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="grid items-center gap-5 py-6 transition-colors hover:bg-grey-soft sm:grid-cols-[56px_1.5fr_1fr_1fr_auto]"

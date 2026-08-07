@@ -1,55 +1,31 @@
 import { useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import { STATIONS as BASE_STATIONS } from '../../../lib/stations'
 
-/** Ported 1:1 from raw_html/network-map.html — same ids, coordinates, meta copy, and links. */
-const STATIONS = [
-  {
-    id: 'VC 001',
-    name: 'Vega Narketpally',
-    lat: 17.222,
-    lng: 79.207,
-    meta: 'NH-65 &middot; Hyderabad&ndash;Vijayawada<br>3 &times; 180 kW DC &middot; Opening Sep 2026',
-    map: 'https://maps.app.goo.gl/HDpiyMm8LLJXU7eZ6',
-    live: true,
-  },
-  {
-    id: 'VC 002',
-    name: 'Vega Tekmatla — Khammam Bypass',
-    lat: 17.275,
-    lng: 80.105,
-    meta: 'Hyderabad&ndash;Visakhapatnam &middot; via Khammam<br>3 &times; 180 + 1 &times; 240 kW DC &middot; Opening Oct 2026',
-    map: 'https://maps.app.goo.gl/nasBZ3A7f9DvudjX8',
-    live: true,
-  },
-  {
-    id: 'VC 003',
-    name: 'Vega Pillalamarri',
-    lat: 17.125,
-    lng: 79.605,
-    meta: 'NH-65 &middot; Hyderabad&ndash;Vijayawada<br>4 &times; 180 + 2 &times; 240 kW DC &middot; Opening Sep 2026',
-    map: 'https://maps.app.goo.gl/4BNxu8rbfWQ7u2nB6',
-    live: true,
-  },
-  {
-    id: 'VC 004',
-    name: 'Vega Tallampadu',
-    lat: 17.24,
-    lng: 80.02,
-    meta: 'Hyderabad&ndash;Visakhapatnam &middot; via Khammam<br>3 &times; 180 + 1 &times; 240 kW DC &middot; Opening Oct 2026',
-    map: 'https://maps.app.goo.gl/SudRLnPPe1KgZBaZ9',
-    live: true,
-  },
-  {
-    id: 'VC 005',
-    name: 'Vega Tekmatla',
-    lat: 17.3,
-    lng: 80.06,
-    meta: 'Visakhapatnam&ndash;Hyderabad &middot; via Khammam<br>3 &times; 180 + 1 &times; 240 kW DC &middot; Launch TBA',
-    map: 'https://maps.app.goo.gl/wB7xSW9zF5Rfi5kT8',
-    live: false,
-  },
-]
+/* Popup blurb per station — deliberately more compact than the full
+   corridor/launch text in src/lib/stations.ts, so it's kept as its own
+   editorial copy rather than derived. Coordinates, id, name, map link, and
+   the live/pending pin style all come from the shared station data. */
+const POPUP_META: Record<string, string> = {
+  'VC 001': 'NH-65 &middot; Hyderabad&ndash;Vijayawada<br>3 &times; 180 kW DC &middot; Opening Sep 2026',
+  'VC 002':
+    'Hyderabad&ndash;Visakhapatnam &middot; via Khammam<br>3 &times; 180 + 1 &times; 240 kW DC &middot; Opening Oct 2026',
+  'VC 003': 'NH-65 &middot; Hyderabad&ndash;Vijayawada<br>4 &times; 180 + 2 &times; 240 kW DC &middot; Opening Sep 2026',
+  'VC 004':
+    'Hyderabad&ndash;Visakhapatnam &middot; via Khammam<br>3 &times; 180 + 1 &times; 240 kW DC &middot; Opening Oct 2026',
+  'VC 005': 'Visakhapatnam&ndash;Hyderabad &middot; via Khammam<br>3 &times; 180 + 1 &times; 240 kW DC &middot; Launch TBA',
+}
+
+const STATIONS = BASE_STATIONS.map((s) => ({
+  id: s.id,
+  name: s.name,
+  lat: s.lat,
+  lng: s.lng,
+  meta: POPUP_META[s.id],
+  map: s.mapUrl,
+  live: s.status === 'PLANNING',
+}))
 
 export function StationMap() {
   const containerRef = useRef<HTMLDivElement>(null)

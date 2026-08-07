@@ -1,12 +1,15 @@
 import { Section } from '../../ui/Section'
+import { getStationBySlug } from '../../../lib/stations'
+
+const NARKETPALLY = getStationBySlug('narketpally')!
 
 const SPECS: [string, string | { label: string; href: string }][] = [
-  ['Location', { label: 'NH-65, Narketpally, Nalgonda ↗', href: 'https://maps.app.goo.gl/HDpiyMm8LLJXU7eZ6' }],
-  ['Station ID', 'VC 001'],
+  ['Location', { label: 'NH-65, Narketpally, Nalgonda ↗', href: NARKETPALLY.mapUrl }],
+  ['Station ID', NARKETPALLY.id],
   ['Site area', '2,200 sq. yards · 103 ft frontage'],
   ['Chargers', '3 × 180 kW DC Fast'],
   ['Corridor traffic', '>40,000 vehicles / day'],
-  ['Standards', 'CCS2 · CHAdeMO · Bharat DC-001'],
+  ['Standards', NARKETPALLY.standards.join(' · ')],
 ]
 
 export function FlagshipStation() {

@@ -208,6 +208,14 @@ type Station = {
   flagship?: boolean
 }
 
+/* NOTE: specs below are this homepage teaser's own editorial copy (shorter
+   corridor phrasing + a trimmed charger count) and intentionally aren't
+   pulled from src/lib/stations.ts. Narketpalle's numbers already agree with
+   the full station data, but Pillalamarri and Tallampadu currently show
+   fewer chargers here (2 × 180 kW DC) than the real station list/map
+   (4 × 180 + 2 × 240, and 3 × 180 + 1 × 240 respectively) — flagging this
+   pre-existing mismatch to resolve once the real per-station charger config
+   comes in, rather than silently picking one number over the other. */
 const STATIONS: Station[] = [
   {
     name: 'Narketpalle',
