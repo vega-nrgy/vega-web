@@ -50,8 +50,14 @@ export function Footer() {
           <FooterColumn label="Partner" links={PARTNER_LINKS} />
           <div className="flex flex-col gap-3">
             <p className="font-mono text-[9.5px] font-normal uppercase tracking-[0.16em] text-muted">Contact</p>
-            <a href="mailto:info@vegacharge.in" className="text-[13px] font-medium text-onink transition-colors hover:text-white">
-              info@vegacharge.in
+            <a href="mailto:admin@vegacharge.in" className="text-[13px] font-medium text-onink transition-colors hover:text-white">
+              admin@vegacharge.in
+            </a>
+            <a href="tel:+917995799957" className="text-[13px] font-medium text-onink transition-colors hover:text-white">
+              Preetham: 7995 799 957
+            </a>
+            <a href="tel:+919705555556" className="text-[13px] font-medium text-onink transition-colors hover:text-white">
+              Sai Kiran: 9705 555 556
             </a>
             <a
               href="https://linkedin.com/company/veganrgy"
