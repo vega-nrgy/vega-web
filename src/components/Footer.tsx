@@ -59,12 +59,12 @@ export function Footer() {
             <a href="tel:+919705555556" className="text-[13px] font-medium text-onink transition-colors hover:text-white">
               Sai Kiran: 9705 555 556
             </a>
-            <a
+            {/* <a
               href="https://linkedin.com/company/veganrgy"
               className="text-[13px] font-medium text-onink transition-colors hover:text-white"
             >
               LinkedIn
-            </a>
+            </a> */}
             <span className="text-xs leading-relaxed text-muted">Vega Nrgy Private Limited, Hyderabad</span>
           </div>
         </div>

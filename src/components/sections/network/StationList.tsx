@@ -116,10 +116,11 @@ export function StationList() {
           ))}
         </ul>
         <p className="py-5.5 text-[13.5px] leading-relaxed text-muted">
-          Retail space at every station &middot; Follow corridor expansion updates on{' '}
+          Retail space at every station
+          {/* &middot; Follow corridor expansion updates on{' '}
           <a href="https://linkedin.com/company/veganrgy" className="font-bold text-mint-deep">
             LinkedIn &rarr;
-          </a>
+          </a> */}
         </p>
       </div>
     </Section>

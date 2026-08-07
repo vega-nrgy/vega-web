@@ -49,9 +49,9 @@ export function ContactDetails() {
           <br />
           Hyderabad 500068
         </p>
-        <a href="https://linkedin.com/company/veganrgy" className="mt-3.5 inline-block text-[13px] font-semibold text-mint-deep">
+        {/* <a href="https://linkedin.com/company/veganrgy" className="mt-3.5 inline-block text-[13px] font-semibold text-mint-deep">
           linkedin.com/company/veganrgy &rarr;
-        </a>
+        </a> */}
       </div>
       <a
         href={MAP_URL}

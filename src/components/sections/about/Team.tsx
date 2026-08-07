@@ -13,7 +13,7 @@ function FounderCard() {
       <div className="p-6">
         <p className="font-display text-[17px] font-semibold text-ink">Name</p>
         <p className="mt-1 text-[12.5px] text-muted">Title &middot; two-line background</p>
-        <p className="mt-2.5 text-[12.5px] font-semibold text-mint-deep">LinkedIn &rarr;</p>
+        {/* <p className="mt-2.5 text-[12.5px] font-semibold text-mint-deep">LinkedIn &rarr;</p> */}
       </div>
     </div>
   )
