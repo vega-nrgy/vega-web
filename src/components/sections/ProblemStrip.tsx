@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "motion/react";
+import { useIsDesktop } from "../../hooks/useIsDesktop";
 
 function BoltShieldIcon() {
   return (
@@ -105,6 +106,7 @@ const Copy = () => (
    Reduced motion gets a plain static stack instead. */
 export function ProblemStrip() {
   const reduced = useReducedMotion();
+  const isDesktop = useIsDesktop();
   const pinRef = useRef<HTMLElement>(null);
   const textWrapRef = useRef<HTMLDivElement>(null);
   const headingARef = useRef<HTMLHeadingElement>(null);
@@ -113,7 +115,7 @@ export function ProblemStrip() {
   const pointRefs = useRef<(HTMLLIElement | null)[]>([]);
 
   useEffect(() => {
-    if (reduced) return;
+    if (reduced || !isDesktop) return;
 
     function onScroll() {
       const pin = pinRef.current;
@@ -155,9 +157,9 @@ export function ProblemStrip() {
     onScroll();
     document.addEventListener("scroll", onScroll, { passive: true });
     return () => document.removeEventListener("scroll", onScroll);
-  }, [reduced]);
+  }, [reduced, isDesktop]);
 
-  if (reduced) {
+  if (reduced || !isDesktop) {
     return (
       <section
         id="problem"

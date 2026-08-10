@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useReducedMotion } from 'motion/react'
+import { useIsDesktop } from '../../hooks/useIsDesktop'
 
 const SOLUTIONS = [
   { index: '01', title: 'Highway Charging', body: 'Drive without doubt. Every highway. Every time.' },
@@ -16,12 +17,13 @@ const ITEM_TRANSITION = 'transition-all duration-500 ease-out'
    the three solution rows stagger in one after another. */
 export function SolutionsIndex() {
   const reduced = useReducedMotion()
+  const isDesktop = useIsDesktop()
   const pinRef = useRef<HTMLElement>(null)
   const headingRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLLIElement | null)[]>([])
 
   useEffect(() => {
-    if (reduced) return
+    if (reduced || !isDesktop) return
 
     function onScroll() {
       const pin = pinRef.current
@@ -49,15 +51,17 @@ export function SolutionsIndex() {
     onScroll()
     document.addEventListener('scroll', onScroll, { passive: true })
     return () => document.removeEventListener('scroll', onScroll)
-  }, [reduced])
+  }, [reduced, isDesktop])
+
+  const staticMode = reduced || !isDesktop
 
   const list = (
     <ul className="border-t border-hairline">
       {SOLUTIONS.map(({ index, title, body }, i) => (
         <li
           key={index}
-          ref={reduced ? undefined : (el) => { itemRefs.current[i] = el }}
-          className={`border-b border-hairline ${reduced ? '' : `opacity-0 ${ITEM_TRANSITION}`}`}
+          ref={staticMode ? undefined : (el) => { itemRefs.current[i] = el }}
+          className={`border-b border-hairline ${staticMode ? '' : `opacity-0 ${ITEM_TRANSITION}`}`}
         >
           <Link
             to="/solutions"
@@ -90,7 +94,7 @@ export function SolutionsIndex() {
     </div>
   )
 
-  if (reduced) {
+  if (staticMode) {
     return (
       <section id="solutions" aria-labelledby="solutions-heading" className="bg-paper">
         <div className="mx-auto max-w-7xl px-6 py-30 lg:px-8">

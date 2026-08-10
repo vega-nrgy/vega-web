@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useReducedMotion } from 'motion/react'
+import { useIsDesktop } from '../../hooks/useIsDesktop'
 
 const LABEL_AT = 0.08
 const QUOTE_AT = 0.32
@@ -11,13 +12,14 @@ const TRANSITION = 'transition-all duration-500 ease-out'
    Placeholder layout — swap the copy below for a real quote when available. */
 export function Testimonial() {
   const reduced = useReducedMotion()
+  const isDesktop = useIsDesktop()
   const pinRef = useRef<HTMLElement>(null)
   const labelRef = useRef<HTMLParagraphElement>(null)
   const quoteRef = useRef<HTMLQuoteElement>(null)
   const captionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    if (reduced) return
+    if (reduced || !isDesktop) return
 
     function onScroll() {
       const pin = pinRef.current
@@ -47,9 +49,9 @@ export function Testimonial() {
     onScroll()
     document.addEventListener('scroll', onScroll, { passive: true })
     return () => document.removeEventListener('scroll', onScroll)
-  }, [reduced])
+  }, [reduced, isDesktop])
 
-  if (reduced) {
+  if (reduced || !isDesktop) {
     return (
       <section id="voices" aria-labelledby="voices-heading" className="bg-paper">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">

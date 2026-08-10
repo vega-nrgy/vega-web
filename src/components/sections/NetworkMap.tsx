@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useReducedMotion } from 'motion/react'
 import { Button } from '../ui/Button'
+import { useIsDesktop } from '../../hooks/useIsDesktop'
 
 /* Corridor-preview and flagship-station card designs — commented out in
    favour of the big-image station list below, kept here in case we want to
@@ -265,12 +266,13 @@ const PANEL_COUNT = STATIONS.length + 2
    statically instead. */
 export function NetworkMap() {
   const reduced = useReducedMotion()
+  const isDesktop = useIsDesktop()
   const pinRef = useRef<HTMLElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const dotRefs = useRef<(HTMLSpanElement | null)[]>([])
 
   useEffect(() => {
-    if (reduced) return
+    if (reduced || !isDesktop) return
 
     function onScroll() {
       const pin = pinRef.current
@@ -295,7 +297,7 @@ export function NetworkMap() {
     onScroll()
     document.addEventListener('scroll', onScroll, { passive: true })
     return () => document.removeEventListener('scroll', onScroll)
-  }, [reduced])
+  }, [reduced, isDesktop])
 
   const header = (
     <>
@@ -356,7 +358,7 @@ export function NetworkMap() {
     </div>
   )
 
-  if (reduced) {
+  if (reduced || !isDesktop) {
     return (
       <section id="network" aria-labelledby="network-heading" className="bg-paper">
         <div className="mx-auto max-w-7xl px-6 py-30 lg:px-8">

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useReducedMotion } from 'motion/react'
+import { useIsDesktop } from '../../hooks/useIsDesktop'
 
 const AMENITIES = [
   'Waiting lounge',
@@ -24,6 +25,7 @@ const TRANSITION = 'transition-all duration-500 ease-out'
    in on the right. */
 export function StationExperience() {
   const reduced = useReducedMotion()
+  const isDesktop = useIsDesktop()
   const pinRef = useRef<HTMLElement>(null)
   const headingRef = useRef<HTMLHeadingElement>(null)
   const paraRef = useRef<HTMLParagraphElement>(null)
@@ -31,7 +33,7 @@ export function StationExperience() {
   const imageRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (reduced) return
+    if (reduced || !isDesktop) return
 
     function onScroll() {
       const pin = pinRef.current
@@ -71,7 +73,7 @@ export function StationExperience() {
     onScroll()
     document.addEventListener('scroll', onScroll, { passive: true })
     return () => document.removeEventListener('scroll', onScroll)
-  }, [reduced])
+  }, [reduced, isDesktop])
 
   const imagePanel = (heightClass: string) => (
     <div className="relative overflow-hidden rounded-media">
@@ -88,7 +90,7 @@ export function StationExperience() {
     </div>
   )
 
-  if (reduced) {
+  if (reduced || !isDesktop) {
     return (
       <section id="experience" aria-labelledby="experience-heading" className="relative mt-30 overflow-hidden bg-ink">
         <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-mint to-transparent" aria-hidden="true" />

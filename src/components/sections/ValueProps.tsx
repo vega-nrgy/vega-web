@@ -1,6 +1,7 @@
 import type { Ref } from 'react'
 import { useEffect, useRef } from 'react'
 import { useReducedMotion } from 'motion/react'
+import { useIsDesktop } from '../../hooks/useIsDesktop'
 
 const INTRO_IN_AT = 0.02
 const INTRO_OUT_AT = 0.28
@@ -41,6 +42,7 @@ const LeftCardBody = ({ reallyFastRef }: { reallyFastRef?: Ref<HTMLSpanElement> 
    gets the plain static grid instead, no intro heading. */
 export function ValueProps() {
   const reduced = useReducedMotion()
+  const isDesktop = useIsDesktop()
   const pinRef = useRef<HTMLElement>(null)
   const introRef = useRef<HTMLHeadingElement>(null)
   const leftCardRef = useRef<HTMLDivElement>(null)
@@ -49,7 +51,7 @@ export function ValueProps() {
   const rightCard2Ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (reduced) return
+    if (reduced || !isDesktop) return
 
     function onScroll() {
       const pin = pinRef.current
@@ -91,9 +93,9 @@ export function ValueProps() {
     onScroll()
     document.addEventListener('scroll', onScroll, { passive: true })
     return () => document.removeEventListener('scroll', onScroll)
-  }, [reduced])
+  }, [reduced, isDesktop])
 
-  if (reduced) {
+  if (reduced || !isDesktop) {
     return (
       <section id="why" aria-labelledby="why-heading" className="bg-paper">
         <div className="mx-auto max-w-7xl px-6 py-30 lg:px-8">
