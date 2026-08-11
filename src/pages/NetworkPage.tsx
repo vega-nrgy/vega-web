@@ -1,7 +1,6 @@
 import { PageIntro } from "../components/ui/PageIntro";
 import { CtaBanner } from "../components/ui/CtaBanner";
 import { Section } from "../components/ui/Section";
-import { CorridorOverview } from "../components/sections/network/CorridorOverview";
 import { StationMap } from "../components/sections/network/StationMap";
 import { StationFeatures } from "../components/sections/network/StationFeatures";
 import { FlagshipStation } from "../components/sections/network/FlagshipStation";
@@ -46,7 +45,6 @@ export function NetworkPage() {
           It&rsquo;s a rest stop, a service point, and a community hub &mdash;
           built to global standards, designed for Indian conditions.
         </p>
-        {/* <CorridorOverview /> */}
       </PageIntro>
 
       <Section id="map" labelledBy="map-heading" className="bg-paper">
