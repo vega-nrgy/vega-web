@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import "./Loader.css";
 
-/* Traced from public/design/logo.jpg — outer silhouette + inner hole of the mark,
-   normalized to a 163.5x174 viewBox. Re-trace if the source logo changes. */
-const OUTER_D =
-  "M96.5,6 L121.5,6 L122,86.5 L157.5,88 L82.5,162.5 L70,168 L42,168 L42,88 L6,86.5 L80,12.5 L87.5,8 Z";
-const HOLE_D = "M95.5,34.5 L96,87 L120,88 L68,140 L68,88 L67,86.5 L43.5,86.5 Z";
+/* Exact mark paths + viewBox from public/Vega Charge Logo Files/.../SVG/Vega Charge 11.svg
+   — the mark is two overlapping solid chevrons, not one outline with a punched hole. */
+const MARK_VIEWBOX = "0 0 918.1 976.25";
+const PART_A_D =
+  "M700.05,488.12l-328.08,328.11v-328.11h-153.91v488.12h139.29c45.01,0,84.76-15.34,118.14-45.61l442.62-442.52h-218.05Z";
+const PART_B_D =
+  "M218.05,488.12l328.08-328.11v328.11h153.91V0h-139.29c-45.01,0-84.76,15.34-118.14,45.61L0,488.12h218.05Z";
 
 const HOLD_MS = 5300;
 const REDUCED_HOLD_MS = 600;
@@ -25,11 +27,11 @@ export let hasLoaderPlayed = false;
 export function Loader() {
   const reduced = useReducedMotion();
   const [phase, setPhase] = useState<"playing" | "hiding" | "done">("playing");
-  const outerRef = useRef<SVGPathElement>(null);
-  const holeRef = useRef<SVGPathElement>(null);
+  const partARef = useRef<SVGPathElement>(null);
+  const partBRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
-    for (const ref of [outerRef, holeRef]) {
+    for (const ref of [partARef, partBRef]) {
       const path = ref.current;
       if (!path) continue;
       const len = path.getTotalLength();
@@ -67,18 +69,18 @@ export function Loader() {
         <div className="vega-loader-glow" />
         <svg
           className="vega-logo-trace"
-          viewBox="0 0 163.5 174"
+          viewBox={MARK_VIEWBOX}
           preserveAspectRatio="xMidYMid meet"
         >
           <path
-            ref={outerRef}
-            d={OUTER_D}
-            className="vega-trace-path vega-trace-outer"
+            ref={partARef}
+            d={PART_A_D}
+            className="vega-trace-path vega-trace-a"
           />
           <path
-            ref={holeRef}
-            d={HOLE_D}
-            className="vega-trace-path vega-trace-hole"
+            ref={partBRef}
+            d={PART_B_D}
+            className="vega-trace-path vega-trace-b"
           />
         </svg>
         {/* <span className="vega-loader-word">VEGA CHARGE</span> */}

@@ -1,4 +1,4 @@
-/* Line-flow logo loader — traced from public/design/logo.jpg (outer silhouette + inner hole). */
+/* Line-flow logo loader — draws the two-chevron mark from the official brand SVG. */
 
 .vega-loader {
   position: fixed;
@@ -46,31 +46,31 @@
    path length (getTotalLength) — do not hardcode --len */
 .vega-trace-path {
   stroke: var(--color-mint);
-  stroke-width: 6;
+  stroke-width: 34;
   stroke-linecap: butt;
   stroke-linejoin: miter;
   filter: drop-shadow(0 0 5px rgb(0 217 165 / 0.5));
 }
 
-/* Outer silhouette fills mint; the inner hole path fills the loader's own
-   background so it visually punches through the outer fill once resolved. */
-.vega-trace-outer {
+/* Both chevrons are the same solid mint fill — the visual notch between them
+   is empty canvas, not a punched-out hole. */
+.vega-trace-a {
   fill: var(--color-mint);
   fill-opacity: 0;
   animation:
-    vegaFlowOuter 5s cubic-bezier(0.45, 0, 0.2, 1) forwards,
+    vegaFlowA 5s cubic-bezier(0.45, 0, 0.2, 1) forwards,
     vegaFillIn 5s cubic-bezier(0.45, 0, 0.2, 1) forwards;
 }
 
-.vega-trace-hole {
-  fill: var(--color-ink);
+.vega-trace-b {
+  fill: var(--color-mint);
   fill-opacity: 0;
   animation:
-    vegaFlowHole 5s cubic-bezier(0.45, 0, 0.2, 1) forwards 0.12s,
+    vegaFlowB 5s cubic-bezier(0.45, 0, 0.2, 1) forwards 0.12s,
     vegaFillIn 5s cubic-bezier(0.45, 0, 0.2, 1) forwards;
 }
 
-@keyframes vegaFlowOuter {
+@keyframes vegaFlowA {
   0% {
     stroke-dashoffset: var(--len);
   }
@@ -86,7 +86,7 @@
   }
 }
 
-@keyframes vegaFlowHole {
+@keyframes vegaFlowB {
   0% {
     stroke-dashoffset: var(--len);
   }
@@ -176,8 +176,8 @@
   stroke-dashoffset: 0 !important;
 }
 
-.vega-loader--reduced .vega-trace-outer,
-.vega-loader--reduced .vega-trace-hole {
+.vega-loader--reduced .vega-trace-a,
+.vega-loader--reduced .vega-trace-b {
   fill-opacity: 1 !important;
 }
 
