@@ -15,6 +15,25 @@ export function Header() {
   const { pathname } = useLocation();
   const isHome = pathname === "/";
   const [overHero, setOverHero] = useState(isHome);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   useEffect(() => {
     if (!isHome) {
@@ -40,7 +59,7 @@ export function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
-        overHero
+        overHero && !menuOpen
           ? "border-transparent bg-transparent"
           : "border-white/8 bg-ink/92 backdrop-blur-md"
       }`}
@@ -74,12 +93,61 @@ export function Header() {
             </NavLink>
           ))}
           <Button href="/partner" variant="mint" size="sm">
-            Join the Charge
+            Let's Grow Together
           </Button>
         </nav>
-        <Button href="/network" variant="mint" size="sm" className="md:hidden">
-          Find a Station
-        </Button>
+        <button
+          type="button"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-nav"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          className="flex h-10 w-10 items-center justify-center text-onink md:hidden"
+        >
+          <span className="relative block h-4 w-5">
+            <span
+              className={`absolute left-0 top-0 block h-0.5 w-5 bg-current transition-transform duration-200 ${
+                menuOpen ? "translate-y-[7px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-[7px] block h-0.5 w-5 bg-current transition-opacity duration-200 ${
+                menuOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-[14px] block h-0.5 w-5 bg-current transition-transform duration-200 ${
+                menuOpen ? "-translate-y-[7px] -rotate-45" : ""
+              }`}
+            />
+          </span>
+        </button>
+      </div>
+
+      <div
+        id="mobile-nav"
+        className={`overflow-hidden border-t border-white/8 bg-ink/97 backdrop-blur-md transition-[max-height] duration-300 md:hidden ${
+          menuOpen ? "max-h-96" : "max-h-0 border-t-0"
+        }`}
+      >
+        <nav aria-label="Mobile" className="flex flex-col gap-1 px-6 py-4">
+          {LINKS.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) =>
+                `rounded-sm px-2 py-3 font-sans text-[15px] font-semibold transition-colors ${
+                  isActive ? "text-mint" : "text-onink hover:text-white"
+                }`
+              }
+            >
+              {label}
+            </NavLink>
+          ))}
+          <Button href="/partner" variant="mint" size="md" className="mt-3 w-full">
+            Let's Grow Together
+          </Button>
+        </nav>
       </div>
     </header>
   );

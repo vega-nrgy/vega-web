@@ -1,5 +1,5 @@
-import { CtaBanner } from '../ui/CtaBanner'
-import { Section } from '../ui/Section'
+import { CtaBanner } from "../ui/CtaBanner";
+import { Section } from "../ui/Section";
 
 export function FooterCta() {
   return (
@@ -10,11 +10,15 @@ export function FooterCta() {
           heading="Ready to charge smarter?"
           body="Whether you're a fleet operator, a highway business, or an EV driver — Vega Charge is built for you."
           buttons={[
-            { href: '/network', label: 'Find a Station', variant: 'mint' },
-            { href: '/partner', label: 'Join the Charge', variant: 'ghost-onink' },
+            { href: "/network", label: "Find a Station", variant: "mint" },
+            {
+              href: "/partner",
+              label: "Let's Grow Together",
+              variant: "ghost-onink",
+            },
           ]}
         />
       </div>
     </Section>
-  )
+  );
 }

@@ -77,7 +77,7 @@ export function StationMap() {
   }, [])
 
   return (
-    <div className="overflow-hidden rounded-card border border-hairline">
+    <div className="relative isolate z-0 overflow-hidden rounded-card border border-hairline">
       <div ref={containerRef} className="h-[520px] w-full bg-grey-soft" />
     </div>
   )
