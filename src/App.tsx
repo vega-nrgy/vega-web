@@ -7,6 +7,7 @@ import { AboutPage } from './pages/AboutPage'
 import { NetworkPage } from './pages/NetworkPage'
 import { SolutionsPage } from './pages/SolutionsPage'
 import { ContactPage } from './pages/ContactPage'
+import { PartnerPage } from './pages/PartnerPage'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/network" element={<NetworkPage />} />
           <Route path="/solutions" element={<SolutionsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/partner" element={<PartnerPage />} />
         </Routes>
       </main>
       <Footer />

@@ -156,8 +156,8 @@ export function Hero() {
               <Button href="/network" variant="mint">
                 Find a Charging Station
               </Button>
-              <Button href="/contact" variant="ghost-onink">
-                Partner with Us
+              <Button href="/partner" variant="ghost-onink">
+                Join the Charge
               </Button>
             </motion.div>
           </motion.div>

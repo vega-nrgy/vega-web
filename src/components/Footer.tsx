@@ -12,7 +12,7 @@ const COMPANY_LINKS = [
 const PARTNER_LINKS = [
   { href: '/solutions#fleet', label: 'Fleet Operators' },
   { href: '/solutions#commercial', label: 'Commercial Charging' },
-  { href: '/contact', label: 'Site Partnerships' },
+  { href: '/partner?type=site', label: 'Site Partnerships' },
 ]
 
 function FooterColumn({

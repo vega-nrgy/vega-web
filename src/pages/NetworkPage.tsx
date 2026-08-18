@@ -92,7 +92,7 @@ export function NetworkPage() {
             heading="Own highway-adjacent land?"
             body="Partner with us to host a Vega Charge station on your site."
             buttons={[
-              { href: "/contact", label: "Host a Station", variant: "mint" },
+              { href: "/partner?type=site", label: "Host a Station", variant: "mint" },
             ]}
           />
         </div>

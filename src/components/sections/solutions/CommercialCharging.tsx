@@ -48,7 +48,7 @@ export function CommercialCharging() {
               href="#enquiry"
               className="mt-6.5 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 font-sans text-sm font-bold text-white transition-colors hover:bg-ink/90"
             >
-              Partner with Us &rarr;
+              Join the Charge &rarr;
             </a>
           </div>
           <div className="relative overflow-hidden rounded-media">

@@ -207,6 +207,7 @@ type Station = {
   specs: string
   status: string
   flagship?: boolean
+  image: string
 }
 
 /* NOTE: specs below are this homepage teaser's own editorial copy (shorter
@@ -226,6 +227,7 @@ const STATIONS: Station[] = [
     specs: '3 × 180 kW DC · CCS2 · CHAdeMO · Bharat DC-001',
     status: 'Live soon',
     flagship: true,
+    image: '/media/station-narketpalle.jpg',
   },
   {
     name: 'Pillalamarri',
@@ -233,6 +235,7 @@ const STATIONS: Station[] = [
     description: 'The Vijayawada-bound leg of the NH-65 corridor, serving inter-city freight and passenger traffic.',
     specs: '2 × 180 kW DC · CCS2 · CHAdeMO',
     status: 'Coming soon — site secured',
+    image: '/media/station-pillalamarri.jpg',
   },
   {
     name: 'Tallampadu',
@@ -240,19 +243,9 @@ const STATIONS: Station[] = [
     description: 'Roughly midway on the Khammam corridor, built for the long freight and passenger haul to Vizag.',
     specs: '2 × 180 kW DC · CCS2 · Bharat DC-001',
     status: 'Coming soon — site secured',
+    image: '/media/station-tallampadu.jpg',
   },
 ]
-
-const STRIPE_COLORS = [
-  ['#e5e9e7', '#edf2f3'],
-  ['#e0e6e6', '#e9eeee'],
-  ['#e2e8e3', '#eaf0ea'],
-]
-
-function stripeStyle(i: number) {
-  const [a, b] = STRIPE_COLORS[i % STRIPE_COLORS.length]
-  return { backgroundImage: `repeating-linear-gradient(-45deg, ${a} 0 16px, ${b} 16px 32px)` } as const
-}
 
 const PANEL_COUNT = STATIONS.length + 2
 
@@ -312,14 +305,14 @@ export function NetworkMap() {
     </>
   )
 
-  const stationCard = (s: Station, i: number) => (
+  const stationCard = (s: Station) => (
     <div className="w-full max-w-2xl">
       <div className="relative overflow-hidden rounded-media">
-        <div style={stripeStyle(i)} className="flex aspect-[670/460] items-center justify-center">
-          <span className="text-center font-mono text-[10.5px] tracking-[0.1em] text-muted-onink">
-            [ {s.name} station photo ]
-          </span>
-        </div>
+        <img
+          src={s.image}
+          alt={`${s.name} charging station canopy render`}
+          className="aspect-[670/460] w-full object-cover"
+        />
         {s.flagship && (
           <span className="absolute left-4 top-4 rounded-full bg-mint px-3 py-1 font-mono text-[9px] font-semibold tracking-[0.1em] text-ink">
             FLAGSHIP
@@ -364,8 +357,8 @@ export function NetworkMap() {
         <div className="mx-auto max-w-7xl px-6 py-30 lg:px-8">
           <div>{header}</div>
           <div className="mt-9 flex flex-col gap-16">
-            {STATIONS.map((s, i) => (
-              <div key={s.name}>{stationCard(s, i)}</div>
+            {STATIONS.map((s) => (
+              <div key={s.name}>{stationCard(s)}</div>
             ))}
           </div>
           <div className="mt-16 flex justify-center">{ctaCard}</div>
@@ -385,9 +378,9 @@ export function NetworkMap() {
             </p>
           </div>
 
-          {STATIONS.map((s, i) => (
+          {STATIONS.map((s) => (
             <div key={s.name} className="flex h-full w-screen shrink-0 items-center justify-center px-6 pb-16 pt-24 lg:px-8">
-              {stationCard(s, i)}
+              {stationCard(s)}
             </div>
           ))}
 

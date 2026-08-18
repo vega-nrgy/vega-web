@@ -42,7 +42,7 @@ export function AboutPage() {
           <CtaBanner
             headingId="about-cta-heading"
             heading="Join us in building India's highway charging backbone."
-            buttons={[{ href: '/contact', label: 'Partner with Us', variant: 'mint' }]}
+            buttons={[{ href: '/partner', label: 'Join the Charge', variant: 'mint' }]}
           />
         </div>
       </Section>

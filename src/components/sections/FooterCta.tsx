@@ -11,7 +11,7 @@ export function FooterCta() {
           body="Whether you're a fleet operator, a highway business, or an EV driver — Vega Charge is built for you."
           buttons={[
             { href: '/network', label: 'Find a Station', variant: 'mint' },
-            { href: '/contact', label: 'Partner with Us', variant: 'ghost-onink' },
+            { href: '/partner', label: 'Join the Charge', variant: 'ghost-onink' },
           ]}
         />
       </div>
