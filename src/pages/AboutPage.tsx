@@ -9,21 +9,22 @@ import { usePageMeta } from "../hooks/usePageMeta";
 
 export function AboutPage() {
   usePageMeta({
-    title: "About Us — Vega Nrgy Private Limited | Vega Charge",
+    title: "About Us — Vega Charge Private Limited | Vega Charge",
     description:
-      "Vega Nrgy Private Limited is building Vega Charge, India's highway EV fast-charging network — solving range anxiety across Telangana, Andhra Pradesh, and beyond.",
+      "Vega Charge Private Limited is building Vega Charge, India's highway EV fast-charging network — solving range anxiety across Telangana, Andhra Pradesh, and beyond.",
     path: "/about",
   });
 
   return (
     <>
       <PageIntro
-        eyebrow="ABOUT US · VEGA NRGY PRIVATE LIMITED"
+        eyebrow=""
+        // eyebrow="ABOUT US · VEGA CHARGE PRIVATE LIMITED"
         heading="We're building the roads India's EVs deserve."
       >
         <div className="mt-9 grid max-w-5xl gap-12 sm:grid-cols-2">
           <p className="text-[17px] leading-relaxed text-ink-soft">
-            Vega Nrgy Private Limited is a technology-led EV charging
+            Vega Charge Private Limited is a technology-led EV charging
             infrastructure company with a simple belief: that range anxiety on
             Indian highways is a solvable problem.
           </p>
@@ -37,7 +38,7 @@ export function AboutPage() {
 
       <OurStory />
       <VisionMission />
-      <BrandDistinction />
+      {/* <BrandDistinction /> */}
       <Team />
 
       <Section

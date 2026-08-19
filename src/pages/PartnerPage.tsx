@@ -30,7 +30,7 @@ export function PartnerPage() {
 
       <Section id="why-vega-nrgy" labelledBy="why-heading" className="bg-paper">
         <div className="mx-auto max-w-7xl px-6 py-28 lg:px-8">
-          <p className="chapter-label border-t border-hairline pt-4.5">WHY VEGA NRGY</p>
+          <p className="chapter-label border-t border-hairline pt-4.5">WHY VEGA CHARGE</p>
           <WhyVegaNrgy />
         </div>
       </Section>

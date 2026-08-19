@@ -29,7 +29,13 @@ export function CommercialCharging() {
       className="mt-28 scroll-mt-24 bg-grey-soft"
     >
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <p className="chapter-label">02 &mdash; COMMERCIAL CHARGING</p>
+        {/* <p className="chapter-label">02 &mdash; COMMERCIAL CHARGING</p> */}
+        <h2
+          id="story-heading"
+          className="font-display text-4xl font-semibold tracking-[-0.03em] text-ink"
+        >
+          Commercial Charging.
+        </h2>
         <div className="mt-7 grid gap-16 lg:grid-cols-[1.15fr_1fr] lg:items-stretch">
           <div>
             <h2

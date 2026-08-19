@@ -169,7 +169,7 @@ export function Hero() {
         >
           <div className="max-w-xl">
             <p className="font-mono text-[11px] font-normal tracking-[0.18em] text-mint-deep">
-              ABOUT US &middot; VEGA NRGY PRIVATE LIMITED
+              ABOUT US &middot; VEGA CHARGE PRIVATE LIMITED
             </p>
             <h2 className="mt-5 font-display text-4xl font-semibold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl">
               We&rsquo;re building the roads India&rsquo;s EVs deserve.

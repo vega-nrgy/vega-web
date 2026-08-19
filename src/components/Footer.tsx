@@ -42,8 +42,8 @@ export function Footer() {
           <div>
             <Wordmark />
             <p className="mt-4 max-w-[300px] text-[13px] leading-relaxed text-onink">
-              Vega Charge is the highway brand of Vega Nrgy Private Limited &mdash; a
-              technology-led EV charging infrastructure company.
+              Vega Charge Private Limited is a technology-led EV charging
+              infrastructure company.
             </p>
           </div>
           <FooterColumn label="Company" links={COMPANY_LINKS} />
@@ -65,12 +65,12 @@ export function Footer() {
             >
               LinkedIn
             </a> */}
-            <span className="text-xs leading-relaxed text-muted">Vega Nrgy Private Limited, Hyderabad</span>
+            <span className="text-xs leading-relaxed text-muted">Vega Charge Private Limited, Hyderabad</span>
           </div>
         </div>
         <div className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-6">
           <span className="text-[11.5px] text-muted">
-            &copy; {YEAR} Vega Nrgy Private Limited. All rights reserved.
+            &copy; {YEAR} Vega Charge Private Limited. All rights reserved.
           </span>
           <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
             NH-65 &middot; Telangana &middot; Andhra Pradesh
