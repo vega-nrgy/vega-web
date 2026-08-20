@@ -3,7 +3,7 @@ import { CtaBanner } from "../components/ui/CtaBanner";
 import { Section } from "../components/ui/Section";
 import { OurStory } from "../components/sections/about/OurStory";
 import { VisionMission } from "../components/sections/about/VisionMission";
-import { BrandDistinction } from "../components/sections/about/BrandDistinction";
+// import { BrandDistinction } from "../components/sections/about/BrandDistinction";
 import { Team } from "../components/sections/about/Team";
 import { usePageMeta } from "../hooks/usePageMeta";
 
