@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { sendMail } from './_lib/mailer'
-import { createOtp } from './_lib/otp'
+import { sendMail } from './_lib/mailer.js'
+import { createOtp } from './_lib/otp.js'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 

@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { sendMail } from './_lib/mailer'
-import { verifyOtp } from './_lib/otp'
+import { sendMail } from './_lib/mailer.js'
+import { verifyOtp } from './_lib/otp.js'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
