@@ -1,10 +1,5 @@
 import { Section } from "../../ui/Section";
 
-const STRIPE_STYLE = {
-  backgroundImage:
-    "repeating-linear-gradient(-45deg, #edf2f3 0 16px, #f3f6f5 16px 32px)",
-} as const;
-
 export function OurStory() {
   return (
     <Section id="story" labelledBy="story-heading" className="bg-paper">
@@ -42,16 +37,11 @@ export function OurStory() {
             </p>
           </div>
           <div className="relative overflow-hidden rounded-media">
-            <div
-              style={STRIPE_STYLE}
-              className="flex h-[400px] items-center justify-center"
-            >
-              <span className="text-center font-mono text-[10.5px] tracking-[0.1em] text-muted">
-                [ NH-65 highway photo
-                <br />
-                &middot; dusk &middot; desaturated ]
-              </span>
-            </div>
+            <img
+              src="/media/Charger_.png"
+              alt="Vega Charge fast-charging unit"
+              className="h-[400px] w-full object-cover"
+            />
             <span className="absolute bottom-3.5 left-4 rounded-md bg-ink/55 px-2.5 py-1.5 font-mono text-[9px] tracking-[0.1em] text-white">
               NH-65 &middot; KM 128
             </span>
