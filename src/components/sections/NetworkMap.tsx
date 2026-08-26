@@ -295,7 +295,7 @@ export function NetworkMap() {
   const header = (
     <>
       <p className="chapter-label border-t border-hairline pt-4.5">03 &mdash; THE NETWORK</p>
-      <h2 id="network-heading" className="mt-7 font-display text-4xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
+      <h2 id="network-heading" className="mt-7 font-avapore text-4xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
         Our growing network.
       </h2>
       <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
@@ -320,7 +320,7 @@ export function NetworkMap() {
         )}
       </div>
       <div className="mt-6 flex items-center justify-between gap-4">
-        <h3 className="font-display text-2xl font-semibold text-ink">{s.name}</h3>
+        <h3 className="font-avapore text-2xl font-semibold text-ink">{s.name}</h3>
         <span className="flex shrink-0 items-center gap-1.5">
           <span className={`h-1.5 w-1.5 rounded-full bg-mint ${s.flagship ? 'animate-live-pulse' : ''}`} />
           <span className="font-mono text-[10px] tracking-[0.08em] text-mint-deep">{s.status}</span>

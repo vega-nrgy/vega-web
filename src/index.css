@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Avapore";
+  src: url("/fonts/avapore.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Vega Charge — Editorial Corridor: paper base, ink for hero/nav/footer/CTA bands, mint as edge-light only */
   --color-ink: #001819;
@@ -17,6 +25,7 @@
   --color-border: #d8e2e2;
 
   --font-display: "Sora", "Trebuchet MS", sans-serif;
+  --font-avapore: "Avapore", "Sora", "Trebuchet MS", sans-serif;
   --font-sans: "Manrope", system-ui, ui-sans-serif, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 
@@ -91,7 +100,7 @@
 
 /* Chapter index — mono, uppercase, letterspaced, deep mint. e.g. "02 — WHY VEGA CHARGE" */
 @utility chapter-label {
-  @apply font-mono text-[11px] font-normal uppercase tracking-[0.16em] text-mint-deep;
+  @apply font-avapore text-[11px] font-normal uppercase tracking-[0.16em] text-mint-deep;
 }
 
 /* Leaflet station map (Network page) — brand-styled markers/popups, ported from network-map.html */

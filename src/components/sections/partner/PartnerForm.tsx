@@ -73,31 +73,45 @@ function ShareMoreField({ id }: { id: string }) {
   return (
     <div className="mt-4.5">
       <Field id={id} label="Anything else you'd like to share?">
-        <textarea id={id} rows={3} placeholder="Type your answer here…" className={`${fieldClass} resize-y leading-relaxed`} />
+        <textarea id={id} name={id} rows={3} placeholder="Type your answer here…" className={`${fieldClass} resize-y leading-relaxed`} />
       </Field>
       <p className={hintClass}>Shift &#8679; + Enter &#8629; to make a line break</p>
     </div>
   )
 }
 
-function ContactField({ id }: { id: string }) {
+/** Explicit email + phone inputs (email is `name="email"` across all three
+ *  field sets so the OTP step can always find it via FormData, regardless
+ *  of which partner type is active). */
+function ContactFields({ idPrefix }: { idPrefix: string }) {
   return (
-    <div className="mt-4.5">
-      <Field id={id} label="What's your email and/or phone number?" required>
-        <input id={id} required placeholder="you@company.in or +91 98765 43210" className={fieldClass} />
+    <div className="mt-4.5 grid gap-4.5 sm:grid-cols-2">
+      <Field id={`${idPrefix}-email`} label="Email" required>
+        <input
+          id={`${idPrefix}-email`}
+          name="email"
+          type="email"
+          required
+          placeholder="you@company.in"
+          className={fieldClass}
+        />
+      </Field>
+      <Field id={`${idPrefix}-phone`} label="Phone">
+        <input id={`${idPrefix}-phone`} name="phone" type="tel" placeholder="+91 98765 43210" className={fieldClass} />
       </Field>
     </div>
   )
 }
 
-function SubmitButton() {
+function SubmitButton({ label, disabled }: { label: string; disabled?: boolean }) {
   return (
     <div className="mt-6">
       <button
         type="submit"
-        className="rounded-full bg-mint px-7 py-3.5 font-sans text-sm font-bold text-ink transition-colors hover:bg-mint-bright"
+        disabled={disabled}
+        className="rounded-full bg-mint px-7 py-3.5 font-sans text-sm font-bold text-ink transition-colors hover:bg-mint-bright disabled:opacity-60"
       >
-        Submit
+        {label}
       </button>
       <p className={hintClass}>press Ctrl + Enter &#8629;</p>
     </div>
@@ -109,10 +123,10 @@ function FleetFields() {
     <>
       <div className="grid gap-4.5 sm:grid-cols-2">
         <Field id="p-company" label="Company / fleet name" required>
-          <input id="p-company" required placeholder="Your company" className={fieldClass} />
+          <input id="p-company" name="p-company" required placeholder="Your company" className={fieldClass} />
         </Field>
         <Field id="p-fleet-size" label="How many vehicles are in your fleet?" required>
-          <input id="p-fleet-size" type="number" min={1} required placeholder="e.g. 25" className={fieldClass} />
+          <input id="p-fleet-size" name="p-fleet-size" type="number" min={1} required placeholder="e.g. 25" className={fieldClass} />
         </Field>
       </div>
 
@@ -135,10 +149,10 @@ function FleetFields() {
 
       <div className="mt-4.5 grid gap-4.5 sm:grid-cols-2">
         <Field id="p-route" label="Primary route or corridor">
-          <input id="p-route" placeholder="e.g. Hyderabad ⟷ Vijayawada, NH-65" className={fieldClass} />
+          <input id="p-route" name="p-route" placeholder="e.g. Hyderabad ⟷ Vijayawada, NH-65" className={fieldClass} />
         </Field>
         <Field id="p-timeline" label="When do you need charging live?" required>
-          <select id="p-timeline" required defaultValue="" className={fieldClass}>
+          <select id="p-timeline" name="p-timeline" required defaultValue="" className={fieldClass}>
             <option value="" disabled>
               Select one
             </option>
@@ -151,7 +165,7 @@ function FleetFields() {
       </div>
 
       <ShareMoreField id="p-fleet-more" />
-      <ContactField id="p-fleet-contact" />
+      <ContactFields idPrefix="p-fleet" />
     </>
   )
 }
@@ -160,13 +174,14 @@ function SiteFields() {
   return (
     <>
       <Field id="p-location" label="Suggest a location" required>
-        <input id="p-location" required placeholder="e.g. Narketpalle, near NH-65" className={fieldClass} />
+        <input id="p-location" name="p-location" required placeholder="e.g. Narketpalle, near NH-65" className={fieldClass} />
       </Field>
 
       <div className="mt-4.5">
         <Field id="p-state" label="Which state is the location in?" required>
           <input
             id="p-state"
+            name="p-state"
             list="p-states"
             required
             placeholder="Type or select a state"
@@ -182,13 +197,13 @@ function SiteFields() {
 
       <div className="mt-4.5">
         <Field id="p-address" label="Location address or Google Maps link">
-          <input id="p-address" placeholder="Paste a Google Maps link, or type the full address" className={fieldClass} />
+          <input id="p-address" name="p-address" placeholder="Paste a Google Maps link, or type the full address" className={fieldClass} />
         </Field>
       </div>
 
       <div className="mt-4.5">
         <Field id="p-ownership" label="Do you own this land, or represent the owner?" required>
-          <select id="p-ownership" required defaultValue="" className={fieldClass}>
+          <select id="p-ownership" name="p-ownership" required defaultValue="" className={fieldClass}>
             <option value="" disabled>
               Select one
             </option>
@@ -201,7 +216,7 @@ function SiteFields() {
       </div>
 
       <ShareMoreField id="p-site-more" />
-      <ContactField id="p-site-contact" />
+      <ContactFields idPrefix="p-site" />
     </>
   )
 }
@@ -210,12 +225,12 @@ function InvestorFields() {
   return (
     <>
       <Field id="p-investor-name" label="Your name or fund name" required>
-        <input id="p-investor-name" required placeholder="Name or fund" className={fieldClass} />
+        <input id="p-investor-name" name="p-investor-name" required placeholder="Name or fund" className={fieldClass} />
       </Field>
 
       <div className="mt-4.5 grid gap-4.5 sm:grid-cols-2">
         <Field id="p-investor-type" label="What kind of investor are you?" required>
-          <select id="p-investor-type" required defaultValue="" className={fieldClass}>
+          <select id="p-investor-type" name="p-investor-type" required defaultValue="" className={fieldClass}>
             <option value="" disabled>
               Select one
             </option>
@@ -227,7 +242,7 @@ function InvestorFields() {
           </select>
         </Field>
         <Field id="p-ticket-size" label="Typical ticket size" required>
-          <select id="p-ticket-size" required defaultValue="" className={fieldClass}>
+          <select id="p-ticket-size" name="p-ticket-size" required defaultValue="" className={fieldClass}>
             <option value="" disabled>
               Select one
             </option>
@@ -240,7 +255,7 @@ function InvestorFields() {
       </div>
 
       <ShareMoreField id="p-investor-more" />
-      <ContactField id="p-investor-contact" />
+      <ContactFields idPrefix="p-investor" />
     </>
   )
 }
@@ -251,23 +266,93 @@ const FIELD_SETS: Record<PartnerType, () => ReactElement> = {
   Investor: InvestorFields,
 }
 
+function formDataToObject(fd: FormData): Record<string, string> {
+  const out: Record<string, string> = {}
+  for (const key of new Set(fd.keys())) {
+    const all = fd.getAll(key).map(String).filter(Boolean)
+    if (all.length) out[key] = all.join(', ')
+  }
+  return out
+}
+
+type Phase = 'form' | 'otp' | 'done'
+
 export function PartnerForm() {
   const [searchParams] = useSearchParams()
   const initial = TYPE_PARAM[searchParams.get('type') ?? ''] ?? 'Site'
   const [type, setType] = useState<PartnerType>(initial)
-  const [submitted, setSubmitted] = useState(false)
-  const formRef = useRef<HTMLFormElement>(null)
+  const [phase, setPhase] = useState<Phase>('form')
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [code, setCode] = useState('')
 
-  function handleSubmit(e: FormEvent) {
+  const formRef = useRef<HTMLFormElement>(null)
+  const otpFormRef = useRef<HTMLFormElement>(null)
+  const pendingRef = useRef<{ email: string; token: string; fields: Record<string, string> } | null>(null)
+
+  async function handleSendCode(e: FormEvent) {
     e.preventDefault()
-    setSubmitted(true)
+    const fd = new FormData(formRef.current ?? undefined)
+    const fields = formDataToObject(fd)
+    const email = fields.email
+
+    setSending(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/send-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      if (!res.ok) throw new Error('failed')
+      const { token } = await res.json()
+      pendingRef.current = { email, token, fields }
+      setPhase('otp')
+    } catch {
+      setError('otp-send')
+    } finally {
+      setSending(false)
+    }
+  }
+
+  async function handleVerify(e: FormEvent) {
+    e.preventDefault()
+    const pending = pendingRef.current
+    if (!pending) return
+
+    setSending(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/verify-and-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: pending.token, code, email: pending.email, type, fields: pending.fields }),
+      })
+      if (!res.ok) throw new Error('failed')
+      setPhase('done')
+    } catch {
+      setError('verify')
+    } finally {
+      setSending(false)
+    }
   }
 
   function handleKeyDown(e: KeyboardEvent<HTMLFormElement>) {
     if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
       e.preventDefault()
       formRef.current?.requestSubmit()
+      otpFormRef.current?.requestSubmit()
     }
+  }
+
+  function mailtoFallback() {
+    const pending = pendingRef.current
+    const lines = pending
+      ? [`Type: ${type}`, `Email: ${pending.email}`, ...Object.entries(pending.fields).map(([k, v]) => `${k}: ${v}`)]
+      : [`Type: ${type}`]
+    return `mailto:admin@vegacharge.in?subject=${encodeURIComponent(
+      `${type} partnership enquiry`,
+    )}&body=${encodeURIComponent(lines.join('\n'))}`
   }
 
   const Fields = FIELD_SETS[type]
@@ -281,11 +366,9 @@ export function PartnerForm() {
             <button
               key={c.type}
               type="button"
-              onClick={() => {
-                setType(c.type)
-                setSubmitted(false)
-              }}
-              className={`rounded-card border bg-white p-6.5 text-left transition-colors ${
+              disabled={phase !== 'form'}
+              onClick={() => setType(c.type)}
+              className={`rounded-card border bg-white p-6.5 text-left transition-colors disabled:opacity-60 ${
                 active ? 'border-ink' : 'border-hairline hover:border-ink'
               }`}
             >
@@ -303,7 +386,7 @@ export function PartnerForm() {
         </p>
       </div>
 
-      {submitted ? (
+      {phase === 'done' ? (
         <div className="rounded-card border border-hairline bg-white p-16 text-center">
           <div className="mx-auto flex h-13 w-13 items-center justify-center rounded-full bg-mint/12">
             <span className="text-xl font-extrabold text-mint-deep">&#10003;</span>
@@ -311,10 +394,77 @@ export function PartnerForm() {
           <p className="mt-5 font-display text-xl font-semibold text-ink">Thank you for reaching out.</p>
           <p className="mt-2.5 text-sm leading-relaxed text-muted">Our team will review this and get back to you within 24 hours.</p>
         </div>
+      ) : phase === 'otp' ? (
+        <form
+          ref={otpFormRef}
+          onSubmit={handleVerify}
+          onKeyDown={handleKeyDown}
+          className="rounded-card border border-hairline bg-white p-9"
+        >
+          <p className="font-display text-lg font-semibold text-ink">Verify your email</p>
+          <p className="mt-2 text-[13px] leading-relaxed text-muted">
+            We sent a 6-digit code to <span className="font-semibold text-ink-soft">{pendingRef.current?.email}</span>. Enter
+            it below to submit your enquiry.
+          </p>
+          <div className="mt-4.5">
+            <Field id="p-otp-code" label="Verification code" required>
+              <input
+                id="p-otp-code"
+                required
+                inputMode="numeric"
+                pattern="[0-9]{6}"
+                maxLength={6}
+                autoFocus
+                placeholder="123456"
+                className={`${fieldClass} tracking-[0.3em]`}
+                value={code}
+                onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))}
+              />
+            </Field>
+          </div>
+          <div className="mt-6 flex items-center gap-4">
+            <button
+              type="submit"
+              disabled={sending || code.length !== 6}
+              className="rounded-full bg-mint px-7 py-3.5 font-sans text-sm font-bold text-ink transition-colors hover:bg-mint-bright disabled:opacity-60"
+            >
+              {sending ? 'Verifying…' : 'Verify & submit'}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setPhase('form')
+                setCode('')
+                setError(null)
+              }}
+              className="text-[13px] font-semibold text-muted transition-colors hover:text-ink"
+            >
+              Back
+            </button>
+          </div>
+          {error && (
+            <p className="mt-3.5 text-[13px] leading-relaxed text-ink-soft">
+              {error === 'otp-send' ? "Couldn't send a code." : "That code didn't verify."}{' '}
+              <a href={mailtoFallback()} className="font-semibold text-mint-deep hover:text-mint">
+                Email us directly
+              </a>{' '}
+              instead.
+            </p>
+          )}
+        </form>
       ) : (
-        <form ref={formRef} onSubmit={handleSubmit} onKeyDown={handleKeyDown} className="rounded-card border border-hairline bg-white p-9">
+        <form ref={formRef} onSubmit={handleSendCode} onKeyDown={handleKeyDown} className="rounded-card border border-hairline bg-white p-9">
           <Fields />
-          <SubmitButton />
+          <SubmitButton label={sending ? 'Sending code…' : 'Send verification code'} disabled={sending} />
+          {error === 'otp-send' && (
+            <p className="mt-3.5 text-[13px] leading-relaxed text-ink-soft">
+              Couldn&rsquo;t send a verification code.{' '}
+              <a href={mailtoFallback()} className="font-semibold text-mint-deep hover:text-mint">
+                Email us directly
+              </a>{' '}
+              instead.
+            </p>
+          )}
         </form>
       )}
     </div>

@@ -7,6 +7,10 @@ import { hasLoaderPlayed, LOADER_DURATION_MS } from "../loader/Loader";
 
 const DAY_IMG = "/media/hero-day.jpg";
 const HEADLINE = "Charging India Forward";
+// Forces the wrap after "Charging" so "India Forward" always stays together
+// on its own line, instead of the browser's natural greedy wrap (which pairs
+// "Charging India" and strands "Forward" alone) — keep in sync with HEADLINE.
+const FIRST_LINE_LEN = "Charging".length;
 
 /* Same 4 corners in both states (top-left, top-right, bottom-right,
    bottom-left) so the transition moves each vertex in a straight horizontal
@@ -117,24 +121,26 @@ export function Hero() {
           className="absolute inset-0 z-2 mx-auto flex h-full max-w-7xl items-end px-6 pb-18 pt-28 transition-opacity duration-500 ease-out lg:px-8"
         >
           <motion.div
-            className="max-w-xl"
+            className="max-w-2xl"
             variants={staggerChildren(0.35, 0.18)}
             initial="hidden"
             animate="visible"
           >
             <motion.p
               variants={item}
-              className="font-mono text-[11px] font-normal tracking-[0.18em] text-mint"
+              className="font-avapore text-[11px] font-normal tracking-[0.18em] text-mint"
             >
               INDIA&rsquo;S HIGHWAY EV CHARGING NETWORK
             </motion.p>
             <h1
               id="hero-heading"
-              className="mt-5 font-display text-5xl font-semibold leading-[1.02] tracking-[-0.035em] text-white sm:text-7xl"
+              className="mt-5 font-avapore text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-white sm:text-5xl"
             >
               <span className="sr-only">{HEADLINE}</span>
               <span className="block" aria-hidden="true">
-                {typed}
+                {typed.slice(0, FIRST_LINE_LEN)}
+                {typed.length > FIRST_LINE_LEN && <br />}
+                {typed.slice(FIRST_LINE_LEN + 1)}
                 <span
                   className={`ml-1 inline-block h-[0.85em] w-[3px] translate-y-[0.08em] bg-mint align-middle motion-reduce:hidden ${
                     typingDone ? "opacity-0" : "animate-pulse"

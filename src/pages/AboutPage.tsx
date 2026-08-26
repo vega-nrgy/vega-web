@@ -9,9 +9,9 @@ import { usePageMeta } from "../hooks/usePageMeta";
 
 export function AboutPage() {
   usePageMeta({
-    title: "About Us — Vega Charge Private Limited | Vega Charge",
+    title: "About Us — Vega Charge",
     description:
-      "Vega Charge Private Limited is building Vega Charge, India's highway EV fast-charging network — solving range anxiety across Telangana, Andhra Pradesh, and beyond.",
+      "Vega Charge is building India's highway EV fast-charging network — solving range anxiety across Telangana, Andhra Pradesh, and beyond.",
     path: "/about",
   });
 
@@ -24,8 +24,8 @@ export function AboutPage() {
       >
         <div className="mt-9 grid max-w-5xl gap-12 sm:grid-cols-2">
           <p className="text-[17px] leading-relaxed text-ink-soft">
-            Vega Charge Private Limited is a technology-led EV charging
-            infrastructure company with a simple belief: that range anxiety on
+            Vega Charge is a technology-led EV charging infrastructure company
+            with a simple belief: that range anxiety on
             Indian highways is a solvable problem.
           </p>
           <p className="text-[17px] leading-relaxed text-muted">

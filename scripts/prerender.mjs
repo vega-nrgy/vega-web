@@ -8,7 +8,16 @@ import path from "node:path";
 import { chromium } from "playwright-core";
 import { preview } from "vite";
 
-const ROUTES = ["/", "/about", "/network", "/solutions", "/contact", "/partner"];
+const ROUTES = [
+  "/",
+  "/about",
+  "/network",
+  "/solutions",
+  "/contact",
+  "/partner",
+  "/blog",
+  "/blog/hyderabad-nh65-ev-charging-investment",
+];
 const DIST_DIR = path.resolve(import.meta.dirname, "..", "dist");
 
 // Vercel's build container (and most Linux CI) is missing shared libs

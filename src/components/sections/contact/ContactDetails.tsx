@@ -43,7 +43,7 @@ export function ContactDetails() {
       <div>
         <p className="font-mono text-[9.5px] tracking-[0.16em] text-muted">REGISTERED OFFICE</p>
         <p className="mt-2.5 text-[15px] leading-relaxed text-ink-soft">
-          Vega Charge Private Limited
+          Vega Charge
           <br />
           Breezy Valley, Tatianaram, Nagole
           <br />

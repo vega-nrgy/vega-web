@@ -8,6 +8,8 @@ import { NetworkPage } from './pages/NetworkPage'
 import { SolutionsPage } from './pages/SolutionsPage'
 import { ContactPage } from './pages/ContactPage'
 import { PartnerPage } from './pages/PartnerPage'
+import { BlogPage } from './pages/BlogPage'
+import { BlogPostPage } from './pages/BlogPostPage'
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path="/solutions" element={<SolutionsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/partner" element={<PartnerPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
         </Routes>
       </main>
       <Footer />

@@ -16,9 +16,12 @@ const CARD_HOVER =
 const LeftCardBody = ({ reallyFastRef }: { reallyFastRef?: Ref<HTMLSpanElement> }) => (
   <>
     <div>
-      <h3 className="font-display text-3xl font-semibold tracking-[-0.025em] text-ink">
+      <h3 className="font-avapore text-3xl font-semibold tracking-[-0.025em] text-ink">
         <span className="inline-block">Fast.</span>{' '}
-        <span ref={reallyFastRef} className="inline-block opacity-0 transition-opacity duration-500 ease-out">
+        <span
+          ref={reallyFastRef}
+          className="inline-block opacity-0 text-mint-deep transition-opacity duration-500 ease-out"
+        >
           Really fast.
         </span>
       </h3>
@@ -29,7 +32,7 @@ const LeftCardBody = ({ reallyFastRef }: { reallyFastRef?: Ref<HTMLSpanElement> 
       </p>
     </div>
     <p className="flex items-baseline gap-2.5 tabular-nums">
-      <span className="font-sans text-6xl font-extrabold tracking-[-0.03em] text-ink">150</span>
+      <span className="font-avapore text-6xl font-extrabold tracking-[-0.03em] text-mint-deep">150</span>
       <span className="font-sans text-sm font-semibold text-muted">km of range in 30 min</span>
     </p>
   </>
@@ -106,7 +109,9 @@ export function ValueProps() {
           <div className="mt-8 grid gap-6 lg:grid-cols-[1.55fr_1fr]">
             <div className={`flex min-h-[340px] flex-col justify-between rounded-card bg-grey-soft p-10 ${CARD_HOVER}`}>
               <div>
-                <h3 className="font-display text-3xl font-semibold tracking-[-0.025em] text-ink">Fast. Really fast.</h3>
+                <h3 className="font-avapore text-3xl font-semibold tracking-[-0.025em] text-ink">
+                  Fast. <span className="text-mint-deep">Really fast.</span>
+                </h3>
                 <p className="mt-4 max-w-[420px] leading-relaxed text-muted">
                   180 kW DC fast chargers that add 100&ndash;150 km of range in under 30
                   minutes. Charge while you rest &mdash; and leave before your chai gets
@@ -114,20 +119,20 @@ export function ValueProps() {
                 </p>
               </div>
               <p className="flex items-baseline gap-2.5 tabular-nums">
-                <span className="font-sans text-6xl font-extrabold tracking-[-0.03em] text-ink">150</span>
+                <span className="font-avapore text-6xl font-extrabold tracking-[-0.03em] text-mint-deep">150</span>
                 <span className="font-sans text-sm font-semibold text-muted">km of range in 30 min</span>
               </p>
             </div>
             <div className="flex flex-col gap-6">
               <div className={`flex-1 rounded-card border border-hairline bg-white p-7 ${CARD_HOVER}`}>
-                <h3 className="font-display text-xl font-semibold tracking-[-0.015em] text-ink">Every EV. Every time.</h3>
+                <h3 className="font-avapore text-xl font-semibold tracking-[-0.015em] text-ink">Every EV. Every time.</h3>
                 <p className="mt-2.5 text-[13.5px] leading-relaxed text-muted">
                   CCS2, CHAdeMO, and Bharat DC-001 support. One stop for every major EV on
                   Indian roads today.
                 </p>
               </div>
               <div className={`flex-1 rounded-card border border-hairline bg-white p-7 ${CARD_HOVER}`}>
-                <h3 className="font-display text-xl font-semibold tracking-[-0.015em] text-ink">Built for the highway.</h3>
+                <h3 className="font-avapore text-xl font-semibold tracking-[-0.015em] text-ink">Built for the highway.</h3>
                 <p className="mt-2.5 text-[13.5px] leading-relaxed text-muted">
                   Not a parking-lot charger. Waiting lounge, clean washrooms, children&rsquo;s
                   play area &mdash; because the driver matters too.
@@ -151,9 +156,9 @@ export function ValueProps() {
           <h2
             ref={introRef}
             id="why-heading"
-            className="col-start-1 row-start-1 justify-self-start font-display text-4xl font-semibold tracking-[-0.03em] text-ink opacity-0 transition-opacity duration-500 ease-out sm:text-5xl"
+            className="col-start-1 row-start-1 justify-self-start font-avapore text-4xl font-semibold tracking-[-0.03em] text-ink opacity-0 transition-opacity duration-500 ease-out sm:text-5xl"
           >
-            Why Vega Charge?
+            Why <span className="text-ink">Vega</span> <span className="text-mint-deep">Charge</span>?
           </h2>
 
           <div className="col-start-1 row-start-1 grid w-full gap-4 lg:gap-6 lg:grid-cols-[1.55fr_1fr]">
@@ -169,7 +174,7 @@ export function ValueProps() {
                 ref={rightCard1Ref}
                 className={`flex-1 rounded-card border border-hairline bg-white p-7 opacity-0 ${CARD_HOVER}`}
               >
-                <h3 className="font-display text-xl font-semibold tracking-[-0.015em] text-ink">Every EV. Every time.</h3>
+                <h3 className="font-avapore text-xl font-semibold tracking-[-0.015em] text-ink">Every EV. Every time.</h3>
                 <p className="mt-2.5 text-[13.5px] leading-relaxed text-muted">
                   CCS2, CHAdeMO, and Bharat DC-001 support. One stop for every major EV on
                   Indian roads today.
@@ -179,7 +184,7 @@ export function ValueProps() {
                 ref={rightCard2Ref}
                 className={`flex-1 rounded-card border border-hairline bg-white p-7 opacity-0 ${CARD_HOVER}`}
               >
-                <h3 className="font-display text-xl font-semibold tracking-[-0.015em] text-ink">Built for the highway.</h3>
+                <h3 className="font-avapore text-xl font-semibold tracking-[-0.015em] text-ink">Built for the highway.</h3>
                 <p className="mt-2.5 text-[13.5px] leading-relaxed text-muted">
                   Not a parking-lot charger. Waiting lounge, clean washrooms, children&rsquo;s
                   play area &mdash; because the driver matters too.
