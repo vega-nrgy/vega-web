@@ -29,10 +29,15 @@ export function StatsStrip() {
       <div ref={ref} className="mx-auto max-w-7xl px-6 pb-26 pt-26 lg:px-8">
         <div className="grid gap-6 sm:grid-cols-4">
           <div className="border-t border-hairline pt-5">
-            <p className={valueClass}>
-              <CountUp to={3} reduced={reduced} inView={inView} />
+            <p className="font-sans text-4xl font-extrabold tabular-nums tracking-[-0.03em] text-ink sm:text-5xl">
+              <CountUp to={1} reduced={reduced} inView={inView} />
               <span className="text-mint-deep">&times;</span>
-              <CountUp to={180} reduced={reduced} inView={inView} />
+              <CountUp to={240} reduced={reduced} inView={inView} />
+            </p>
+            <p className="mt-0.5 font-sans text-xl font-extrabold tabular-nums tracking-[-0.03em] text-muted sm:text-2xl">
+              +<CountUp to={2} reduced={reduced} inView={inView} />
+              <span className="text-mint-deep">&times;</span>
+              <CountUp to={120} reduced={reduced} inView={inView} />
             </p>
             <p className={labelClass}>kW DC fast chargers per station</p>
           </div>

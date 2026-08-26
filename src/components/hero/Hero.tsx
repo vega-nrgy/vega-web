@@ -128,7 +128,7 @@ export function Hero() {
           >
             <motion.p
               variants={item}
-              className="font-avapore text-[11px] font-normal tracking-[0.18em] text-mint"
+              className="font-display text-[11px] font-normal tracking-[0.18em] text-mint"
             >
               INDIA&rsquo;S HIGHWAY EV CHARGING NETWORK
             </motion.p>
@@ -150,7 +150,7 @@ export function Hero() {
             </h1>
             <motion.p
               variants={item}
-              className="mt-6 max-w-lg text-lg leading-relaxed text-onink"
+              className="mt-6 max-w-lg font-display text-lg leading-relaxed text-onink"
             >
               Built for range, reliability, and the road ahead &mdash; one
               corridor at a time.
@@ -159,10 +159,10 @@ export function Hero() {
               variants={item}
               className="mt-9 flex flex-wrap items-center gap-3.5"
             >
-              <Button href="/network" variant="mint">
+              <Button href="/network" variant="mint" className="font-display!">
                 Find a Charging Station
               </Button>
-              <Button href="/partner" variant="ghost-onink">
+              <Button href="/partner" variant="ghost-onink" className="font-display!">
                 Let's Grow Together
               </Button>
             </motion.div>

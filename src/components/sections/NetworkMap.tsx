@@ -319,7 +319,7 @@ export function NetworkMap() {
           </span>
         )}
       </div>
-      <div className="mt-6 flex items-center justify-between gap-4">
+      <div className="mt-6 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
         <h3 className="font-avapore text-2xl font-semibold text-ink">{s.name}</h3>
         <span className="flex shrink-0 items-center gap-1.5">
           <span className={`h-1.5 w-1.5 rounded-full bg-mint ${s.flagship ? 'animate-live-pulse' : ''}`} />
