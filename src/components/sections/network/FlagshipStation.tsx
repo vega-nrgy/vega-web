@@ -7,7 +7,7 @@ const SPECS: [string, string | { label: string; href: string }][] = [
   ['Location', { label: 'NH-65, Narketpally, Nalgonda ↗', href: NARKETPALLY.mapUrl }],
   ['Station ID', NARKETPALLY.id],
   ['Site area', '2,200 sq. yards · 103 ft frontage'],
-  ['Chargers', '3 × 180 kW DC Fast'],
+  ['Chargers', '3 × 120 kW DC Fast'],
   ['Corridor traffic', '>40,000 vehicles / day'],
   ['Standards', NARKETPALLY.standards.join(' · ')],
 ]

@@ -55,7 +55,7 @@ const FEATURES: { icon: ReactNode; title: string; body: string }[] = [
   {
     icon: <BoltIcon />,
     title: 'Fast DC charging',
-    body: '180–240 kW DC fast chargers · CCS2, CHAdeMO, Bharat DC-001 · 100–150 km of range in 30 minutes.',
+    body: '120–240 kW DC fast chargers · CCS2, CHAdeMO, Bharat DC-001 · 100–150 km of range in 30 minutes.',
   },
   {
     icon: <LoungeIcon />,

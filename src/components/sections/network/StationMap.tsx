@@ -8,13 +8,13 @@ import { STATIONS as BASE_STATIONS } from '../../../lib/stations'
    editorial copy rather than derived. Coordinates, id, name, map link, and
    the live/pending pin style all come from the shared station data. */
 const POPUP_META: Record<string, string> = {
-  'VC 001': 'NH-65 &middot; Hyderabad&ndash;Vijayawada<br>3 &times; 180 kW DC &middot; Opening Sep 2026',
+  'VC 001': 'NH-65 &middot; Hyderabad&ndash;Vijayawada<br>3 &times; 120 kW DC &middot; Opening Sep 2026',
   'VC 002':
-    'Hyderabad&ndash;Visakhapatnam &middot; via Khammam<br>3 &times; 180 + 1 &times; 240 kW DC &middot; Opening Oct 2026',
-  'VC 003': 'NH-65 &middot; Hyderabad&ndash;Vijayawada<br>4 &times; 180 + 2 &times; 240 kW DC &middot; Opening Sep 2026',
+    'Hyderabad&ndash;Visakhapatnam &middot; via Khammam<br>3 &times; 120 + 1 &times; 240 kW DC &middot; Opening Oct 2026',
+  'VC 003': 'NH-65 &middot; Hyderabad&ndash;Vijayawada<br>4 &times; 120 + 2 &times; 240 kW DC &middot; Opening Sep 2026',
   'VC 004':
-    'Hyderabad&ndash;Visakhapatnam &middot; via Khammam<br>3 &times; 180 + 1 &times; 240 kW DC &middot; Opening Oct 2026',
-  'VC 005': 'Visakhapatnam&ndash;Hyderabad &middot; via Khammam<br>3 &times; 180 + 1 &times; 240 kW DC &middot; Launch TBA',
+    'Hyderabad&ndash;Visakhapatnam &middot; via Khammam<br>3 &times; 120 + 1 &times; 240 kW DC &middot; Opening Oct 2026',
+  'VC 005': 'Visakhapatnam&ndash;Hyderabad &middot; via Khammam<br>3 &times; 120 + 1 &times; 240 kW DC &middot; Launch TBA',
 }
 
 const STATIONS = BASE_STATIONS.map((s) => ({
@@ -35,7 +35,7 @@ export function StationMap() {
     if (!containerRef.current || mapRef.current) return
 
     const map = L.map(containerRef.current, {
-      scrollWheelZoom: false,
+      scrollWheelZoom: true,
       maxBoundsViscosity: 1.0,
     })
     mapRef.current = map
