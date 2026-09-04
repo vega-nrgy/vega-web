@@ -10,9 +10,13 @@ const PART_A_D =
 const PART_B_D =
   "M218.05,488.12l328.08-328.11v328.11h153.91V0h-139.29c-45.01,0-84.76,15.34-118.14,45.61L0,488.12h218.05Z";
 
-const HOLD_MS = 5300;
-const REDUCED_HOLD_MS = 600;
-const FADE_MS = 700;
+// Cut short: hold only long enough for the trace-draw to finish (matches
+// the "1s" duration on .vega-trace-a/.vega-trace-b in Loader.css — keep
+// them in sync), then dismiss immediately. No fill-in, no unfill, no
+// erase-the-stroke "vanish" stage — those were removed from the CSS too.
+const HOLD_MS = 1000;
+const REDUCED_HOLD_MS = 400;
+const FADE_MS = 400;
 
 /* Total time the loader covers the page — other homepage entrance animations
    (e.g. the hero headline typewriter) should wait for this before starting. */
@@ -66,7 +70,6 @@ export function Loader() {
       aria-hidden="true"
     >
       <div className="vega-loader-stage">
-        <div className="vega-loader-glow" />
         <svg
           className="vega-logo-trace"
           viewBox={MARK_VIEWBOX}

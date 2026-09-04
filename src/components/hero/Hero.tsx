@@ -6,10 +6,11 @@ import { HeroVideo } from "./HeroVideo";
 import { hasLoaderPlayed, LOADER_DURATION_MS } from "../loader/Loader";
 
 const DAY_IMG = "/media/hero-day.jpg";
-// Doc's exact Section 1 H1. Longer than the tagline this replaced, so it
-// wraps naturally across lines (no forced single-word break) rather than
-// the old manual line-split, which was tuned for a short 3-word headline.
-const HEADLINE = "Building India’s Highway EV Charging Network.";
+const HEADLINE = "Charging India Forward";
+// Forces the wrap after "Charging" so "India Forward" always stays together
+// on its own line, instead of the browser's natural greedy wrap (which pairs
+// "Charging India" and strands "Forward" alone) — keep in sync with HEADLINE.
+const FIRST_LINE_LEN = "Charging".length;
 
 /* Same 4 corners in both states (top-left, top-right, bottom-right,
    bottom-left) so the transition moves each vertex in a straight horizontal
@@ -136,8 +137,10 @@ export function Hero() {
               className="mt-5 font-avapore text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-white sm:text-5xl"
             >
               <span className="sr-only">{HEADLINE}</span>
-              <span aria-hidden="true">
-                {typed}
+              <span className="block" aria-hidden="true">
+                {typed.slice(0, FIRST_LINE_LEN)}
+                {typed.length > FIRST_LINE_LEN && <br />}
+                {typed.slice(FIRST_LINE_LEN + 1)}
                 <span
                   className={`ml-1 inline-block h-[0.85em] w-[3px] translate-y-[0.08em] bg-mint align-middle motion-reduce:hidden ${
                     typingDone ? "opacity-0" : "animate-pulse"

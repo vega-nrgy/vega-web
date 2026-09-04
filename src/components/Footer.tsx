@@ -8,6 +8,11 @@ const COMPANY_LINKS = [
   { href: '/network', label: 'Our Network' },
   { href: '/solutions', label: 'Solutions' },
   { href: '/blog', label: 'Blog' },
+  // Careers/Privacy/Terms point at ComingSoonPage until real content exists
+  // for each — see src/pages/ComingSoonPage.tsx.
+  { href: '/careers', label: 'Careers' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: '/terms', label: 'Terms' },
 ]
 
 const PARTNER_LINKS = [

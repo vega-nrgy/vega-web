@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
   background: var(--color-ink);
-  transition: opacity 0.7s ease, visibility 0.7s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 .vega-loader--hide {
@@ -29,19 +29,6 @@
   overflow: visible;
 }
 
-.vega-loader-glow {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 180px;
-  height: 180px;
-  margin: -90px 0 0 -90px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgb(0 217 165 / 0.32) 0%, rgb(0 217 165 / 0) 70%);
-  opacity: 0;
-  animation: vegaGlowHold 5s ease-in-out forwards;
-}
-
 /* stroke-dasharray/dashoffset base values are set at runtime from the real
    path length (getTotalLength) — do not hardcode --len */
 .vega-trace-path {
@@ -49,40 +36,27 @@
   stroke-width: 34;
   stroke-linecap: butt;
   stroke-linejoin: miter;
+  fill: none;
   filter: drop-shadow(0 0 5px rgb(0 217 165 / 0.5));
 }
 
-/* Both chevrons are the same solid mint fill — the visual notch between them
-   is empty canvas, not a punched-out hole. */
+/* Draw only — no fill-in, no unfill, no erase-the-stroke "vanish" stage.
+   The loader dismisses (see .vega-loader--hide) as soon as this finishes;
+   HOLD_MS in Loader.tsx is kept in sync with this 1s duration. */
 .vega-trace-a {
-  fill: var(--color-mint);
-  fill-opacity: 0;
-  animation:
-    vegaFlowA 5s cubic-bezier(0.45, 0, 0.2, 1) forwards,
-    vegaFillIn 5s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+  animation: vegaFlowA 1s cubic-bezier(0.45, 0, 0.2, 1) forwards;
 }
 
 .vega-trace-b {
-  fill: var(--color-mint);
-  fill-opacity: 0;
-  animation:
-    vegaFlowB 5s cubic-bezier(0.45, 0, 0.2, 1) forwards 0.12s,
-    vegaFillIn 5s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+  animation: vegaFlowB 1s cubic-bezier(0.45, 0, 0.2, 1) forwards 0.06s;
 }
 
 @keyframes vegaFlowA {
   0% {
     stroke-dashoffset: var(--len);
   }
-  24% {
-    stroke-dashoffset: 0;
-  }
-  70% {
-    stroke-dashoffset: 0;
-  }
-  94%,
   100% {
-    stroke-dashoffset: calc(var(--len) * -1);
+    stroke-dashoffset: 0;
   }
 }
 
@@ -90,53 +64,8 @@
   0% {
     stroke-dashoffset: var(--len);
   }
-  24% {
+  100% {
     stroke-dashoffset: 0;
-  }
-  70% {
-    stroke-dashoffset: 0;
-  }
-  94%,
-  100% {
-    stroke-dashoffset: calc(var(--len) * -1);
-  }
-}
-
-@keyframes vegaFillIn {
-  0%,
-  26% {
-    fill-opacity: 0;
-  }
-  36% {
-    fill-opacity: 1;
-  }
-  64% {
-    fill-opacity: 1;
-  }
-  74%,
-  100% {
-    fill-opacity: 0;
-  }
-}
-
-@keyframes vegaGlowHold {
-  0%,
-  26% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  32% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  66% {
-    opacity: 1;
-    transform: scale(1.04);
-  }
-  74%,
-  100% {
-    opacity: 0;
-    transform: scale(1.15);
   }
 }
 
@@ -170,18 +99,12 @@
   }
 }
 
-/* prefers-reduced-motion: skip the draw/erase sequence, hold the resolved mark briefly, fade out */
+/* prefers-reduced-motion: skip the draw animation, show the resolved outline briefly, fade out */
 .vega-loader--reduced .vega-trace-path {
   animation: none !important;
   stroke-dashoffset: 0 !important;
 }
 
-.vega-loader--reduced .vega-trace-a,
-.vega-loader--reduced .vega-trace-b {
-  fill-opacity: 1 !important;
-}
-
-.vega-loader--reduced .vega-loader-glow,
 .vega-loader--reduced .vega-loader-word {
   animation: none !important;
   opacity: 1 !important;
