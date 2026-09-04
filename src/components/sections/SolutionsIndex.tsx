@@ -43,7 +43,7 @@ export function SolutionsIndex() {
       whileInView="visible"
       viewport={VIEWPORT}
     >
-      <div className="mx-auto max-w-7xl px-6 py-30 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
         <motion.p variants={item} className="chapter-label border-t border-hairline pt-4.5">
           06 &mdash; WHO WE SERVE
         </motion.p>

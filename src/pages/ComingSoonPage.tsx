@@ -26,7 +26,7 @@ export function ComingSoonPage({ title, path }: ComingSoonPageProps) {
         This page is still being built. Check back soon &mdash; or get in touch if
         you need this information sooner.
       </p>
-      <div className="mt-9 flex flex-wrap gap-3.5 pb-30">
+      <div className="mt-9 flex flex-wrap gap-3.5 pb-24">
         <Button href="/" variant="mint">
           Back to Home
         </Button>

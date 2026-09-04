@@ -23,7 +23,7 @@ export function BlogPostPage() {
   return (
     <>
       <Section id="post-head" labelledBy="post-heading" className="bg-paper">
-        <div className="mx-auto max-w-3xl px-6 pt-30 lg:px-8">
+        <div className="mx-auto max-w-3xl px-6 pt-24 lg:px-8">
           <Link to="/blog" className="font-mono text-[11px] font-normal tracking-[0.18em] text-mint-deep">
             &larr; STORIES
           </Link>

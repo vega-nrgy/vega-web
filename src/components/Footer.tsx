@@ -3,23 +3,33 @@ import { Wordmark } from './Wordmark'
 
 const YEAR = new Date().getFullYear()
 
-const COMPANY_LINKS = [
-  { href: '/about', label: 'About Us' },
-  { href: '/network', label: 'Our Network' },
-  { href: '/solutions', label: 'Solutions' },
-  { href: '/blog', label: 'Blog' },
-  // Careers/Privacy/Terms point at ComingSoonPage until real content exists
-  // for each — see src/pages/ComingSoonPage.tsx.
-  { href: '/careers', label: 'Careers' },
-  { href: '/privacy', label: 'Privacy' },
-  { href: '/terms', label: 'Terms' },
+// Footer structure below follows the website audit doc §2.6 "Recommended
+// Footer Structure" verbatim (Network / Partner / Company columns, General
+// Enquiries + Corporate Office) rather than the site's earlier ad hoc list.
+const NETWORK_LINKS = [
+  { href: '/network#expansion', label: 'Stations' },
+  { href: '/network#map', label: 'Corridors' },
+  { href: '/network', label: 'Find a Charger' },
 ]
 
 const PARTNER_LINKS = [
-  { href: '/partner?type=fleet', label: 'Fleet Operators' },
-  { href: '/solutions#commercial', label: 'Commercial Charging' },
-  { href: '/partner?type=site', label: 'Site Partnerships' },
-  { href: '/partner?type=investor', label: 'Investor Relations' },
+  { href: '/partner?type=fleet', label: 'Fleets' },
+  { href: '/partner?type=site', label: 'Site & Land Partners' },
+  // No dedicated "Commercial" lead type exists yet — PartnerForm's Fleet
+  // category is titled "Fleet & Commercial" and already covers this, so it
+  // routes there rather than to a ComingSoonPage placeholder.
+  { href: '/partner?type=fleet', label: 'Commercial Hosts' },
+  { href: '/partner?type=investor', label: 'Strategic/Investor Enquiries' },
+]
+
+const COMPANY_LINKS = [
+  { href: '/about', label: 'About' },
+  // Careers/Privacy/Terms point at ComingSoonPage until real content exists
+  // for each — see src/pages/ComingSoonPage.tsx.
+  { href: '/careers', label: 'Careers' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/privacy', label: 'Privacy' },
+  { href: '/terms', label: 'Terms' },
 ]
 
 const SOCIAL_LINKS = [
@@ -56,12 +66,12 @@ export function Footer() {
     <footer className="relative overflow-hidden bg-ink">
       <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-mint to-transparent" aria-hidden="true" />
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div className="grid gap-14 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.3fr]">
+        <div className="grid gap-14 sm:grid-cols-2 lg:grid-cols-[1.3fr_0.85fr_0.85fr_0.85fr_1fr]">
           <div>
             <Wordmark />
             <p className="mt-5 max-w-[300px] text-[13.5px] leading-relaxed text-onink">
-              Vega Charge is a technology-led EV charging infrastructure company,
-              building highway-fast-charging corridors across India.
+              Vega Charge &mdash; Building high-power EV charging infrastructure along
+              India&rsquo;s highway corridors.
             </p>
             <div className="mt-7 flex gap-3">
               {SOCIAL_LINKS.map((s) => (
@@ -80,20 +90,20 @@ export function Footer() {
               ))}
             </div>
           </div>
+          <FooterColumn label="Network" links={NETWORK_LINKS} />
+          <FooterColumn label="Partner" links={PARTNER_LINKS} />
           <FooterColumn label="Company" links={COMPANY_LINKS} />
-          <FooterColumn label="Partner With Us" links={PARTNER_LINKS} />
           <div className="flex flex-col gap-3.5">
-            <p className="font-mono text-[9.5px] font-normal uppercase tracking-[0.16em] text-muted">Contact</p>
-            <a href="mailto:admin@vegacharge.in" className="text-[13.5px] font-medium text-onink transition-colors hover:text-white">
-              admin@vegacharge.in
-            </a>
-            <a href="tel:+917995799957" className="text-[13.5px] font-medium text-onink transition-colors hover:text-white">
-              Preetham: 7995 799 957
-            </a>
-            <a href="tel:+919705555556" className="text-[13.5px] font-medium text-onink transition-colors hover:text-white">
-              Sai Kiran: 9705 555 556
-            </a>
-            <span className="mt-1 text-xs leading-relaxed text-muted">Vega Charge, Hyderabad</span>
+            <div>
+              <p className="font-mono text-[9.5px] font-normal uppercase tracking-[0.16em] text-muted">General Enquiries</p>
+              <a href="mailto:admin@vegacharge.in" className="mt-3.5 block text-[13.5px] font-medium text-onink transition-colors hover:text-white">
+                admin@vegacharge.in
+              </a>
+            </div>
+            <div className="mt-3.5">
+              <p className="font-mono text-[9.5px] font-normal uppercase tracking-[0.16em] text-muted">Corporate Office</p>
+              <span className="mt-3.5 block text-[13.5px] leading-relaxed text-onink">Hyderabad, Telangana, India</span>
+            </div>
           </div>
         </div>
         <div className="mt-14 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-6">

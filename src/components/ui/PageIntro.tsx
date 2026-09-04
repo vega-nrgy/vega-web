@@ -11,7 +11,7 @@ type PageIntroProps = {
 export function PageIntro({ eyebrow, heading, children }: PageIntroProps) {
   return (
     <Section id="page-head" labelledBy="page-heading" className="bg-paper">
-      <div className="mx-auto max-w-7xl px-6 pt-30 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 pt-24 lg:px-8">
         <p className="font-display text-[11px] font-normal tracking-[0.18em] text-mint-deep">{eyebrow}</p>
         <h1
           id="page-heading"
