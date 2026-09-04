@@ -45,14 +45,14 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: 'Why this is an investable moment, not just a driver-experience problem',
         paragraphs: [
-          "Three things are converging at once: EV penetration in Telangana and Andhra Pradesh is past the point where highway charging is a nice-to-have, the cost of 180–240 kW DC hardware has come down enough to make highway sites economically viable, and highway-adjacent land along corridors like NH-65 is still available at prices that make sense for a charging-plus-amenities footprint (retail, washrooms, a place to actually wait).",
+          "Three things are converging at once: EV penetration in Telangana and Andhra Pradesh is past the point where highway charging is a nice-to-have, the cost of 120 kW and 240 kW DC hardware has come down enough to make highway sites economically viable, and highway-adjacent land along corridors like NH-65 is still available at prices that make sense for a charging-plus-amenities footprint (retail, washrooms, a place to actually wait).",
           "That combination — real demand, viable unit economics, available land — is what makes a highway charging corridor different from a purely speculative infrastructure bet. It's also why site partnerships and land-owner conversations along NH-65 have picked up noticeably over the past year.",
         ],
       },
       {
         heading: "Where Vega Charge fits",
         paragraphs: [
-          "We're building highway-fast-charging stations directly on NH-65 — not just chargers, but full stops: 180–240 kW DC hardware across multiple standards, plus the waiting lounge, washrooms, and retail that make a 20-minute charge feel like a normal part of the drive rather than an inconvenience. Our first stations are landing at Narketpally and along the Nalgonda stretch, chosen specifically for traffic density and the lack of existing fast-charging coverage nearby.",
+          "We're building highway-fast-charging stations directly on NH-65 — not just chargers, but full stops: 120 kW and 240 kW DC hardware across multiple standards, plus the waiting lounge, washrooms, and retail that make a 20-minute charge feel like a normal part of the drive rather than an inconvenience. Our first stations are landing at Narketpally and along the Nalgonda stretch, chosen specifically for traffic density and the lack of existing fast-charging coverage nearby.",
           "If you own highway-adjacent land on this corridor, run a fleet that does this route regularly, or are looking at highway charging infrastructure from an investment angle, that's exactly the conversation we're set up to have.",
         ],
       },

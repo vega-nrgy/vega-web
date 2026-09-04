@@ -7,13 +7,13 @@ export function FooterCta() {
       <div className="mx-auto max-w-7xl px-6 py-26 lg:px-8">
         <CtaBanner
           headingId="contact-heading"
-          heading="Ready to charge smarter?"
+          heading="Let’s build the roads electric mobility needs."
           body="Whether you're a fleet operator, a highway business, or an EV driver — Vega Charge is built for you."
           buttons={[
-            { href: "/network", label: "Find a Station", variant: "mint" },
+            { href: "/network", label: "Explore Our Network", variant: "mint" },
             {
               href: "/partner",
-              label: "Let's Grow Together",
+              label: "Partner With Us",
               variant: "ghost-onink",
             },
           ]}

@@ -27,7 +27,12 @@ const STATIONS = BASE_STATIONS.map((s) => ({
   live: s.status === 'PLANNING',
 }))
 
-export function StationMap() {
+type StationMapProps = {
+  /** Tailwind height class for the map container — defaults to the Network page's size. */
+  heightClass?: string
+}
+
+export function StationMap({ heightClass = 'h-[520px]' }: StationMapProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
 
@@ -78,7 +83,7 @@ export function StationMap() {
 
   return (
     <div className="relative isolate z-0 overflow-hidden rounded-card border border-hairline">
-      <div ref={containerRef} className="h-[520px] w-full bg-grey-soft" />
+      <div ref={containerRef} className={`${heightClass} w-full bg-grey-soft`} />
     </div>
   )
 }

@@ -2,7 +2,7 @@ import { Button } from "../../ui/Button";
 import { Section } from "../../ui/Section";
 
 const CHECKLIST = [
-  "180–240 kW DC fast chargers — charge in minutes, not hours",
+  "120 kW and 240 kW DC fast chargers — charge in minutes, not hours",
   "Multi-standard: CCS2, CHAdeMO, Bharat DC-001, AC Type 2",
   "Pitstop amenities — lounge, washrooms, children's play area",
   "Retail & refreshments at select stations",

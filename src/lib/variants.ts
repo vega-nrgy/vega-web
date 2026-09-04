@@ -22,4 +22,8 @@ export const staggerChildren = (delay = 0, stagger = 0.14): Variants => ({
   visible: { transition: { delayChildren: delay, staggerChildren: stagger } },
 })
 
-export const VIEWPORT = { once: true, amount: 0.25 } as const
+/* once: false — sections replay their entrance animation every time they
+   re-enter the viewport (scrolling back up and down again), matching
+   FeaturedStations' IntersectionObserver-driven repeat behavior, rather
+   than animating in once and staying put. */
+export const VIEWPORT = { once: false, amount: 0.25 } as const

@@ -1,67 +1,37 @@
-import { useEffect, useRef } from 'react'
-import { animate, motion, useInView, useMotionValue, useReducedMotion, useTransform } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
+import { fadeOnly, fadeUp, staggerChildren, VIEWPORT } from '../../lib/variants'
 
-function CountUp({ to, reduced, inView }: { to: number; reduced: boolean; inView: boolean }) {
-  const count = useMotionValue(0)
-  const rounded = useTransform(count, (v) => Math.round(v))
-
-  useEffect(() => {
-    if (reduced || !inView) return
-    count.set(0)
-    const controls = animate(count, to, { duration: 0.7, ease: 'easeOut' })
-    return () => controls.stop()
-  }, [inView, reduced, to, count])
-
-  if (reduced) return <span>{to}</span>
-  return <motion.span>{rounded}</motion.span>
-}
-
-const valueClass = 'font-sans text-5xl font-extrabold tabular-nums tracking-[-0.03em] text-ink sm:text-6xl'
-const labelClass = 'mt-2.5 text-[13px] text-muted'
+/* Website audit §"Proof strip": until live operational metrics exist
+   (Stations Live, Sessions, Energy Delivered, Uptime), use capability/status
+   facts rather than animated vanity counters. Doc's own example — "High-power
+   DC charging | 24×7 monitored operations | Highway-first locations |
+   Passenger + fleet ready" — used near-verbatim below, with the first item
+   made concrete using the finalized 120/240 kW charger config. */
+const FACTS = ['120–240 kW DC charging', '24×7 monitored operations', 'Highway-first locations', 'Passenger + fleet ready']
 
 export function StatsStrip() {
-  const ref = useRef<HTMLDivElement>(null)
-  const reduced = useReducedMotion() ?? false
-  const inView = useInView(ref, { amount: 0.4 })
+  const reduced = useReducedMotion()
+  const item = reduced ? fadeOnly : fadeUp
 
   return (
-    <section id="stats" aria-label="Station capabilities" className="bg-paper">
-      <div ref={ref} className="mx-auto max-w-7xl px-6 pb-26 pt-26 lg:px-8">
+    <motion.section
+      id="stats"
+      aria-label="Station capabilities"
+      className="bg-paper"
+      variants={reduced ? fadeOnly : staggerChildren(0, 0.1)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={VIEWPORT}
+    >
+      <div className="mx-auto max-w-7xl px-6 pt-10 lg:px-8">
         <div className="grid gap-6 sm:grid-cols-4">
-          <div className="border-t border-hairline pt-5">
-            <p className="font-sans text-4xl font-extrabold tabular-nums tracking-[-0.03em] text-ink sm:text-5xl">
-              <CountUp to={1} reduced={reduced} inView={inView} />
-              <span className="text-mint-deep">&times;</span>
-              <CountUp to={240} reduced={reduced} inView={inView} />
-            </p>
-            <p className="mt-0.5 font-sans text-xl font-extrabold tabular-nums tracking-[-0.03em] text-muted sm:text-2xl">
-              +<CountUp to={2} reduced={reduced} inView={inView} />
-              <span className="text-mint-deep">&times;</span>
-              <CountUp to={120} reduced={reduced} inView={inView} />
-            </p>
-            <p className={labelClass}>kW DC fast chargers per station</p>
-          </div>
-          <div className="border-t border-hairline pt-5">
-            <p className={valueClass}>
-              <CountUp to={30} reduced={reduced} inView={inView} />
-              <span className="text-2xl text-muted">min</span>
-            </p>
-            <p className={labelClass}>for 100&ndash;150 km of range</p>
-          </div>
-          <div className="border-t border-hairline pt-5">
-            <p className={valueClass}>
-              <CountUp to={3} reduced={reduced} inView={inView} />
-            </p>
-            <p className={labelClass}>charging standards supported</p>
-          </div>
-          <div className="border-t border-hairline pt-5">
-            <p className={valueClass}>
-              24<span className="text-mint-deep">&times;</span>7
-            </p>
-            <p className={labelClass}>staffed &amp; monitored operation</p>
-          </div>
+          {FACTS.map((fact) => (
+            <motion.div key={fact} variants={item} className="border-t border-hairline pt-5">
+              <p className="font-display text-base font-semibold text-ink sm:text-lg">{fact}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }

@@ -16,7 +16,7 @@ export function SolutionsPage() {
   usePageMeta({
     title: 'Solutions — Highway, Commercial & Fleet EV Charging | Vega Charge',
     description:
-      'Highway charging, commercial partnerships, and fleet solutions from Vega Charge — 180–240 kW DC fast chargers built for Indian highways and businesses.',
+      'Highway charging, commercial partnerships, and fleet solutions from Vega Charge — 120 kW and 240 kW DC fast chargers built for Indian highways and businesses.',
     path: '/solutions',
   })
 

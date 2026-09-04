@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
-import { useEffect, useRef } from "react";
-import { useReducedMotion } from "motion/react";
-import { useIsDesktop } from "../../hooks/useIsDesktop";
+import { motion, useReducedMotion } from "motion/react";
+import { fadeOnly, fadeUp, staggerChildren, VIEWPORT } from "../../lib/variants";
 
 function BoltShieldIcon() {
   return (
@@ -59,29 +58,26 @@ function HighwayIcon() {
   );
 }
 
+/* Doc's Section 4 "three pillars" — Strategic Locations / High-Power
+   Charging / Reliable Operations — used verbatim. This also removes the
+   old kW-figure mention (doc's own copy doesn't cite a number here). */
 const POINTS: { icon: ReactNode; title: string; body: string }[] = [
   {
+    icon: <HighwayIcon />,
+    title: "Strategic Locations",
+    body: "Selected around corridor demand, accessibility and power feasibility.",
+  },
+  {
     icon: <BoltShieldIcon />,
-    title: "Reliable fast charging",
-    body: "180–240 kW DC, monitored and maintained 24×7.",
+    title: "High-Power Charging",
+    body: "Scalable DC infrastructure for shorter highway stops.",
   },
   {
     icon: <ConnectorIcon />,
-    title: "Multi-standard connectors",
-    body: "One stop for every major EV on Indian roads.",
-  },
-  {
-    icon: <HighwayIcon />,
-    title: "Designed for Indian highways",
-    body: "Sited on real corridors, built for real journeys.",
+    title: "Reliable Operations",
+    body: "Monitored stations with on-ground and remote support.",
   },
 ];
-
-const HEADING_IN_AT = 0.02;
-const COPY_IN_AT = 0.18;
-const SWAP_AT = 0.45;
-const LIFT_AT = 0.5;
-const CARD_AT = [0.55, 0.75, 0.85];
 
 const HEADING_CLASS =
   "font-display text-4xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl";
@@ -89,185 +85,66 @@ const HEADING_CLASS =
 const Copy = () => (
   <>
     <p className="text-base leading-relaxed">
-      Range anxiety is the #1 reason India&rsquo;s EV adoption lags on highways.
-      Not the cars. Not the cost.{" "}
-      <strong className="text-ink">The infrastructure.</strong>
+      India&rsquo;s EV ecosystem is growing rapidly, but inter-city travel still
+      depends on finding charging that is correctly located, powerful enough,
+      available and supported.
     </p>
     <p className="mt-4 text-base leading-relaxed">
-      Vega Charge is fixing that &mdash; one corridor at a time.
+      Vega Charge is building highway hubs around the journey &mdash; not simply
+      installing chargers wherever space is available.
     </p>
   </>
 );
 
-/* Self-contained pinned/staged section, independent of the Hero's own pin:
-   heading reads "The Problem", the copy appears below it, the heading then
-   swaps in place to "Drive without doubt.", the whole text block lifts to
-   make room, and the three points stagger in one after another underneath.
-   Reduced motion gets a plain static stack instead. */
+/* Animates in once when the section enters the viewport: chapter label,
+   heading + copy, then the three points stagger in one after another on a
+   fixed timer (no scroll-linked progress, no scroll lock). */
 export function ProblemStrip() {
   const reduced = useReducedMotion();
-  const isDesktop = useIsDesktop();
-  const pinRef = useRef<HTMLElement>(null);
-  const textWrapRef = useRef<HTMLDivElement>(null);
-  const headingARef = useRef<HTMLHeadingElement>(null);
-  const headingBRef = useRef<HTMLHeadingElement>(null);
-  const copyRef = useRef<HTMLDivElement>(null);
-  const pointRefs = useRef<(HTMLLIElement | null)[]>([]);
-
-  useEffect(() => {
-    if (reduced || !isDesktop) return;
-
-    function onScroll() {
-      const pin = pinRef.current;
-      if (!pin) return;
-
-      const rect = pin.getBoundingClientRect();
-      const total = pin.offsetHeight - window.innerHeight;
-      const scrolled = Math.min(Math.max(-rect.top, 0), total);
-      const progress = total > 0 ? scrolled / total : 0;
-
-      const swapped = progress >= SWAP_AT;
-      if (headingARef.current)
-        headingARef.current.style.opacity =
-          progress >= HEADING_IN_AT && !swapped ? "1" : "0";
-      if (headingBRef.current)
-        headingBRef.current.style.opacity = swapped ? "1" : "0";
-
-      if (copyRef.current) {
-        const shown = progress >= COPY_IN_AT;
-        copyRef.current.style.opacity = shown ? "1" : "0";
-        copyRef.current.style.transform = shown
-          ? "translateY(0)"
-          : "translateY(10px)";
-      }
-
-      if (textWrapRef.current) {
-        textWrapRef.current.style.transform =
-          progress >= LIFT_AT ? "translateY(-44px)" : "translateY(0)";
-      }
-
-      pointRefs.current.forEach((el, i) => {
-        if (!el) return;
-        const shown = progress >= CARD_AT[i];
-        el.style.opacity = shown ? "1" : "0";
-        el.style.transform = shown ? "translateY(0)" : "translateY(16px)";
-      });
-    }
-
-    onScroll();
-    document.addEventListener("scroll", onScroll, { passive: true });
-    return () => document.removeEventListener("scroll", onScroll);
-  }, [reduced, isDesktop]);
-
-  if (reduced || !isDesktop) {
-    return (
-      <section
-        id="problem"
-        aria-labelledby="problem-heading"
-        className="bg-paper"
-      >
-        <div className="mx-auto max-w-7xl px-6 py-30 lg:px-8">
-          <p className="chapter-label border-t border-hairline pt-4.5">
-            01 &mdash; THE PROBLEM
-          </p>
-          <div className="mt-7 max-w-3xl">
-            <h2 id="problem-heading" className={HEADING_CLASS}>
-              Drive without doubt.
-            </h2>
-            <div className="mt-7 max-w-2xl">
-              <Copy />
-            </div>
-          </div>
-          <ul className="mt-14 grid gap-6 sm:grid-cols-3">
-            {POINTS.map(({ icon, title, body }) => (
-              <li
-                key={title}
-                className="flex items-start gap-3.5 border-t-2 border-mint pt-4"
-              >
-                <span className="mt-0.5 shrink-0 text-ink">{icon}</span>
-                <span>
-                  <span className="block font-display text-[15px] font-semibold text-ink">
-                    {title}
-                  </span>
-                  <span className="mt-1 block text-[13px] leading-relaxed text-muted">
-                    {body}
-                  </span>
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-    );
-  }
+  const item = reduced ? fadeOnly : fadeUp;
 
   return (
-    <section
+    <motion.section
       id="problem"
-      ref={pinRef}
       aria-labelledby="problem-heading"
-      className="relative h-[320svh] bg-paper"
+      className="bg-paper"
+      variants={reduced ? fadeOnly : staggerChildren(0, 0.15)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={VIEWPORT}
     >
-      <div className="sticky top-0 flex h-svh w-full flex-col overflow-hidden">
-        <div className="mx-auto w-full max-w-7xl px-6 pt-30 lg:px-8">
-          <p className="chapter-label border-t border-hairline pt-4.5">
-            01 &mdash; THE PROBLEM
-          </p>
-        </div>
-
-        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 lg:px-8">
-          <div
-            ref={textWrapRef}
-            className="max-w-3xl transition-transform duration-700 ease-out"
-          >
-            <div className="grid">
-              <h2
-                id="problem-heading"
-                ref={headingARef}
-                className={`col-start-1 row-start-1 opacity-0 transition-opacity duration-500 ease-out ${HEADING_CLASS}`}
-              >
-                The Problem
-              </h2>
-              <h2
-                aria-hidden="true"
-                ref={headingBRef}
-                className={`col-start-1 row-start-1 opacity-0 transition-opacity duration-500 ease-out ${HEADING_CLASS}`}
-              >
-                Drive without doubt.
-              </h2>
-            </div>
-
-            <div
-              ref={copyRef}
-              className="mt-7 max-w-2xl opacity-0 transition-all duration-500 ease-out"
-            >
-              <Copy />
-            </div>
+      <div className="mx-auto max-w-7xl px-6 py-30 lg:px-8">
+        <motion.p variants={item} className="chapter-label border-t border-hairline pt-4.5">
+          02 &mdash; THE PROBLEM
+        </motion.p>
+        <motion.div variants={item} className="mt-7 max-w-3xl">
+          <h2 id="problem-heading" className={HEADING_CLASS}>
+            Long-distance EV travel needs dependable infrastructure.
+          </h2>
+          <div className="mt-7 max-w-2xl">
+            <Copy />
           </div>
-
-          <ul className="mt-14 grid w-full gap-6 sm:grid-cols-3">
-            {POINTS.map(({ icon, title, body }, i) => (
-              <li
-                key={title}
-                ref={(el) => {
-                  pointRefs.current[i] = el;
-                }}
-                className="flex items-start gap-3.5 border-t-2 border-mint pt-4 opacity-0 transition-all duration-500 ease-out"
-              >
-                <span className="mt-0.5 shrink-0 text-ink">{icon}</span>
-                <span>
-                  <span className="block font-display text-[15px] font-semibold text-ink">
-                    {title}
-                  </span>
-                  <span className="mt-1 block text-[13px] leading-relaxed text-muted">
-                    {body}
-                  </span>
+        </motion.div>
+        <motion.ul variants={staggerChildren(0, 0.12)} className="mt-14 grid gap-6 sm:grid-cols-3">
+          {POINTS.map(({ icon, title, body }) => (
+            <motion.li
+              key={title}
+              variants={item}
+              className="flex items-start gap-3.5 border-t-2 border-mint pt-4"
+            >
+              <span className="mt-0.5 shrink-0 text-ink">{icon}</span>
+              <span>
+                <span className="block font-display text-[15px] font-semibold text-ink">
+                  {title}
                 </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+                <span className="mt-1 block text-[13px] leading-relaxed text-muted">
+                  {body}
+                </span>
+              </span>
+            </motion.li>
+          ))}
+        </motion.ul>
       </div>
-    </section>
+    </motion.section>
   );
 }
