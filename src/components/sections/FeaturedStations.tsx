@@ -363,7 +363,7 @@ export function FeaturedStations() {
 
   const header = (
     <>
-      <p className="chapter-label border-t border-hairline pt-4.5">04 &mdash; FEATURED STATIONS</p>
+      {/* <p className="chapter-label border-t border-hairline pt-4.5">04 &mdash; FEATURED STATIONS</p> */}
       <h2 id="featured-stations-heading" className="mt-7 font-avapore text-4xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
         Where we're building.
       </h2>
@@ -385,7 +385,7 @@ export function FeaturedStations() {
       animate={phase === 'idle' ? 'hidden' : 'visible'}
     >
       <motion.div variants={introItem}>
-        <p className="chapter-label border-t border-hairline pt-4.5">04 &mdash; FEATURED STATIONS</p>
+        {/* <p className="chapter-label border-t border-hairline pt-4.5">04 &mdash; FEATURED STATIONS</p> */}
         <h2 id="featured-stations-heading" className="mt-7 font-avapore text-4xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
           Where we're building.
         </h2>

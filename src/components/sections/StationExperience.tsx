@@ -27,9 +27,9 @@ export function StationExperience() {
     >
       <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-mint to-transparent" aria-hidden="true" />
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <motion.p variants={item} className="font-mono text-[10px] tracking-[0.16em] text-mint">
+        {/* <motion.p variants={item} className="font-mono text-[10px] tracking-[0.16em] text-mint">
           05 &mdash; THE STATION EXPERIENCE
-        </motion.p>
+        </motion.p> */}
         <div className="mt-7 grid gap-14 lg:grid-cols-2 lg:items-center">
           <div>
             <motion.h2

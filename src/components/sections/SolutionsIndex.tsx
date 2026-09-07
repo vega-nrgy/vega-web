@@ -44,9 +44,9 @@ export function SolutionsIndex() {
       viewport={VIEWPORT}
     >
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <motion.p variants={item} className="chapter-label border-t border-hairline pt-4.5">
+        {/* <motion.p variants={item} className="chapter-label border-t border-hairline pt-4.5">
           06 &mdash; WHO WE SERVE
-        </motion.p>
+        </motion.p> */}
         <div className="mt-7 grid gap-14 lg:grid-cols-[1fr_1.6fr]">
           <motion.div variants={item}>
             <h2 id="solutions-heading" className="font-display text-4xl font-semibold tracking-[-0.03em] text-ink">

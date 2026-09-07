@@ -44,9 +44,9 @@ export function FleetPartnership() {
     >
       <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-mint to-transparent" aria-hidden="true" />
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-8">
-        <motion.p variants={item} className="chapter-label border-t border-white/15 pt-4.5 text-mint">
+        {/* <motion.p variants={item} className="chapter-label border-t border-white/15 pt-4.5 text-mint">
           09 &mdash; FLEET PARTNERSHIPS
-        </motion.p>
+        </motion.p> */}
         <motion.div variants={item} className="mt-7 grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-start">
           <h2
             id="fleet-partners-heading"

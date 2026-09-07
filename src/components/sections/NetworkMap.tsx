@@ -46,9 +46,9 @@ export function NetworkMap() {
       viewport={VIEWPORT}
     >
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <motion.p variants={item} className="chapter-label border-t border-hairline pt-4.5">
+        {/* <motion.p variants={item} className="chapter-label border-t border-hairline pt-4.5">
           01 &mdash; THE NETWORK
-        </motion.p>
+        </motion.p> */}
 
         <div className="mt-7 grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-14">
           <motion.div variants={item} className="order-2 lg:order-1">

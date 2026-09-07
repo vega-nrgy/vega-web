@@ -39,9 +39,9 @@ export function TechnologyTrust() {
       viewport={VIEWPORT}
     >
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <motion.p variants={item} className="chapter-label border-t border-hairline pt-4.5">
+        {/* <motion.p variants={item} className="chapter-label border-t border-hairline pt-4.5">
           10 &mdash; TECHNOLOGY &amp; TRUST
-        </motion.p>
+        </motion.p> */}
         <motion.div variants={item} className="mt-7 max-w-2xl">
           <h2
             id="technology-heading"

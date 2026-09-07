@@ -23,9 +23,9 @@ export function ValueProps() {
       viewport={VIEWPORT}
     >
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <motion.p variants={item} className="chapter-label border-t border-hairline pt-4.5">
+        {/* <motion.p variants={item} className="chapter-label border-t border-hairline pt-4.5">
           03 &mdash; WHY VEGA CHARGE
-        </motion.p>
+        </motion.p> */}
         <h2 id="why-heading" className="sr-only">
           Why Vega Charge?
         </h2>
