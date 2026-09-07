@@ -100,3 +100,14 @@ export const STATIONS: Station[] = [
 export function getStationBySlug(slug: string): Station | undefined {
   return STATIONS.find((s) => s.slug === slug);
 }
+
+/* Website audit §2.4: station status must use one of four standardized
+ * labels (LIVE / UNDER CONSTRUCTION / COMING SOON / PLANNED) — never
+ * "Live soon" (mixes two states) and never the raw internal status value.
+ * PLANNING (site secured, launch dated) maps to "Coming soon"; ACQUISITION
+ * maps to "Planned" — the audit's own definition of PLANNED is "corridor/site
+ * under development or acquisition", which is exactly what this status means. */
+export const STATUS_LABEL: Record<Station["status"], string> = {
+  PLANNING: "Coming soon",
+  ACQUISITION: "Planned",
+};

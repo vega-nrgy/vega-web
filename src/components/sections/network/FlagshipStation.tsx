@@ -1,5 +1,5 @@
 import { Section } from '../../ui/Section'
-import { getStationBySlug } from '../../../lib/stations'
+import { getStationBySlug, STATUS_LABEL } from '../../../lib/stations'
 
 const NARKETPALLY = getStationBySlug('narketpally')!
 
@@ -16,21 +16,21 @@ export function FlagshipStation() {
   return (
     <Section id="flagship" labelledBy="flagship-heading" className="mt-28 bg-grey-soft">
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <p className="chapter-label">02 &mdash; FLAGSHIP STATION</p>
+        {/* <p className="chapter-label">02 &mdash; FLAGSHIP STATION</p> */}
         <div className="mt-7 flex flex-wrap items-baseline justify-between gap-6">
           <h2 id="flagship-heading" className="font-display text-4xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
             Narketpalle, NH-65
           </h2>
           <span className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 animate-live-pulse rounded-full bg-mint" />
-            <span className="text-[13px] font-bold text-mint-deep">Live soon</span>
+            <span className="text-[13px] font-bold text-mint-deep">{STATUS_LABEL[NARKETPALLY.status]}</span>
           </span>
         </div>
 
         <div className="relative mt-9 overflow-hidden rounded-media">
           <img
-            src="/design/station-render.jpg"
-            alt="Narketpalle flagship station render"
+            src="/media/renders/narketpally-render-p14.jpeg"
+            alt="Narketpalle flagship station render at night"
             className="h-[460px] w-full object-cover"
           />
           <span className="absolute bottom-4 left-5 rounded-md bg-ink/55 px-2.5 py-1.5 font-mono text-[9.5px] tracking-[0.1em] text-white">

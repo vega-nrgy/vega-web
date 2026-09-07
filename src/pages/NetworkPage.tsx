@@ -38,12 +38,12 @@ export function NetworkPage() {
     <>
       <PageIntro
         eyebrow="OUR NETWORK"
-        heading="Charging stops built for the road — and the driver."
+        heading="Charging hubs built around the highway journey."
       >
         <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted">
-          Every Vega Charge station is more than a power socket on a highway.
-          It&rsquo;s a rest stop, a service point, and a community hub &mdash;
-          built to global standards, designed for Indian conditions.
+          Explore Vega Charge locations across our developing highway network. Each
+          station shows its current status, planned or live charging configuration,
+          amenities and route information.
         </p>
       </PageIntro>
 

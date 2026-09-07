@@ -1,14 +1,14 @@
 import { Section } from '../../ui/Section'
-import { STATIONS } from '../../../lib/stations'
+import { STATIONS, STATUS_LABEL } from '../../../lib/stations'
 
 export function StationList() {
   return (
     <Section id="expansion" labelledBy="expansion-heading" className="bg-paper">
       <div className="mx-auto max-w-7xl px-6 pt-28 lg:px-8">
-        <p className="chapter-label border-t border-hairline pt-4.5">03 &mdash; WHAT&rsquo;S NEXT</p>
+        {/* <p className="chapter-label border-t border-hairline pt-4.5">03 &mdash; WHAT&rsquo;S NEXT</p> */}
         <div className="mt-7 flex flex-wrap items-baseline justify-between gap-6">
           <h2 id="expansion-heading" className="font-display text-4xl font-semibold tracking-[-0.03em] text-ink">
-            Five stations. Two corridors.
+            Building corridor density before geographic breadth.
           </h2>
           <span className="font-mono text-[11px] tracking-[0.1em] text-muted">
             ALL LOCATIONS OPEN IN GOOGLE MAPS &rarr;
@@ -40,14 +40,16 @@ export function StationList() {
                 </span>
                 <span className="flex items-center gap-1.5 whitespace-nowrap justify-self-start sm:justify-self-end">
                   <span className={`h-2 w-2 rounded-full ${s.status === 'PLANNING' ? 'bg-mint' : 'bg-muted-onink'}`} />
-                  <span className="font-mono text-[11px] tracking-[0.08em] text-muted">{s.status}</span>
+                  <span className="font-mono text-[11px] tracking-[0.08em] text-muted">{STATUS_LABEL[s.status]}</span>
                 </span>
               </a>
             </li>
           ))}
         </ul>
-        <p className="py-5.5 text-[13.5px] leading-relaxed text-muted">
-          Retail space at every station
+        <p className="max-w-2xl py-5.5 text-[13.5px] leading-relaxed text-muted">
+          Our approach is to strengthen high-demand routes with strategically spaced
+          hubs, then connect those corridors into a wider network. This creates more
+          useful coverage for drivers and more predictable infrastructure for fleets.
           {/* &middot; Follow corridor expansion updates on{' '}
           <a href="https://linkedin.com/company/veganrgy" className="font-bold text-mint-deep">
             LinkedIn &rarr;
