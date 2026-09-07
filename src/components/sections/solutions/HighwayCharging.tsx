@@ -1,13 +1,13 @@
 import { Button } from "../../ui/Button";
 import { Section } from "../../ui/Section";
 
+// Doc's Section 6 "Highway Charging" checklist, used verbatim.
 const CHECKLIST = [
-  "120 kW and 240 kW DC fast chargers — charge in minutes, not hours",
-  "Multi-standard: CCS2, CHAdeMO, Bharat DC-001, AC Type 2",
-  "Pitstop amenities — lounge, washrooms, children's play area",
-  "Retail & refreshments at select stations",
-  "24/7 operations with technology-enabled support",
-  "Real-time station availability via app / website",
+  "High-power DC charging with site-specific configurations",
+  "Multi-vehicle charging capability",
+  "Connected monitoring and remote diagnostics",
+  "Driver amenities at selected hub formats",
+  "Scalable electrical and civil design for future demand",
 ];
 
 export function HighwayCharging() {
@@ -28,7 +28,7 @@ export function HighwayCharging() {
         <div className="mt-7 grid gap-16 lg:grid-cols-[1fr_1.15fr] lg:items-stretch">
           <div className="relative overflow-hidden rounded-media">
             <img
-              src="/design/station-render.jpg"
+              src="/media/renders/narketpally-render-p17.jpeg"
               alt="Highway charging station on NH-65"
               className="h-full min-h-[420px] w-full object-cover"
             />
@@ -41,13 +41,12 @@ export function HighwayCharging() {
               id="highway-heading"
               className="text-balance font-display text-[38px] font-semibold leading-[1.12] tracking-[-0.03em] text-ink"
             >
-              Drive without doubt. Every highway. Every time.
+              High-power charging where long-distance journeys need it.
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-muted">
-              Our flagship offering &mdash; fast charging stations strategically
-              located along India&rsquo;s national highway corridors, designed
-              to eliminate range anxiety and make long-distance EV travel truly
-              seamless.
+              Our highway hubs combine strategically located DC charging with the
+              operating support and amenities needed for dependable inter-city EV
+              travel.
             </p>
             <ul className="mt-6 border-t border-hairline">
               {CHECKLIST.map((item) => (
@@ -68,7 +67,7 @@ export function HighwayCharging() {
               underway across India&rsquo;s national highway network.
             </p>
             <Button href="/network" variant="ink" className="mt-6">
-              Find a Charging Station &rarr;
+              Explore Our Network &rarr;
             </Button>
           </div>
         </div>

@@ -1,11 +1,14 @@
 import { Section } from "../../ui/Section";
 
+// Doc's Section 6 "Commercial Charging" checklist, used verbatim. Revenue
+// share is explicitly a per-project commercial term in the doc, not a
+// standing offer — dropped rather than promised to every host.
 const CHECKLIST = [
-  "AC & DC fast chargers tailored to your location and footfall",
-  "End-to-end installation, operation, and maintenance",
-  "Real-time monitoring and remote diagnostics",
-  "Revenue-sharing models for host businesses",
-  "Branded charging experience aligned to your establishment",
+  "Site and demand assessment",
+  "AC/DC charger mix recommendation",
+  "Installation and commissioning",
+  "Monitoring and operations options",
+  "Commercial models based on project structure",
 ];
 
 const AUDIENCE = [
@@ -37,12 +40,13 @@ export function CommercialCharging() {
               id="commercial-heading"
               className="font-display text-[38px] font-semibold leading-[1.12] tracking-[-0.03em] text-ink"
             >
-              Power your business. Charge smarter.
+              Turn the right destination into a charging destination.
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-muted">
-              For businesses looking to offer EV charging as a value-added
-              service &mdash; whether you own a hotel, restaurant, mall, fuel
-              station, or any commercial establishment along a highway corridor.
+              For hotels, restaurants, commercial properties, fuel/energy sites and
+              highway businesses, Vega Charge can evaluate the charging opportunity
+              and structure a solution around dwell time, traffic, power availability
+              and commercial objectives.
             </p>
             <ul className="mt-6 border-t border-[#dce4e3]">
               {CHECKLIST.map((item) => (
@@ -71,7 +75,7 @@ export function CommercialCharging() {
               href="#enquiry"
               className="mt-6.5 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3.5 font-sans text-sm font-bold text-white transition-colors hover:bg-ink/90"
             >
-              Let's Grow Together &rarr;
+              Discuss a Commercial Site &rarr;
             </a>
           </div>
           <div className="relative overflow-hidden rounded-media">

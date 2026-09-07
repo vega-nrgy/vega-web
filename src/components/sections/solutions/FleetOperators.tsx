@@ -1,12 +1,14 @@
 import { Section } from "../../ui/Section";
 
+// Doc's Section 6 "Fleet Charging" checklist, used verbatim — replaces the
+// old list, which claimed a "real-time tracking dashboard" as a standing
+// capability (it doesn't exist as a live product yet).
 const CHECKLIST = [
-  "Dedicated fleet charging bays with priority access",
-  "High-speed DC charging for minimum turnaround time",
-  "Fleet management dashboard with real-time tracking",
-  "Flexible billing — per unit, monthly, or contract-based",
-  "Volume-based rates and ToD-optimised pricing",
-  "Multi-vehicle simultaneous charging capability",
+  "Route and energy-demand assessment",
+  "Dedicated or contracted charging arrangements where feasible",
+  "High-power charging for reduced turnaround time",
+  "Session and energy reporting",
+  "Commercial plans based on volume and operating requirements",
 ];
 
 const AUDIENCE = [
@@ -15,79 +17,6 @@ const AUDIENCE = [
   "Corporate Transport",
   "Government & Municipal",
 ];
-
-const BAYS: [string, number][] = [
-  ["Bay 1", 82],
-  ["Bay 2", 64],
-  ["Bay 3", 41],
-];
-
-function FleetDashboardMock() {
-  return (
-    <div className="relative h-full min-h-[420px] overflow-hidden rounded-media bg-ink p-7">
-      <div
-        className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-mint to-transparent"
-        aria-hidden="true"
-      />
-      <div className="flex items-center justify-between">
-        <span className="font-mono text-[9.5px] tracking-[0.14em] text-mint">
-          FLEET DASHBOARD
-        </span>
-        <span className="font-mono text-[9.5px] tracking-[0.1em] text-muted">
-          LIVE
-        </span>
-      </div>
-      <div className="mt-5 grid grid-cols-2 gap-3">
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-          <p className="font-mono text-[9px] tracking-[0.1em] text-muted-onink">
-            SESSIONS TODAY
-          </p>
-          <p className="mt-1.5 font-sans text-[26px] font-extrabold tabular-nums text-white">
-            47
-          </p>
-        </div>
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-          <p className="font-mono text-[9px] tracking-[0.1em] text-muted-onink">
-            ENERGY DELIVERED
-          </p>
-          <p className="mt-1.5 font-sans text-[26px] font-extrabold tabular-nums text-white">
-            2,140{" "}
-            <span className="text-[13px] font-semibold text-muted-onink">
-              kWh
-            </span>
-          </p>
-        </div>
-      </div>
-      <div className="mt-3 rounded-2xl border border-white/10 bg-white/5 p-4">
-        <p className="font-mono text-[9px] tracking-[0.1em] text-muted-onink">
-          BAY UTILISATION &middot; NARKETPALLE
-        </p>
-        <div className="mt-3 flex flex-col gap-2">
-          {BAYS.map(([label, pct]) => (
-            <div key={label} className="flex items-center gap-2.5">
-              <span className="w-10 font-sans text-[10px] font-semibold text-onink">
-                {label}
-              </span>
-              <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10">
-                <div
-                  className="h-full rounded-full bg-mint"
-                  style={{ width: `${pct}%` }}
-                />
-              </div>
-              <span className="font-mono text-[9.5px] text-muted-onink">
-                {pct}%
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-      <p className="mt-4 text-[10.5px] leading-relaxed text-muted">
-        Track charging sessions, costs, and energy consumption in real time
-        &mdash; per vehicle, per route, per month.
-      </p>
-    </div>
-  );
-}
 
 export function FleetOperators() {
   return (
@@ -105,18 +34,27 @@ export function FleetOperators() {
           Fleet Operators.
         </h2>
         <div className="mt-7 grid gap-16 lg:grid-cols-[1fr_1.15fr] lg:items-stretch">
-          <FleetDashboardMock />
+          <div className="relative min-h-[420px] overflow-hidden rounded-media">
+            <img
+              src="/media/renders/narketpally-render-p06.jpeg"
+              alt="Vega Charge station forecourt with multiple vehicles charging"
+              className="h-full w-full object-cover"
+            />
+            <span className="absolute bottom-4 left-5 rounded-md bg-ink/55 px-2.5 py-1.5 font-mono text-[9.5px] tracking-[0.1em] text-white">
+              NH-65 &middot; NARKETPALLE
+            </span>
+          </div>
           <div>
             <h2
               id="fleet-heading"
               className="font-display text-[38px] font-semibold leading-[1.12] tracking-[-0.03em] text-ink"
             >
-              Keep your fleet moving. Always.
+              Charging designed around utilisation, routes and turnaround time.
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-muted">
-              For logistics companies, cab aggregators, and commercial fleet
-              operators, downtime is cost. Our fleet solutions are built for
-              high-utilisation, round-the-clock operations.
+              Vega Charge works with logistics, mobility, corporate and
+              commercial fleets to plan charging around route coverage, vehicle
+              schedules, energy requirements and operational uptime.
             </p>
             <ul className="mt-6 border-t border-hairline">
               {CHECKLIST.map((item) => (
@@ -153,7 +91,7 @@ export function FleetOperators() {
                 href="#enquiry"
                 className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-mint px-5.5 py-3 font-sans text-[13.5px] font-bold text-ink transition-colors hover:bg-mint-bright"
               >
-                Request a Fleet Proposal &rarr;
+                Request a Fleet Discussion &rarr;
               </a>
             </div>
           </div>

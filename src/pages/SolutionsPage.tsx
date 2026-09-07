@@ -22,7 +22,12 @@ export function SolutionsPage() {
 
   return (
     <>
-      <PageIntro eyebrow="SOLUTIONS" heading="Powering every journey, for every need.">
+      <PageIntro eyebrow="SOLUTIONS" heading="Charging infrastructure for highways, fleets and commercial destinations.">
+        <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted">
+          Vega Charge develops and operates charging solutions around real mobility
+          needs &mdash; from inter-city passenger travel to high-utilisation fleets
+          and destination charging.
+        </p>
         <div className="mt-9 flex flex-wrap gap-3">
           {QUICK_NAV.map(({ href, index, label }) => (
             <a
@@ -43,7 +48,7 @@ export function SolutionsPage() {
 
       <Section id="enquiry" labelledBy="enquiry-heading" className="scroll-mt-24 bg-paper">
         <div className="mx-auto max-w-7xl px-6 py-28 lg:px-8">
-          <p className="chapter-label border-t border-hairline pt-4.5">04 &mdash; ENQUIRY</p>
+          {/* <p className="chapter-label border-t border-hairline pt-4.5">04 &mdash; ENQUIRY</p> */}
           <div className="mt-7 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <h2 id="enquiry-heading" className="font-display text-[38px] font-semibold leading-[1.12] tracking-[-0.03em] text-ink">
