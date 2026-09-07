@@ -15,25 +15,18 @@ export function OurStory() {
             </h2>
             <div className="mt-5 max-w-xl space-y-4.5 text-base leading-[1.7] text-ink-soft">
               <p>
-                Drive an EV on a national highway in India today, and somewhere
-                around the 150 km mark, a familiar fear kicks in.{" "}
-                <em>
-                  Is there a charger ahead? Will it work? What if I get stuck?
-                </em>
+                For long-distance EV travel, the question is not simply whether a
+                charger exists on a map.
               </p>
               <p>
-                That question is what&rsquo;s holding back EV adoption &mdash;
-                not the cars, not the prices, but the infrastructure gap on
-                India&rsquo;s highways.
-              </p>
-              <p>
-                We saw that gap on NH-65. Hundreds of kilometres. Almost no
-                reliable fast-charging options. And a massive, growing fleet of
-                EV drivers with nowhere to stop.
+                Drivers need the right charger in the right location, with
+                dependable power, working equipment, support and a place to stop
+                comfortably.
               </p>
             </div>
             <p className="mt-7 border-l-2 border-mint pl-5 font-display text-2xl font-semibold leading-[1.3] tracking-[-0.015em] text-ink">
-              So we decided to build the stops.
+              We started Vega Charge to build that complete highway charging
+              experience.
             </p>
           </div>
           <div className="relative overflow-hidden rounded-media">
