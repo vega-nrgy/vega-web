@@ -11,7 +11,7 @@ function BoltIcon() {
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-[26px] w-[26px]"
+      className="h-10 w-10 sm:h-11 sm:w-11"
       aria-hidden="true"
     >
       <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" />
@@ -28,7 +28,7 @@ function SignalIcon() {
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-[26px] w-[26px]"
+      className="h-10 w-10 sm:h-11 sm:w-11"
       aria-hidden="true"
     >
       <circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none" />
@@ -47,7 +47,7 @@ function PinIcon() {
       strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-[26px] w-[26px]"
+      className="h-10 w-10 sm:h-11 sm:w-11"
       aria-hidden="true"
     >
       <path d="M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z" />
@@ -58,7 +58,7 @@ function PinIcon() {
 
 function FleetIcon() {
   return (
-    <span className="flex items-center gap-1">
+    <span className="flex items-center gap-1.5">
       <svg
         viewBox="0 0 24 16"
         fill="none"
@@ -66,7 +66,7 @@ function FleetIcon() {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="h-[18px] w-[18px]"
+        className="h-9 w-9 sm:h-10 sm:w-10"
         aria-hidden="true"
       >
         <path d="M2 11.5 3.3 7A1.7 1.7 0 0 1 5 5.8h9.4A1.7 1.7 0 0 1 16 7l1.3 4.5" />
@@ -81,7 +81,7 @@ function FleetIcon() {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="h-[18px] w-[18px]"
+        className="h-9 w-9 sm:h-10 sm:w-10"
         aria-hidden="true"
       >
         <rect x="1.5" y="4" width="10" height="8" rx="0.8" />
@@ -123,9 +123,9 @@ export function StatsStrip() {
       <div className="mx-auto max-w-7xl px-6 pt-10 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-4">
           {FACTS.map(({ icon, label }) => (
-            <motion.div key={label} variants={item} className="flex flex-col items-center text-center sm:items-start sm:text-left">
-              <span className="text-mint-deep">{icon}</span>
-              <p className="mt-3 font-display text-base font-semibold text-ink sm:text-lg">{label}</p>
+            <motion.div key={label} variants={item} className="flex flex-col items-center text-center">
+              <span className="flex h-11 items-center justify-center text-mint-deep sm:h-12">{icon}</span>
+              <p className="mt-4 max-w-[9.5rem] font-display text-sm font-semibold text-ink sm:text-base">{label}</p>
             </motion.div>
           ))}
         </div>
