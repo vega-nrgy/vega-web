@@ -36,9 +36,11 @@ vega-motion-handoff
 # extracted render candidates — staged for review, not all committed;
 # un-ignore individual files below once they're actually wired into the site
 public/media/renders/*
+!public/media/renders/narketpally-render-p06.jpeg
 !public/media/renders/narketpally-render-p08.jpeg
 !public/media/renders/narketpally-render-p09.jpeg
 !public/media/renders/narketpally-render-p11.jpeg
+!public/media/renders/narketpally-render-p14.jpeg
 !public/media/renders/narketpally-render-p15.jpeg
 !public/media/renders/narketpally-render-p17.jpeg
 !public/media/renders/narketpally-render-p18.jpeg
