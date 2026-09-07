@@ -1,33 +1,50 @@
-import { useRef, useState, type FormEvent, type KeyboardEvent, type ReactElement, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent, type ReactElement, type ReactNode } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
-type PartnerType = 'Fleet' | 'Site' | 'Investor'
+type PartnerType = 'Fleet' | 'Site' | 'Commercial' | 'Investor'
 
+// Doc's Section 7 four lead paths, with its exact "tell us..." copy per category.
 const CATEGORIES: { index: string; type: PartnerType; title: string; body: string }[] = [
   {
     index: '01',
     type: 'Fleet',
-    title: 'Fleet & Commercial',
-    body: 'Dedicated bay agreements, fleet pricing, and OCPP integration.',
+    title: 'Fleet Operators',
+    body: 'Tell us your routes, vehicle mix, daily kilometres, charging windows and expected energy demand.',
   },
   {
     index: '02',
     type: 'Site',
-    title: 'Site & Land Partnerships',
-    body: 'Own highway-adjacent land? Tell us where — we’ll take it from there.',
+    title: 'Site & Land Partners',
+    body: 'Submit highway location, frontage, land area, access, ownership and map pin.',
   },
   {
     index: '03',
+    type: 'Commercial',
+    title: 'Commercial Hosts',
+    body: 'Tell us about your hotel, restaurant, retail, fuel/energy or commercial property and expected dwell time.',
+  },
+  {
+    index: '04',
     type: 'Investor',
-    title: 'Investor Relations',
-    body: 'Our expansion plans and investment opportunities.',
+    title: 'Strategic / Investor Enquiries',
+    body: 'Share your organisation, interest area and preferred discussion.',
   },
 ]
 
 const TYPE_PARAM: Record<string, PartnerType> = {
   fleet: 'Fleet',
   site: 'Site',
+  commercial: 'Commercial',
   investor: 'Investor',
+}
+
+// Doc's Section 7 CTA per lead path — the button that kicks off the (email
+// OTP-verified) submission for that category.
+const CTA_LABEL: Record<PartnerType, string> = {
+  Fleet: 'Discuss Fleet Charging',
+  Site: 'Submit a Site',
+  Commercial: 'Evaluate My Location',
+  Investor: 'Contact Corporate Development',
 }
 
 const VEHICLE_TYPES = ['Two-wheelers', 'Three-wheelers', 'Cars & SUVs', 'Vans / LCVs', 'Buses', 'Trucks']
@@ -121,12 +138,16 @@ function SubmitButton({ label, disabled }: { label: string; disabled?: boolean }
 function FleetFields() {
   return (
     <>
-      <div className="grid gap-4.5 sm:grid-cols-2">
-        <Field id="p-company" label="Company / fleet name" required>
-          <input id="p-company" name="p-company" required placeholder="Your company" className={fieldClass} />
+      <Field id="p-company" label="Company / fleet name" required>
+        <input id="p-company" name="p-company" required placeholder="Your company" className={fieldClass} />
+      </Field>
+
+      <div className="mt-4.5 grid gap-4.5 sm:grid-cols-2">
+        <Field id="p-fleet-size-now" label="EVs in your fleet today" required>
+          <input id="p-fleet-size-now" name="p-fleet-size-now" type="number" min={0} required placeholder="e.g. 25" className={fieldClass} />
         </Field>
-        <Field id="p-fleet-size" label="How many vehicles are in your fleet?" required>
-          <input id="p-fleet-size" name="p-fleet-size" type="number" min={1} required placeholder="e.g. 25" className={fieldClass} />
+        <Field id="p-fleet-size-planned" label="EVs planned">
+          <input id="p-fleet-size-planned" name="p-fleet-size-planned" type="number" min={0} placeholder="e.g. 60" className={fieldClass} />
         </Field>
       </div>
 
@@ -147,10 +168,47 @@ function FleetFields() {
         </div>
       </div>
 
+      <div className="mt-4.5">
+        <Field id="p-vehicle-models" label="Vehicle models">
+          <input id="p-vehicle-models" name="p-vehicle-models" placeholder="e.g. Tata Ace EV, Mahindra Treo" className={fieldClass} />
+        </Field>
+      </div>
+
       <div className="mt-4.5 grid gap-4.5 sm:grid-cols-2">
-        <Field id="p-route" label="Primary route or corridor">
+        <Field id="p-route" label="Primary route(s)">
           <input id="p-route" name="p-route" placeholder="e.g. Hyderabad ⟷ Vijayawada, NH-65" className={fieldClass} />
         </Field>
+        <Field id="p-daily-km" label="Daily kilometres">
+          <input id="p-daily-km" name="p-daily-km" placeholder="e.g. 250 km/vehicle/day" className={fieldClass} />
+        </Field>
+      </div>
+
+      <div className="mt-4.5 grid gap-4.5 sm:grid-cols-2">
+        <Field id="p-charging-windows" label="Typical charging windows">
+          <input id="p-charging-windows" name="p-charging-windows" placeholder="e.g. 10pm–6am" className={fieldClass} />
+        </Field>
+        <Field id="p-depot" label="Depot location(s)">
+          <input id="p-depot" name="p-depot" placeholder="e.g. Nagole, Hyderabad" className={fieldClass} />
+        </Field>
+      </div>
+
+      <div className="mt-4.5 grid gap-4.5 sm:grid-cols-2">
+        <Field id="p-monthly-kwh" label="Expected monthly kWh, if known">
+          <input id="p-monthly-kwh" name="p-monthly-kwh" placeholder="e.g. 12,000 kWh" className={fieldClass} />
+        </Field>
+        <Field id="p-charging-need" label="What kind of charging do you need?" required>
+          <select id="p-charging-need" name="p-charging-need" required defaultValue="" className={fieldClass}>
+            <option value="" disabled>
+              Select one
+            </option>
+            <option>Public corridor charging</option>
+            <option>Depot charging</option>
+            <option>Both</option>
+          </select>
+        </Field>
+      </div>
+
+      <div className="mt-4.5">
         <Field id="p-timeline" label="When do you need charging live?" required>
           <select id="p-timeline" name="p-timeline" required defaultValue="" className={fieldClass}>
             <option value="" disabled>
@@ -170,14 +228,67 @@ function FleetFields() {
   )
 }
 
+function CommercialFields() {
+  return (
+    <>
+      <div className="grid gap-4.5 sm:grid-cols-2">
+        <Field id="p-property-name" label="Property / business name" required>
+          <input id="p-property-name" name="p-property-name" required placeholder="Your property or business" className={fieldClass} />
+        </Field>
+        <Field id="p-property-type" label="Property type" required>
+          <select id="p-property-type" name="p-property-type" required defaultValue="" className={fieldClass}>
+            <option value="" disabled>
+              Select one
+            </option>
+            <option>Hotel / Resort</option>
+            <option>Restaurant / Dhaba</option>
+            <option>Retail / Shopping centre</option>
+            <option>Fuel / Energy station</option>
+            <option>Other commercial property</option>
+          </select>
+        </Field>
+      </div>
+
+      <div className="mt-4.5">
+        <Field id="p-commercial-location" label="Location — nearest town or highway" required>
+          <input id="p-commercial-location" name="p-commercial-location" required placeholder="e.g. NH-65, near Narketpalle" className={fieldClass} />
+        </Field>
+      </div>
+
+      <div className="mt-4.5">
+        <Field id="p-dwell-time" label="Expected dwell time" required>
+          <select id="p-dwell-time" name="p-dwell-time" required defaultValue="" className={fieldClass}>
+            <option value="" disabled>
+              Select one
+            </option>
+            <option>Under 30 minutes</option>
+            <option>30–60 minutes</option>
+            <option>1–2 hours</option>
+            <option>2+ hours / overnight</option>
+          </select>
+        </Field>
+      </div>
+
+      <ShareMoreField id="p-commercial-more" />
+      <ContactFields idPrefix="p-commercial" />
+    </>
+  )
+}
+
 function SiteFields() {
   return (
     <>
-      <Field id="p-location" label="Suggest a location" required>
-        <input id="p-location" name="p-location" required placeholder="e.g. Narketpalle, near NH-65" className={fieldClass} />
+      <Field id="p-owner-name" label="Owner / representative name" required>
+        <input id="p-owner-name" name="p-owner-name" required placeholder="Your name" className={fieldClass} />
       </Field>
 
       <div className="mt-4.5">
+        <Field id="p-location" label="Location — nearest town or landmark" required>
+          <input id="p-location" name="p-location" required placeholder="e.g. Narketpalle, near NH-65" className={fieldClass} />
+        </Field>
+      </div>
+
+      <div className="mt-4.5 grid gap-4.5 sm:grid-cols-2">
         <Field id="p-state" label="Which state is the location in?" required>
           <input
             id="p-state"
@@ -193,11 +304,23 @@ function SiteFields() {
             ))}
           </datalist>
         </Field>
+        <Field id="p-highway" label="Highway / route">
+          <input id="p-highway" name="p-highway" placeholder="e.g. NH-65" className={fieldClass} />
+        </Field>
       </div>
 
       <div className="mt-4.5">
-        <Field id="p-address" label="Location address or Google Maps link">
+        <Field id="p-address" label="Google Maps pin, address, or link">
           <input id="p-address" name="p-address" placeholder="Paste a Google Maps link, or type the full address" className={fieldClass} />
+        </Field>
+      </div>
+
+      <div className="mt-4.5 grid gap-4.5 sm:grid-cols-2">
+        <Field id="p-land-area" label="Land area">
+          <input id="p-land-area" name="p-land-area" placeholder="e.g. 2 acres / 8,000 sq. yards" className={fieldClass} />
+        </Field>
+        <Field id="p-frontage" label="Road frontage">
+          <input id="p-frontage" name="p-frontage" placeholder="e.g. 150 ft" className={fieldClass} />
         </Field>
       </div>
 
@@ -212,6 +335,28 @@ function SiteFields() {
             <option>I'm a broker / agent</option>
             <option>Just exploring on the owner's behalf</option>
           </select>
+        </Field>
+      </div>
+
+      <div className="mt-4.5 grid gap-4.5 sm:grid-cols-2">
+        <Field id="p-entry-exit" label="Entry / exit feasibility">
+          <select id="p-entry-exit" name="p-entry-exit" defaultValue="" className={fieldClass}>
+            <option value="" disabled>
+              Select one
+            </option>
+            <option>Clear entry/exit already</option>
+            <option>Would need civil work</option>
+            <option>Not sure</option>
+          </select>
+        </Field>
+        <Field id="p-power" label="Power / HT availability, if known">
+          <input id="p-power" name="p-power" placeholder="e.g. 500 kVA HT line nearby" className={fieldClass} />
+        </Field>
+      </div>
+
+      <div className="mt-4.5">
+        <Field id="p-existing-activity" label="Existing commercial activity on site">
+          <input id="p-existing-activity" name="p-existing-activity" placeholder="e.g. vacant land, dhaba, petrol pump" className={fieldClass} />
         </Field>
       </div>
 
@@ -254,6 +399,23 @@ function InvestorFields() {
         </Field>
       </div>
 
+      <div className="mt-4.5 grid gap-4.5 sm:grid-cols-2">
+        <Field id="p-geography" label="Geography of interest">
+          <input id="p-geography" name="p-geography" placeholder="e.g. Telangana & Andhra Pradesh" className={fieldClass} />
+        </Field>
+        <Field id="p-investor-timeline" label="Indicative timeline">
+          <select id="p-investor-timeline" name="p-investor-timeline" defaultValue="" className={fieldClass}>
+            <option value="" disabled>
+              Select one
+            </option>
+            <option>Immediately</option>
+            <option>Within 3 months</option>
+            <option>Within 6 months</option>
+            <option>Just exploring</option>
+          </select>
+        </Field>
+      </div>
+
       <ShareMoreField id="p-investor-more" />
       <ContactFields idPrefix="p-investor" />
     </>
@@ -263,6 +425,7 @@ function InvestorFields() {
 const FIELD_SETS: Record<PartnerType, () => ReactElement> = {
   Fleet: FleetFields,
   Site: SiteFields,
+  Commercial: CommercialFields,
   Investor: InvestorFields,
 }
 
@@ -279,8 +442,7 @@ type Phase = 'form' | 'otp' | 'done'
 
 export function PartnerForm() {
   const [searchParams] = useSearchParams()
-  const initial = TYPE_PARAM[searchParams.get('type') ?? ''] ?? 'Site'
-  const [type, setType] = useState<PartnerType>(initial)
+  const [type, setType] = useState<PartnerType>(() => TYPE_PARAM[searchParams.get('type') ?? ''] ?? 'Site')
   const [phase, setPhase] = useState<Phase>('form')
   const [sending, setSending] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -289,6 +451,15 @@ export function PartnerForm() {
   const formRef = useRef<HTMLFormElement>(null)
   const otpFormRef = useRef<HTMLFormElement>(null)
   const pendingRef = useRef<{ email: string; token: string; fields: Record<string, string> } | null>(null)
+
+  // Re-sync the active category whenever ?type= changes. React Router
+  // doesn't remount this component for a same-path navigation (/partner
+  // with a different query string), so without this the category picked
+  // up on the first mount would silently stick regardless of which
+  // Fleets/Site/Investor link was clicked next.
+  useEffect(() => {
+    setType(TYPE_PARAM[searchParams.get('type') ?? ''] ?? 'Site')
+  }, [searchParams])
 
   async function handleSendCode(e: FormEvent) {
     e.preventDefault()
@@ -455,7 +626,7 @@ export function PartnerForm() {
       ) : (
         <form ref={formRef} onSubmit={handleSendCode} onKeyDown={handleKeyDown} className="rounded-card border border-hairline bg-white p-9">
           <Fields />
-          <SubmitButton label={sending ? 'Sending code…' : 'Send verification code'} disabled={sending} />
+          <SubmitButton label={sending ? 'Sending code…' : `${CTA_LABEL[type]} →`} disabled={sending} />
           {error === 'otp-send' && (
             <p className="mt-3.5 text-[13px] leading-relaxed text-ink-soft">
               Couldn&rsquo;t send a verification code.{' '}

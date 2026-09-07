@@ -21,8 +21,8 @@ const ITEMS = [
   },
   {
     index: '05',
-    title: 'High-ROI partnerships',
-    body: "Partner with India's EV growth story — strong, sustainable returns from day one.",
+    title: 'Structured partnerships',
+    body: 'Partnership models structured around location quality, charging demand and long-term network potential.',
   },
 ]
 

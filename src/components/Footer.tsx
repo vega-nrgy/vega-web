@@ -15,17 +15,15 @@ const NETWORK_LINKS = [
 const PARTNER_LINKS = [
   { href: '/partner?type=fleet', label: 'Fleets' },
   { href: '/partner?type=site', label: 'Site & Land Partners' },
-  // No dedicated "Commercial" lead type exists yet — PartnerForm's Fleet
-  // category is titled "Fleet & Commercial" and already covers this, so it
-  // routes there rather than to a ComingSoonPage placeholder.
-  { href: '/partner?type=fleet', label: 'Commercial Hosts' },
+  { href: '/partner?type=commercial', label: 'Commercial Hosts' },
   { href: '/partner?type=investor', label: 'Strategic/Investor Enquiries' },
 ]
 
 const COMPANY_LINKS = [
   { href: '/about', label: 'About' },
-  // Careers/Privacy/Terms point at ComingSoonPage until real content exists
-  // for each — see src/pages/ComingSoonPage.tsx.
+  // Careers still points at ComingSoonPage until real content exists — see
+  // src/pages/ComingSoonPage.tsx. Privacy/Terms now have real (draft, pending
+  // legal review) pages — see src/pages/PrivacyPage.tsx and TermsPage.tsx.
   { href: '/careers', label: 'Careers' },
   { href: '/contact', label: 'Contact' },
   { href: '/privacy', label: 'Privacy' },

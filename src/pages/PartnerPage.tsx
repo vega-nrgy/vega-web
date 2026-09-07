@@ -14,11 +14,10 @@ export function PartnerPage() {
 
   return (
     <>
-      <PageIntro eyebrow="PARTNER WITH US" heading="Let's build this together.">
+      <PageIntro eyebrow="PARTNER WITH US" heading="Build the next highway charging corridor with us.">
         <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted">
-          Whether you own highway-adjacent land, run a fleet that needs reliable charging, or want
-          to back India&rsquo;s highway EV infrastructure &mdash; tell us a bit more below, and
-          our team will follow up directly.
+          Whether you operate a fleet, own a strategic site, run a commercial destination or want
+          to explore a strategic relationship, choose the path that best describes you.
         </p>
       </PageIntro>
 
