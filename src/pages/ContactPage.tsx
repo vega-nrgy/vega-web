@@ -15,16 +15,17 @@ export function ContactPage() {
 
   return (
     <>
-      <PageIntro eyebrow="CONTACT" heading="Let's talk.">
+      <PageIntro eyebrow="CONTACT" heading="Talk to Vega Charge.">
         <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted">
-          Driver support, press, or a general question &mdash; we&rsquo;d love
-          to hear from you.
+          For driver support, general enquiries, media or corporate questions,
+          contact our team below. For fleet, site or commercial partnerships, use
+          the dedicated partner form so we can route your enquiry to the right team.
         </p>
 
         <div className="mt-9 flex flex-wrap items-center justify-between gap-6 rounded-card border border-hairline bg-white p-7">
           <div>
             <p className="font-display text-lg font-semibold text-ink">
-              Fleet, site, or investor enquiry?
+              Fleet, site, commercial, or investor enquiry?
             </p>
             <p className="mt-1.5 max-w-md text-[13.5px] leading-relaxed text-muted">
               Those go through a dedicated form so our team can follow up with
@@ -33,7 +34,7 @@ export function ContactPage() {
             </p>
           </div>
           <Button href="/partner" variant="mint" size="sm">
-            Let's Grow Together &rarr;
+            Partner With Us &rarr;
           </Button>
         </div>
       </PageIntro>
