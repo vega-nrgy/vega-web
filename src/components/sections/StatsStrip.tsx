@@ -114,13 +114,13 @@ export function StatsStrip() {
     <motion.section
       id="stats"
       aria-label="Station capabilities"
-      className="bg-paper"
+      className="bg-grey-soft"
       variants={reduced ? fadeOnly : staggerChildren(0, 0.1)}
       initial="hidden"
       whileInView="visible"
       viewport={VIEWPORT}
     >
-      <div className="mx-auto max-w-7xl px-6 pt-10 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-4">
           {FACTS.map(({ icon, label }) => (
             <motion.div key={label} variants={item} className="flex flex-col items-center text-center">

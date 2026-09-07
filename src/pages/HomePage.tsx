@@ -2,7 +2,7 @@ import { Hero } from '../components/hero/Hero'
 import { StatsStrip } from '../components/sections/StatsStrip'
 import { NetworkMap } from '../components/sections/NetworkMap'
 import { ProblemStrip } from '../components/sections/ProblemStrip'
-import { ValueProps } from '../components/sections/ValueProps'
+// import { ValueProps } from '../components/sections/ValueProps'
 import { FeaturedStations } from '../components/sections/FeaturedStations'
 import { StationExperience } from '../components/sections/StationExperience'
 import { SolutionsIndex } from '../components/sections/SolutionsIndex'
@@ -29,7 +29,7 @@ export function HomePage() {
       <StatsStrip />
       <NetworkMap />
       <ProblemStrip />
-      <ValueProps />
+      {/* <ValueProps /> */}
       <FeaturedStations />
       <StationExperience />
       <SolutionsIndex />

@@ -37,7 +37,7 @@ export function SolutionsIndex() {
     <motion.section
       id="solutions"
       aria-labelledby="solutions-heading"
-      className="bg-paper"
+      className="bg-grey-soft"
       variants={reduced ? fadeOnly : staggerChildren(0, 0.15)}
       initial="hidden"
       whileInView="visible"
