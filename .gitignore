@@ -33,6 +33,10 @@ dist-ssr
 # dev assets and media
 vega-motion-handoff
 
+# local-only archive of unused/raw source material — see /archive itself
+# for what's in there and why it was pulled out of tracking
+/archive
+
 # extracted render candidates — staged for review, not all committed;
 # un-ignore individual files below once they're actually wired into the site
 public/media/renders/*
