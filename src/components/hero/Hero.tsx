@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Button } from "../ui/Button";
 import { fadeOnly, fadeUp, staggerChildren } from "../../lib/variants";
-import { HeroVideo } from "./HeroVideo";
+import { HeroKenBurns } from "./HeroKenBurns";
 import { hasLoaderPlayed, LOADER_DURATION_MS } from "../loader/Loader";
 
 const DAY_IMG = "/media/hero-day.jpg";
@@ -104,7 +104,7 @@ export function Hero() {
     >
       <div className="sticky top-0 h-svh w-full overflow-hidden">
         <div className="absolute inset-0 opacity-55">
-          <HeroVideo />
+          <HeroKenBurns />
         </div>
         <div
           ref={dayLayerRef}
