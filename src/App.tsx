@@ -11,6 +11,8 @@ import { PartnerPage } from './pages/PartnerPage'
 import { BlogPage } from './pages/BlogPage'
 import { BlogPostPage } from './pages/BlogPostPage'
 import { ComingSoonPage } from './pages/ComingSoonPage'
+import { PrivacyPage } from './pages/PrivacyPage'
+import { TermsPage } from './pages/TermsPage'
 
 function App() {
   return (
@@ -34,8 +36,8 @@ function App() {
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/careers" element={<ComingSoonPage title="Careers" path="/careers" />} />
-          <Route path="/privacy" element={<ComingSoonPage title="Privacy Policy" path="/privacy" />} />
-          <Route path="/terms" element={<ComingSoonPage title="Terms of Use" path="/terms" />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
         </Routes>
       </main>
       <Footer />
