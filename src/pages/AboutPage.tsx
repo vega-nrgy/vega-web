@@ -4,7 +4,7 @@ import { Section } from "../components/ui/Section";
 import { OurStory } from "../components/sections/about/OurStory";
 import { VisionMission } from "../components/sections/about/VisionMission";
 // import { BrandDistinction } from "../components/sections/about/BrandDistinction";
-import { Team } from "../components/sections/about/Team";
+// import { Team } from "../components/sections/about/Team";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 export function AboutPage() {
@@ -38,7 +38,8 @@ export function AboutPage() {
       <OurStory />
       <VisionMission />
       {/* <BrandDistinction /> */}
-      <Team />
+      {/* <Team /> — placeholder-only (no approved founder photos/bios yet);
+          hidden per audit doc rather than shipping "Title & bio to follow" */}
 
       <Section
         id="about-cta"
