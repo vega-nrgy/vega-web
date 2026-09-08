@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Button } from "../ui/Button";
 import { fadeOnly, fadeUp, staggerChildren } from "../../lib/variants";
@@ -22,47 +22,23 @@ const CLIP_HIDDEN = "polygon(0 0,0 0,0 100%,0 100%)";
 // const WIPE_AT = 0.45;
 // const DAY_IN_AT = 0.55;
 
-/* Types `text` out one character at a time. Disabled (enabled=false) shows
-   the full string immediately, e.g. for prefers-reduced-motion. */
-function useTypewriter(
-  text: string,
-  { speed = 45, startDelay = 500, enabled = true } = {},
-) {
-  const [count, setCount] = useState(enabled ? 0 : text.length);
-
-  useEffect(() => {
-    if (!enabled) {
-      setCount(text.length);
-      return;
-    }
-    setCount(0);
-    let i = 0;
-    let stepTimer: ReturnType<typeof setTimeout>;
-    const step = () => {
-      i += 1;
-      setCount(i);
-      if (i < text.length) stepTimer = setTimeout(step, speed);
-    };
-    const startTimer = setTimeout(step, startDelay);
-    return () => {
-      clearTimeout(startTimer);
-      clearTimeout(stepTimer);
-    };
-  }, [text, speed, startDelay, enabled]);
-
-  return { typed: text.slice(0, count), done: count >= text.length };
-}
-
 /* Scroll-pinned night -> day wipe. Night = the live hero video (unchanged
    copy/CTAs). Day resolves into the About page intro (see PageIntro in
-   AboutPage.tsx) as the diagonal wipe reveals a daylight station shot. */
+   AboutPage.tsx) as the diagonal wipe reveals a daylight station shot.
+
+   The headline used to type itself out character-by-character. Dropped —
+   the post-build prerender step (scripts/prerender.mjs) snapshots each
+   route on `networkidle`, which fires before the typewriter's startDelay
+   even elapses, so crawlers/link-unfurlers were getting a static HTML
+   snapshot with an empty headline (just a bare blinking-cursor span, no
+   text). A static heading renders correctly in that snapshot every time. */
 export function Hero() {
   const reduced = useReducedMotion();
   const item = reduced ? fadeOnly : fadeUp;
-  const { typed, done: typingDone } = useTypewriter(HEADLINE, {
-    enabled: !reduced,
-    startDelay: hasLoaderPlayed ? undefined : LOADER_DURATION_MS + 200,
-  });
+  // First homepage visit: the full-screen loader (see loader/Loader.tsx)
+  // covers the page for LOADER_DURATION_MS, so hold the entrance stagger
+  // until it's gone instead of animating in underneath it.
+  const delayChildren = (hasLoaderPlayed ? 0 : LOADER_DURATION_MS / 1000) + 0.35;
 
   const pinRef = useRef<HTMLElement>(null);
   const dayLayerRef = useRef<HTMLDivElement>(null);
@@ -122,7 +98,7 @@ export function Hero() {
         >
           <motion.div
             className="max-w-2xl"
-            variants={staggerChildren(0.35, 0.18)}
+            variants={staggerChildren(delayChildren, 0.18)}
             initial="hidden"
             animate="visible"
           >
@@ -132,22 +108,15 @@ export function Hero() {
             >
               INDIA&rsquo;S HIGHWAY EV CHARGING NETWORK
             </motion.p>
-            <h1
+            <motion.h1
               id="hero-heading"
+              variants={item}
               className="mt-5 font-avapore text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-white sm:text-5xl"
             >
-              <span className="sr-only">{HEADLINE}</span>
-              <span className="block" aria-hidden="true">
-                {typed.slice(0, FIRST_LINE_LEN)}
-                {typed.length > FIRST_LINE_LEN && <br />}
-                {typed.slice(FIRST_LINE_LEN + 1)}
-                <span
-                  className={`ml-1 inline-block h-[0.85em] w-[3px] translate-y-[0.08em] bg-mint align-middle motion-reduce:hidden ${
-                    typingDone ? "opacity-0" : "animate-pulse"
-                  }`}
-                />
-              </span>
-            </h1>
+              {HEADLINE.slice(0, FIRST_LINE_LEN)}
+              <br />
+              {HEADLINE.slice(FIRST_LINE_LEN + 1)}
+            </motion.h1>
             <motion.p
               variants={item}
               className="mt-6 max-w-lg font-display text-lg leading-relaxed text-onink"
