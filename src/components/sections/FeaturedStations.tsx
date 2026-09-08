@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
-import { motion, useReducedMotion, type Variants } from 'motion/react'
-import { Button } from '../ui/Button'
-import { useIsDesktop } from '../../hooks/useIsDesktop'
-import { EASE_OUT } from '../../lib/variants'
-import { getStationBySlug } from '../../lib/stations'
+import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
+import { Button } from "../ui/Button";
+import { useIsDesktop } from "../../hooks/useIsDesktop";
+import { EASE_OUT } from "../../lib/variants";
+import { getStationBySlug } from "../../lib/stations";
 
 /* Corridor-preview and flagship-station card designs — commented out in
    favour of the big-image station list below, kept here in case we want to
@@ -203,16 +203,16 @@ function FlagshipCard() {
 */
 
 type Station = {
-  id: string
-  slug: string
-  name: string
-  corridor: string
-  description: string
-  specs: string
-  status: string
-  flagship?: boolean
-  image: string
-}
+  id: string;
+  slug: string;
+  name: string;
+  corridor: string;
+  description: string;
+  specs: string;
+  status: string;
+  flagship?: boolean;
+  image: string;
+};
 
 /* Station ID, name, corridor and charger specs are pulled from
    src/lib/stations.ts (the single source of truth) rather than
@@ -227,68 +227,95 @@ type Station = {
    Images are all from the single Narketpally render set (pages 4-24 of
    the source PDF — see public/media/renders/) reused across all three
    cards, since renders don't yet exist per-station. */
-const FEATURED: { slug: string; description: string; flagship?: boolean; image: string }[] = [
+const FEATURED: {
+  slug: string;
+  description: string;
+  flagship?: boolean;
+  image: string;
+}[] = [
   {
-    slug: 'narketpally',
+    slug: "narketpally",
     description:
-      'Midway between Hyderabad and the AP border, on one of Telangana’s busiest freight and passenger corridors.',
+      "Midway between Hyderabad and the AP border, on one of Telangana’s busiest freight and passenger corridors.",
     flagship: true,
-    image: '/media/renders/narketpally-render-p08.jpeg',
+    image: "/media/renders/narketpally-render-p08.jpeg",
   },
   {
-    slug: 'pillalamarri',
-    description: 'The Vijayawada-bound leg of the NH-65 corridor, serving inter-city freight and passenger traffic.',
-    image: '/media/renders/narketpally-render-p11.jpeg',
+    slug: "pillalamarri",
+    description:
+      "The Vijayawada-bound leg of the NH-65 corridor, serving inter-city freight and passenger traffic.",
+    image: "/media/renders/narketpally-render-p11.jpeg",
   },
   {
-    slug: 'tallampadu',
-    description: 'Roughly midway on the Khammam corridor, built for the long freight and passenger haul to Vizag.',
-    image: '/media/renders/narketpally-render-p09.jpeg',
+    slug: "tallampadu",
+    description:
+      "Roughly midway on the Khammam corridor, built for the long freight and passenger haul to Vizag.",
+    image: "/media/renders/narketpally-render-p09.jpeg",
   },
-]
+];
 
 const STATIONS: Station[] = FEATURED.map((f) => {
-  const station = getStationBySlug(f.slug)!
+  const station = getStationBySlug(f.slug)!;
   return {
     id: station.id,
     slug: f.slug,
     name: station.name,
     corridor: station.corridor,
     description: f.description,
-    specs: `${station.chargers} · ${station.standards.join(' · ')}`,
-    status: 'Coming soon — site secured',
+    specs: `${station.chargers} · ${station.standards.join(" · ")}`,
+    status: "Coming soon — site secured",
     flagship: f.flagship,
     image: f.image,
-  }
-})
+  };
+});
 
-const PANEL_COUNT = STATIONS.length + 2
-const AUTOPLAY_MS = 5500
+const PANEL_COUNT = STATIONS.length + 2;
+const AUTOPLAY_MS = 5500;
 
 /* Intro-reveal timing for the title slide's h2 -> description -> "Explore
    our stations" stagger. INTRO_LOCK_MS mirrors the entrance animation's own
    duration/easing so the computed lock time actually matches how long the
    animation takes to settle. The exit ("vanish") stagger reuses the same
    interval but plays faster and in reverse (last-in, first-out). */
-const INTRO_DELAY_CHILDREN = 0.15
-const INTRO_STAGGER = 0.25
-const INTRO_ITEM_DURATION = 0.7
-const EXIT_ITEM_DURATION = 0.4
-const INTRO_STEPS = 3
+const INTRO_DELAY_CHILDREN = 0.15;
+const INTRO_STAGGER = 0.25;
+const INTRO_ITEM_DURATION = 0.7;
+const EXIT_ITEM_DURATION = 0.4;
+const INTRO_STEPS = 3;
 const INTRO_LOCK_MS =
-  Math.round((INTRO_DELAY_CHILDREN + (INTRO_STEPS - 1) * INTRO_STAGGER + INTRO_ITEM_DURATION) * 1000) + 150
+  Math.round(
+    (INTRO_DELAY_CHILDREN +
+      (INTRO_STEPS - 1) * INTRO_STAGGER +
+      INTRO_ITEM_DURATION) *
+      1000,
+  ) + 150;
 
 const introContainer: Variants = {
-  hidden: { transition: { staggerChildren: INTRO_STAGGER, staggerDirection: -1 } },
-  visible: { transition: { delayChildren: INTRO_DELAY_CHILDREN, staggerChildren: INTRO_STAGGER } },
-}
+  hidden: {
+    transition: { staggerChildren: INTRO_STAGGER, staggerDirection: -1 },
+  },
+  visible: {
+    transition: {
+      delayChildren: INTRO_DELAY_CHILDREN,
+      staggerChildren: INTRO_STAGGER,
+    },
+  },
+};
 
 const introItem: Variants = {
-  hidden: { opacity: 0, y: 28, transition: { duration: EXIT_ITEM_DURATION, ease: EASE_OUT } },
-  visible: { opacity: 1, y: 0, transition: { duration: INTRO_ITEM_DURATION, ease: EASE_OUT } },
-}
+  hidden: {
+    opacity: 0,
+    y: 28,
+    transition: { duration: EXIT_ITEM_DURATION, ease: EASE_OUT },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: INTRO_ITEM_DURATION, ease: EASE_OUT },
+  },
+};
 
-type IntroPhase = 'idle' | 'entering' | 'played'
+type IntroPhase = "idle" | "entering" | "played";
 
 /* Self-contained full-viewport carousel: a title panel, three station cards
    (big image + subtitle, charger config, status), and a closing stat/CTA
@@ -306,65 +333,69 @@ type IntroPhase = 'idle' | 'entering' | 'played'
    restarts the interval from a full AUTOPLAY_MS. Reduced motion (and
    non-desktop) gets everything stacked statically instead, with no intro. */
 export function FeaturedStations() {
-  const reduced = useReducedMotion()
-  const isDesktop = useIsDesktop()
-  const sectionRef = useRef<HTMLElement>(null)
-  const wasInsideRef = useRef(false)
-  const [index, setIndex] = useState(0)
-  const [paused, setPaused] = useState(false)
-  const [inView, setInView] = useState(false)
-  const [phase, setPhase] = useState<IntroPhase>('idle')
+  const reduced = useReducedMotion();
+  const isDesktop = useIsDesktop();
+  const sectionRef = useRef<HTMLElement>(null);
+  const wasInsideRef = useRef(false);
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [inView, setInView] = useState(false);
+  const [phase, setPhase] = useState<IntroPhase>("idle");
 
   useEffect(() => {
-    if (reduced || !isDesktop) return
-    const el = sectionRef.current
-    if (!el) return
+    if (reduced || !isDesktop) return;
+    const el = sectionRef.current;
+    if (!el) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setInView(entry.isIntersecting)
+        setInView(entry.isIntersecting);
         if (entry.isIntersecting) {
           if (!wasInsideRef.current) {
-            wasInsideRef.current = true
-            setIndex(0)
-            setPhase('entering')
+            wasInsideRef.current = true;
+            setIndex(0);
+            setPhase("entering");
           }
         } else if (wasInsideRef.current) {
-          wasInsideRef.current = false
-          setPhase('idle')
+          wasInsideRef.current = false;
+          setPhase("idle");
         }
       },
       { threshold: 0.6 },
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [reduced, isDesktop])
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [reduced, isDesktop]);
 
   useEffect(() => {
-    if (phase !== 'entering') return
+    if (phase !== "entering") return;
 
-    const id = window.setTimeout(() => setPhase('played'), INTRO_LOCK_MS)
-    return () => window.clearTimeout(id)
-  }, [phase])
+    const id = window.setTimeout(() => setPhase("played"), INTRO_LOCK_MS);
+    return () => window.clearTimeout(id);
+  }, [phase]);
 
   useEffect(() => {
-    if (reduced || !isDesktop || paused || !inView || phase !== 'played') return
+    if (reduced || !isDesktop || paused || !inView || phase !== "played")
+      return;
 
     const id = window.setInterval(() => {
-      setIndex((prev) => (prev + 1) % PANEL_COUNT)
-    }, AUTOPLAY_MS)
+      setIndex((prev) => (prev + 1) % PANEL_COUNT);
+    }, AUTOPLAY_MS);
 
-    return () => window.clearInterval(id)
-  }, [reduced, isDesktop, paused, inView, phase, index])
+    return () => window.clearInterval(id);
+  }, [reduced, isDesktop, paused, inView, phase, index]);
 
   function goTo(next: number) {
-    setIndex(((next % PANEL_COUNT) + PANEL_COUNT) % PANEL_COUNT)
+    setIndex(((next % PANEL_COUNT) + PANEL_COUNT) % PANEL_COUNT);
   }
 
   const header = (
     <>
       {/* <p className="chapter-label border-t border-hairline pt-4.5">04 &mdash; FEATURED STATIONS</p> */}
-      <h2 id="featured-stations-heading" className="mt-7 font-avapore text-4xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
+      <h2
+        id="featured-stations-heading"
+        className="mt-7 font-avapore text-4xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl"
+      >
         Where we're building.
       </h2>
       <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
@@ -372,7 +403,7 @@ export function FeaturedStations() {
         Telangana and Andhra Pradesh.
       </p>
     </>
-  )
+  );
 
   // Carousel-only title slide: same copy as `header`, revealed in series on
   // entry (h2, description, "Explore our stations") and reversed on exit —
@@ -382,15 +413,23 @@ export function FeaturedStations() {
       className="max-w-xl"
       variants={introContainer}
       initial="hidden"
-      animate={phase === 'idle' ? 'hidden' : 'visible'}
+      animate={phase === "idle" ? "hidden" : "visible"}
     >
       <motion.div variants={introItem}>
-        {/* <p className="chapter-label border-t border-hairline pt-4.5">04 &mdash; FEATURED STATIONS</p> */}
-        <h2 id="featured-stations-heading" className="mt-7 font-avapore text-4xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl">
+        <p className="chapter-label border-t border-hairline pt-4.5">
+          {/* 04 &mdash;*/} FEATURED STATIONS
+        </p>
+        <h2
+          id="featured-stations-heading"
+          className="mt-7 font-avapore text-4xl font-semibold tracking-[-0.03em] text-ink sm:text-5xl"
+        >
           Where we're building.
         </h2>
       </motion.div>
-      <motion.p variants={introItem} className="mt-4 max-w-xl text-base leading-relaxed text-muted">
+      <motion.p
+        variants={introItem}
+        className="mt-4 max-w-xl text-base leading-relaxed text-muted"
+      >
         Building a dependable highway charging network &mdash; starting with
         Telangana and Andhra Pradesh.
       </motion.p>
@@ -398,7 +437,7 @@ export function FeaturedStations() {
         Explore our stations &rarr;
       </motion.p>
     </motion.div>
-  )
+  );
 
   const stationCard = (s: Station) => (
     <div className="w-full max-w-2xl">
@@ -415,22 +454,32 @@ export function FeaturedStations() {
         )}
       </div>
       <div className="mt-6 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-        <h3 className="font-avapore text-2xl font-semibold text-ink">{s.name}</h3>
+        <h3 className="font-avapore text-2xl font-semibold text-ink">
+          {s.name}
+        </h3>
         <span className="flex shrink-0 items-center gap-1.5">
-          <span className={`h-1.5 w-1.5 rounded-full bg-mint ${s.flagship ? 'animate-live-pulse' : ''}`} />
-          <span className="font-mono text-[10px] tracking-[0.08em] text-mint-deep">{s.status}</span>
+          <span
+            className={`h-1.5 w-1.5 rounded-full bg-mint ${s.flagship ? "animate-live-pulse" : ""}`}
+          />
+          <span className="font-mono text-[10px] tracking-[0.08em] text-mint-deep">
+            {s.status}
+          </span>
         </span>
       </div>
       <p className="mt-1 font-mono text-[10px] tracking-[0.1em] text-muted-onink">
         {s.id} &middot; {s.corridor}
       </p>
-      <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted">{s.description}</p>
-      <p className="mt-2 font-mono text-[11px] tracking-[0.08em] text-mint-deep">{s.specs}</p>
+      <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted">
+        {s.description}
+      </p>
+      <p className="mt-2 font-mono text-[11px] tracking-[0.08em] text-mint-deep">
+        {s.specs}
+      </p>
       <Button href="/network" variant="link" className="mt-3">
         View Station &rarr;
       </Button>
     </div>
-  )
+  );
 
   const ctaCard = (
     <div className="relative w-full max-w-md overflow-hidden rounded-card bg-ink p-10 text-center">
@@ -438,22 +487,29 @@ export function FeaturedStations() {
         className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-mint to-transparent"
         aria-hidden="true"
       />
-      <p className="font-mono text-[9.5px] tracking-[0.14em] text-mint">2 CORRIDORS &middot; 5 STATIONS PLANNED</p>
+      <p className="font-mono text-[9.5px] tracking-[0.14em] text-mint">
+        2 CORRIDORS &middot; 5 STATIONS PLANNED
+      </p>
       <p className="mt-5 font-display text-3xl font-semibold leading-[1.15] tracking-[-0.02em] text-white">
         One growing network, built one corridor at a time.
       </p>
       <p className="mt-4 text-[13.5px] leading-relaxed text-muted-onink">
-        Telangana and Andhra Pradesh today &mdash; India&rsquo;s highway corridors next.
+        Telangana and Andhra Pradesh today &mdash; India&rsquo;s highway
+        corridors next.
       </p>
       <Button href="/network" variant="mint" className="mt-7">
         Explore the network &rarr;
       </Button>
     </div>
-  )
+  );
 
   if (reduced || !isDesktop) {
     return (
-      <section id="featured-stations" aria-labelledby="featured-stations-heading" className="bg-paper">
+      <section
+        id="featured-stations"
+        aria-labelledby="featured-stations-heading"
+        className="bg-paper"
+      >
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
           <div>{header}</div>
           <div className="mt-9 flex flex-col gap-16">
@@ -464,7 +520,7 @@ export function FeaturedStations() {
           <div className="mt-16 flex justify-center">{ctaCard}</div>
         </div>
       </section>
-    )
+    );
   }
 
   return (
@@ -489,7 +545,10 @@ export function FeaturedStations() {
         </div>
 
         {STATIONS.map((s) => (
-          <div key={s.name} className="flex h-full w-screen shrink-0 items-center justify-center px-6 pb-16 pt-24 lg:px-8">
+          <div
+            key={s.name}
+            className="flex h-full w-screen shrink-0 items-center justify-center px-6 pb-16 pt-24 lg:px-8"
+          >
             {stationCard(s)}
           </div>
         ))}
@@ -513,8 +572,8 @@ export function FeaturedStations() {
         aria-label="Next"
         className={`absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border backdrop-blur transition-colors lg:right-8 ${
           index === 0
-            ? 'animate-live-pulse border-mint bg-mint text-ink hover:bg-mint-bright'
-            : 'border-hairline bg-white/80 text-ink hover:bg-white'
+            ? "animate-live-pulse border-mint bg-mint text-ink hover:bg-mint-bright"
+            : "border-hairline bg-white/80 text-ink hover:bg-white"
         }`}
       >
         &rarr;
@@ -529,11 +588,13 @@ export function FeaturedStations() {
             aria-label={`Go to slide ${i + 1} of ${PANEL_COUNT}`}
             aria-current={i === index}
             className={`h-1.5 w-1.5 rounded-full bg-ink transition-all duration-300 ${
-              i === index ? 'scale-[1.3] opacity-100' : 'opacity-35 hover:opacity-60'
+              i === index
+                ? "scale-[1.3] opacity-100"
+                : "opacity-35 hover:opacity-60"
             }`}
           />
         ))}
       </div>
     </section>
-  )
+  );
 }
