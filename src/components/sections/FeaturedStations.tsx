@@ -361,7 +361,7 @@ export function FeaturedStations() {
           setPhase("idle");
         }
       },
-      { threshold: 0.6 },
+      { threshold: 0.01 },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -440,12 +440,12 @@ export function FeaturedStations() {
   );
 
   const stationCard = (s: Station) => (
-    <div className="w-full max-w-2xl">
+    <div className="w-full max-w-3xl">
       <div className="relative overflow-hidden rounded-media">
         <img
           src={s.image}
           alt={`${s.name} charging station canopy render`}
-          className="aspect-[670/460] w-full object-cover"
+          className="h-[340px] w-full object-cover"
         />
         {s.flagship && (
           <span className="absolute left-4 top-4 rounded-full bg-mint px-3 py-1 font-mono text-[9px] font-semibold tracking-[0.1em] text-ink">
@@ -482,7 +482,7 @@ export function FeaturedStations() {
   );
 
   const ctaCard = (
-    <div className="relative w-full max-w-md overflow-hidden rounded-card bg-ink p-10 text-center">
+    <div className="relative w-full max-w-xl overflow-hidden rounded-card bg-ink p-10 text-center">
       <div
         className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-mint to-transparent"
         aria-hidden="true"
@@ -528,7 +528,7 @@ export function FeaturedStations() {
       id="featured-stations"
       ref={sectionRef}
       aria-labelledby="featured-stations-heading"
-      className="relative h-svh w-full overflow-hidden bg-paper"
+      className="relative h-[80svh] w-full overflow-hidden bg-paper"
       role="region"
       aria-roledescription="carousel"
       onMouseEnter={() => setPaused(true)}
