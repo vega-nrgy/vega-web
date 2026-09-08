@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react'
-import { fadeOnly, fadeUp, staggerChildren, VIEWPORT } from '../../lib/variants'
+import { fadeOnly, fadeUp, staggerChildren } from '../../lib/variants'
+import { useReplayInView } from '../../hooks/useReplayInView'
 import { Button } from '../ui/Button'
 
 /* Content ported from "Homepage Sections 07-11.dc.html" (design canvas,
@@ -31,16 +32,17 @@ const FLEET_POINTS = [
 export function FleetPartnership() {
   const reduced = useReducedMotion()
   const item = reduced ? fadeOnly : fadeUp
+  const { ref, inView } = useReplayInView<HTMLElement>()
 
   return (
     <motion.section
+      ref={ref}
       id="fleet-partners"
       aria-labelledby="fleet-partners-heading"
       className="relative bg-ink"
       variants={reduced ? fadeOnly : staggerChildren(0, 0.15)}
       initial="hidden"
-      whileInView="visible"
-      viewport={VIEWPORT}
+      animate={inView ? 'visible' : 'hidden'}
     >
       <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-mint to-transparent" aria-hidden="true" />
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-8">

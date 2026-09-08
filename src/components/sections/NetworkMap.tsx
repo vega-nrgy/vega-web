@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react'
-import { fadeOnly, fadeUp, staggerChildren, VIEWPORT } from '../../lib/variants'
+import { fadeOnly, fadeUp, staggerChildren } from '../../lib/variants'
+import { useReplayInView } from '../../hooks/useReplayInView'
 import { Button } from '../ui/Button'
 import { StationMap } from './network/StationMap'
 
@@ -34,16 +35,17 @@ const STATUS_LEGEND = [
 export function NetworkMap() {
   const reduced = useReducedMotion()
   const item = reduced ? fadeOnly : fadeUp
+  const { ref, inView } = useReplayInView<HTMLElement>()
 
   return (
     <motion.section
+      ref={ref}
       id="network"
       aria-labelledby="network-heading"
       className="bg-paper"
       variants={reduced ? fadeOnly : staggerChildren(0, 0.15)}
       initial="hidden"
-      whileInView="visible"
-      viewport={VIEWPORT}
+      animate={inView ? 'visible' : 'hidden'}
     >
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
         {/* <motion.p variants={item} className="chapter-label border-t border-hairline pt-4.5">

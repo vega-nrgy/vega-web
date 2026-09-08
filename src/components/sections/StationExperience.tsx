@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react'
-import { fadeOnly, fadeUp, staggerChildren, VIEWPORT } from '../../lib/variants'
+import { fadeOnly, fadeUp, staggerChildren } from '../../lib/variants'
+import { useReplayInView } from '../../hooks/useReplayInView'
 
 /* Doc's Section 7 amenity framework (Eat/Rest/Refresh/Shop/Family), used
    in place of the old flat pill labels — pairs with the body copy below,
@@ -14,16 +15,17 @@ const AMENITIES = ['Eat', 'Rest', 'Refresh', 'Shop', 'Family']
 export function StationExperience() {
   const reduced = useReducedMotion()
   const item = reduced ? fadeOnly : fadeUp
+  const { ref, inView } = useReplayInView<HTMLElement>()
 
   return (
     <motion.section
+      ref={ref}
       id="experience"
       aria-labelledby="experience-heading"
       className="relative mt-30 overflow-hidden bg-ink"
       variants={reduced ? fadeOnly : staggerChildren(0, 0.15)}
       initial="hidden"
-      whileInView="visible"
-      viewport={VIEWPORT}
+      animate={inView ? 'visible' : 'hidden'}
     >
       <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-mint to-transparent" aria-hidden="true" />
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">

@@ -1,6 +1,11 @@
-import type { ReactNode } from 'react'
-import { motion, useReducedMotion } from 'motion/react'
-import { fadeOnly, fadeUp, staggerChildren, VIEWPORT } from '../../lib/variants'
+import type { ReactNode } from "react";
+import { motion, useReducedMotion } from "motion/react";
+import {
+  fadeOnly,
+  fadeUp,
+  staggerChildren,
+} from "../../lib/variants";
+import { useReplayInView } from "../../hooks/useReplayInView";
 
 function BoltIcon() {
   return (
@@ -16,7 +21,7 @@ function BoltIcon() {
     >
       <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" />
     </svg>
-  )
+  );
 }
 
 function SignalIcon() {
@@ -35,7 +40,7 @@ function SignalIcon() {
       <path d="M8 15.5a5.5 5.5 0 0 1 8 0" />
       <path d="M5 12a9 9 0 0 1 14 0" />
     </svg>
-  )
+  );
 }
 
 function PinIcon() {
@@ -53,7 +58,7 @@ function PinIcon() {
       <path d="M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z" />
       <circle cx="12" cy="9" r="2.3" />
     </svg>
-  )
+  );
 }
 
 function FleetIcon() {
@@ -90,7 +95,7 @@ function FleetIcon() {
         <circle cx="16" cy="14.3" r="1.3" />
       </svg>
     </span>
-  )
+  );
 }
 
 /* Website audit §"Proof strip": until live operational metrics exist
@@ -100,36 +105,45 @@ function FleetIcon() {
    Passenger + fleet ready" — used near-verbatim below, with the first item
    made concrete using the finalized 120/240 kW charger config. */
 const FACTS: { icon: ReactNode; label: string }[] = [
-  { icon: <BoltIcon />, label: '120–240 kW DC charging' },
-  { icon: <SignalIcon />, label: '24×7 monitored operations' },
-  { icon: <PinIcon />, label: 'Highway-first locations' },
-  { icon: <FleetIcon />, label: 'Passenger + fleet ready' },
-]
+  { icon: <BoltIcon />, label: "120–240 kW DC charging" },
+  { icon: <SignalIcon />, label: "24×7 monitored operations" },
+  { icon: <PinIcon />, label: "Highway-first locations" },
+  { icon: <FleetIcon />, label: "Passenger + fleet ready" },
+];
 
 export function StatsStrip() {
-  const reduced = useReducedMotion()
-  const item = reduced ? fadeOnly : fadeUp
+  const reduced = useReducedMotion();
+  const item = reduced ? fadeOnly : fadeUp;
+  const { ref, inView } = useReplayInView<HTMLElement>();
 
   return (
     <motion.section
+      ref={ref}
       id="stats"
       aria-label="Station capabilities"
       className="bg-grey-soft"
       variants={reduced ? fadeOnly : staggerChildren(0, 0.1)}
       initial="hidden"
-      whileInView="visible"
-      viewport={VIEWPORT}
+      animate={inView ? "visible" : "hidden"}
     >
-      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-4">
           {FACTS.map(({ icon, label }) => (
-            <motion.div key={label} variants={item} className="flex flex-col items-center text-center">
-              <span className="flex h-11 items-center justify-center text-mint-deep sm:h-12">{icon}</span>
-              <p className="mt-4 max-w-[9.5rem] font-display text-sm font-semibold text-ink sm:text-base">{label}</p>
+            <motion.div
+              key={label}
+              variants={item}
+              className="flex flex-col items-center text-center"
+            >
+              <span className="flex h-11 items-center justify-center text-mint-deep sm:h-12">
+                {icon}
+              </span>
+              <p className="mt-4 max-w-[9.5rem] font-display text-sm font-semibold text-ink sm:text-base">
+                {label}
+              </p>
             </motion.div>
           ))}
         </div>
       </div>
     </motion.section>
-  )
+  );
 }

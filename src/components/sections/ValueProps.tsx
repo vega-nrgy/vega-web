@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react'
-import { fadeOnly, fadeUp, staggerChildren, VIEWPORT } from '../../lib/variants'
+import { fadeOnly, fadeUp, staggerChildren } from '../../lib/variants'
+import { useReplayInView } from '../../hooks/useReplayInView'
 
 const CARD_HOVER =
   'transition-[opacity,transform,box-shadow] duration-500 ease-out hover:-translate-y-0.5 hover:shadow-lift'
@@ -11,16 +12,18 @@ const CARD_HOVER =
 export function ValueProps() {
   const reduced = useReducedMotion()
   const item = reduced ? fadeOnly : fadeUp
+  const { ref, inView } = useReplayInView<HTMLElement>()
+  const { ref: fastRef, inView: fastInView } = useReplayInView<HTMLSpanElement>()
 
   return (
     <motion.section
+      ref={ref}
       id="why"
       aria-labelledby="why-heading"
       className="bg-paper"
       variants={reduced ? fadeOnly : staggerChildren(0, 0.15)}
       initial="hidden"
-      whileInView="visible"
-      viewport={VIEWPORT}
+      animate={inView ? 'visible' : 'hidden'}
     >
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
         {/* <motion.p variants={item} className="chapter-label border-t border-hairline pt-4.5">
@@ -38,10 +41,10 @@ export function ValueProps() {
               <h3 className="font-avapore text-3xl font-semibold tracking-[-0.025em] text-ink">
                 <span className="inline-block">Fast.</span>{' '}
                 <motion.span
+                  ref={fastRef}
                   className="inline-block text-mint-deep"
                   initial={reduced ? undefined : { opacity: 0 }}
-                  whileInView={reduced ? undefined : { opacity: 1 }}
-                  viewport={VIEWPORT}
+                  animate={reduced ? undefined : { opacity: fastInView ? 1 : 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                 >
                   Really fast.
