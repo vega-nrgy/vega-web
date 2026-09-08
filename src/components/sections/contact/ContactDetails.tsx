@@ -22,6 +22,11 @@ function PinIcon() {
   )
 }
 
+/* Audit doc recommends splitting this into scalable functional inboxes
+   once they exist — admin@ (general), support@ (drivers), fleet@,
+   partnerships@ — plus a central business number in place of the two
+   personal founder numbers below. Swap in as each address/number is
+   actually registered; don't link one that doesn't receive mail yet. */
 export function ContactDetails() {
   return (
     <div className="grid gap-12 border-t border-hairline pt-10 sm:grid-cols-3">

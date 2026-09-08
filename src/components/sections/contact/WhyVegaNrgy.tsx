@@ -1,8 +1,8 @@
 const ITEMS = [
   {
     index: '01',
-    title: 'Reliable & well-connected network',
-    body: 'Always on, always connected — a network you can count on, every journey.',
+    title: 'Designed for dependable operations',
+    body: 'Connected monitoring, preventive maintenance and operational support designed around network reliability.',
   },
   {
     index: '02',
