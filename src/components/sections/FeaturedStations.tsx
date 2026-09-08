@@ -361,7 +361,7 @@ export function FeaturedStations() {
           setPhase("idle");
         }
       },
-      { threshold: 0.01 },
+      { threshold: 0.001 },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -528,7 +528,7 @@ export function FeaturedStations() {
       id="featured-stations"
       ref={sectionRef}
       aria-labelledby="featured-stations-heading"
-      className="relative h-[80svh] w-full overflow-hidden bg-paper"
+      className="relative h-[90svh] w-full overflow-hidden bg-paper"
       role="region"
       aria-roledescription="carousel"
       onMouseEnter={() => setPaused(true)}
@@ -540,14 +540,14 @@ export function FeaturedStations() {
         className="flex h-full w-full transition-transform duration-700 ease-in-out will-change-transform"
         style={{ transform: `translate3d(-${index * 100}vw, 0, 0)` }}
       >
-        <div className="flex h-full w-screen shrink-0 flex-col items-center justify-center px-6 pb-16 pt-24 text-center lg:px-8">
+        <div className="flex h-full w-screen shrink-0 flex-col items-center justify-center px-6 pb-24 pt-24 text-center lg:px-8">
           {headerPanel}
         </div>
 
         {STATIONS.map((s) => (
           <div
             key={s.name}
-            className="flex h-full w-screen shrink-0 items-center justify-center px-6 pb-16 pt-24 lg:px-8"
+            className="flex h-full w-screen shrink-0 items-center justify-center px-6 pb-24 pt-24 lg:px-8"
           >
             {stationCard(s)}
           </div>
