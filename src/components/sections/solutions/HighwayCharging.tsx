@@ -63,8 +63,8 @@ export function HighwayCharging() {
             </ul>
             <p className="mt-4.5 text-[12.5px] leading-relaxed text-muted">
               <strong className="text-ink">Where we are:</strong> NH-65
-              (Vijayawada&ndash;Hyderabad corridor), with rapid expansion
-              underway across India&rsquo;s national highway network.
+              (Vijayawada&ndash;Hyderabad corridor), with expansion planned
+              across additional national highway corridors.
             </p>
             <Button href="/network" variant="ink" className="mt-6">
               Explore Our Network &rarr;
