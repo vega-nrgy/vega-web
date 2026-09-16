@@ -107,7 +107,11 @@ export function Footer() {
             </div>
             <div className="mt-3.5">
               <p className="font-mono text-[9.5px] font-normal uppercase tracking-[0.16em] text-muted">Corporate Office</p>
-              <span className="mt-3.5 block text-[13.5px] leading-relaxed text-onink">Hyderabad, Telangana, India</span>
+              <span className="mt-3.5 block text-[13.5px] leading-relaxed text-onink">
+                Breezy Valley, Tatianaram, Nagole
+                <br />
+                Hyderabad 500068, Telangana, India
+              </span>
             </div>
           </div>
         </div>

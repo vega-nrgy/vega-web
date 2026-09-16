@@ -5,17 +5,25 @@ const STRIPE_STYLE = {
     "repeating-linear-gradient(-45deg, #edf2f3 0 14px, #f3f6f5 14px 28px)",
 } as const;
 
-function FounderCard({ name }: { name: string }) {
+function FounderCard({ name, photo }: { name: string; photo?: string }) {
   return (
     <div className="overflow-hidden rounded-card border border-hairline">
-      <div
-        style={STRIPE_STYLE}
-        className="flex h-60 items-center justify-center"
-      >
-        <span className="font-mono text-[10px] tracking-[0.08em] text-muted">
-          [ founder portrait ]
-        </span>
-      </div>
+      {photo ? (
+        <img
+          src={photo}
+          alt={name}
+          className="h-60 w-full object-cover"
+        />
+      ) : (
+        <div
+          style={STRIPE_STYLE}
+          className="flex h-60 items-center justify-center"
+        >
+          <span className="font-mono text-[10px] tracking-[0.08em] text-muted">
+            [ founder portrait ]
+          </span>
+        </div>
+      )}
       <div className="p-6">
         <p className="font-display text-[17px] font-semibold text-ink">
           {name}
@@ -46,7 +54,7 @@ export function Team() {
           </span>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <FounderCard name="Abhilash Gali" />
+          <FounderCard name="Abhilash Gali" photo="/media/team/abhilash.png" />
           <FounderCard name="Preetham Kanatala" />
           <div className="flex min-h-[200px] items-center justify-center rounded-card border border-dashed border-border">
             <span className="text-[13px] text-muted">
