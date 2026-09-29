@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Avapore";
+  src: url("/fonts/avapore.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Vega Charge — Editorial Corridor: paper base, ink for hero/nav/footer/CTA bands, mint as edge-light only */
   --color-ink: #001819;
@@ -19,7 +27,7 @@
   /* Structural face — H2/H3, nav, buttons, tags, stat numerals. Brand guide (2026): Manrope. */
   --font-display: "Manrope", system-ui, ui-sans-serif, sans-serif;
   /* Hero H1 / 2-5 word statements. Was Avapore — swapped to Manrope, brand guide (2026): legibility. */
-  --font-avapore: "Manrope", system-ui, ui-sans-serif, sans-serif;
+  --font-avapore: "Avapore", system-ui, ui-sans-serif, sans-serif;
   --font-sans: "Manrope", system-ui, ui-sans-serif, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 
@@ -163,9 +171,30 @@
     0 4px 10px rgb(0 24 25 / 0.35);
 }
 
-.vc-dot.pending {
-  background: var(--color-muted-onink);
+.vc-dot.live {
+  background: var(--color-muted);
   box-shadow:
-    0 0 0 2px var(--color-muted-onink),
+    0 0 0 2px var(--color-muted),
+    0 4px 10px rgb(0 24 25 / 0.35);
+}
+
+.vc-dot.pending {
+  background: var(--color-muted);
+  box-shadow:
+    0 0 0 2px var(--color-muted),
+    0 4px 10px rgb(0 24 25 / 0.35);
+}
+
+.vc-dot.underconstruction {
+  background: var(--color-mint-deep);
+  box-shadow:
+    0 0 0 2px var(--color-mint-deep),
+    0 4px 10px rgb(0 24 25 / 0.35);
+}
+
+.vc-dot.comingsoon {
+  background: var(--color-ink-soft);
+  box-shadow:
+    0 0 0 2px var(--color-ink-soft),
     0 4px 10px rgb(0 24 25 / 0.35);
 }

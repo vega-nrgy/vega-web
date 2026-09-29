@@ -38,7 +38,8 @@ export function Hero() {
   // First homepage visit: the full-screen loader (see loader/Loader.tsx)
   // covers the page for LOADER_DURATION_MS, so hold the entrance stagger
   // until it's gone instead of animating in underneath it.
-  const delayChildren = (hasLoaderPlayed ? 0 : LOADER_DURATION_MS / 1000) + 0.35;
+  const delayChildren =
+    (hasLoaderPlayed ? 0 : LOADER_DURATION_MS / 1000) + 0.35;
 
   const pinRef = useRef<HTMLElement>(null);
   const dayLayerRef = useRef<HTMLDivElement>(null);
@@ -111,11 +112,9 @@ export function Hero() {
             <motion.h1
               id="hero-heading"
               variants={item}
-              className="mt-5 font-avapore text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-white sm:text-5xl"
+              className="mt-5 font-avapore text-4xl leading-[1.05] tracking-[-0.02em] text-white sm:text-5xl"
             >
-              {HEADLINE.slice(0, FIRST_LINE_LEN)}
-              <br />
-              {HEADLINE.slice(FIRST_LINE_LEN + 1)}
+              {HEADLINE}
             </motion.h1>
             <motion.p
               variants={item}
@@ -132,7 +131,11 @@ export function Hero() {
               <Button href="/network" variant="mint" className="font-display!">
                 Explore Our Network
               </Button>
-              <Button href="/partner" variant="ghost-onink" className="font-display!">
+              <Button
+                href="/partner"
+                variant="ghost-onink"
+                className="font-display!"
+              >
                 Partner With Vega Charge
               </Button>
             </motion.div>

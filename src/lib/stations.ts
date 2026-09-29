@@ -8,7 +8,7 @@ export type Station = {
   area: string;
   traffic: string;
   launch: string;
-  status: "PLANNING" | "ACQUISITION";
+  status: "LIVE" | "UNDERCONSTRUCTION" | "PLANNING" | "ACQUISITION";
   lat: number;
   lng: number;
   mapUrl: string;
@@ -30,7 +30,7 @@ export const STATIONS: Station[] = [
     area: "2,200 sq. yd · 103 ft frontage",
     traffic: ">40,000 vehicles/day",
     launch: "Opening Q4 2026",
-    status: "PLANNING",
+    status: "UNDERCONSTRUCTION",
     lat: 17.2118425,
     lng: 79.1659196,
     mapUrl: "https://maps.app.goo.gl/2CsNn1Xk1gqEKgeK7",
@@ -108,6 +108,8 @@ export function getStationBySlug(slug: string): Station | undefined {
  * maps to "Planned" — the audit's own definition of PLANNED is "corridor/site
  * under development or acquisition", which is exactly what this status means. */
 export const STATUS_LABEL: Record<Station["status"], string> = {
+  LIVE: "Live",
+  UNDERCONSTRUCTION: "Under Construction",
   PLANNING: "Coming soon",
   ACQUISITION: "Planned",
 };

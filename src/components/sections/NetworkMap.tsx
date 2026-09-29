@@ -1,8 +1,8 @@
-import { motion, useReducedMotion } from 'motion/react'
-import { fadeOnly, fadeUp, staggerChildren } from '../../lib/variants'
-import { useReplayInView } from '../../hooks/useReplayInView'
-import { Button } from '../ui/Button'
-import { StationMap } from './network/StationMap'
+import { motion, useReducedMotion } from "motion/react";
+import { fadeOnly, fadeUp, staggerChildren } from "../../lib/variants";
+import { useReplayInView } from "../../hooks/useReplayInView";
+import { Button } from "../ui/Button";
+import { StationMap } from "./network/StationMap";
 
 /* Content sourced from the website audit doc, Section 3 ("Network map") —
    the audit's "centerpiece of the brand" map: corridor lines, station pins,
@@ -21,11 +21,23 @@ import { StationMap } from './network/StationMap'
    FeaturedStations.tsx.) */
 
 const STATUS_LEGEND = [
-  { label: 'Live', dot: 'bg-mint', body: 'Open to public charging.' },
-  { label: 'Under construction', dot: 'bg-mint-deep', body: 'Civil/electrical works underway.' },
-  { label: 'Coming soon', dot: 'bg-ink-soft', body: 'Site secured and launch planned.' },
-  { label: 'Planned', dot: 'bg-muted', body: 'Corridor/site under development or acquisition.' },
-]
+  { label: "Live", dot: "bg-mint", body: "Open to public charging." },
+  {
+    label: "Under construction",
+    dot: "bg-mint-deep",
+    body: "Civil/electrical works underway.",
+  },
+  {
+    label: "Coming soon",
+    dot: "bg-ink-soft",
+    body: "Site secured and launch planned.",
+  },
+  {
+    label: "Planned",
+    dot: "bg-muted",
+    body: "Corridor/site under development or acquisition.",
+  },
+];
 
 /* Animates in once when the section enters the viewport: chapter label,
    then the map and the content column stagger in side by side, with the
@@ -33,9 +45,9 @@ const STATUS_LEGEND = [
    No scroll-linked progress, no scroll lock — matches the rest of the
    homepage's entrance animation convention. */
 export function NetworkMap() {
-  const reduced = useReducedMotion()
-  const item = reduced ? fadeOnly : fadeUp
-  const { ref, inView } = useReplayInView<HTMLElement>()
+  const reduced = useReducedMotion();
+  const item = reduced ? fadeOnly : fadeUp;
+  const { ref, inView } = useReplayInView<HTMLElement>();
 
   return (
     <motion.section
@@ -45,7 +57,7 @@ export function NetworkMap() {
       className="bg-paper"
       variants={reduced ? fadeOnly : staggerChildren(0, 0.15)}
       initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
+      animate={inView ? "visible" : "hidden"}
     >
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
         {/* <motion.p variants={item} className="chapter-label border-t border-hairline pt-4.5">
@@ -57,7 +69,10 @@ export function NetworkMap() {
             <StationMap heightClass="h-[420px]" />
           </motion.div>
 
-          <motion.div variants={item} className="order-1 flex flex-col lg:order-2 lg:min-h-[420px] lg:justify-between">
+          <motion.div
+            variants={item}
+            className="order-1 flex flex-col lg:order-2 lg:min-h-[420px] lg:justify-between"
+          >
             <div>
               <h2
                 id="network-heading"
@@ -66,17 +81,31 @@ export function NetworkMap() {
                 A highway network, not isolated charge points.
               </h2>
               <p className="mt-5 max-w-md text-base leading-relaxed text-muted">
-                Vega Charge is developing strategically spaced charging hubs across major
-                inter-city corridors, beginning in Telangana and Andhra Pradesh.
+                Vega Charge is developing strategically spaced charging hubs
+                across major inter-city corridors, beginning in Telangana and
+                Andhra Pradesh.
               </p>
 
-              <motion.ul variants={staggerChildren(0, 0.08)} className="mt-8 flex flex-col gap-3.5">
+              <motion.ul
+                variants={staggerChildren(0, 0.08)}
+                className="mt-8 flex flex-col gap-3.5"
+              >
                 {STATUS_LEGEND.map(({ label, dot, body }) => (
-                  <motion.li key={label} variants={item} className="flex items-start gap-3">
-                    <span className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${dot}`} />
+                  <motion.li
+                    key={label}
+                    variants={item}
+                    className="flex items-start gap-3"
+                  >
+                    <span
+                      className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${dot}`}
+                    />
                     <span>
-                      <span className="font-display text-sm font-semibold text-ink">{label}</span>
-                      <span className="ml-2 text-[13px] text-muted">{body}</span>
+                      <span className="font-display text-sm font-semibold text-ink">
+                        {label}
+                      </span>
+                      <span className="ml-2 text-[13px] text-muted">
+                        {body}
+                      </span>
                     </span>
                   </motion.li>
                 ))}
@@ -90,5 +119,5 @@ export function NetworkMap() {
         </div>
       </div>
     </motion.section>
-  )
+  );
 }

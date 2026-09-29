@@ -11,6 +11,25 @@ import { getStationBySlug } from "../lib/stations";
 
 const NARKETPALLY = getStationBySlug("narketpally")!;
 
+const STATUS_LEGEND = [
+  { label: "Live", dot: "bg-mint", body: "Open to public charging." },
+  {
+    label: "Under construction",
+    dot: "bg-mint-deep",
+    body: "Civil/electrical works underway.",
+  },
+  {
+    label: "Coming soon",
+    dot: "bg-ink-soft",
+    body: "Site secured and launch planned.",
+  },
+  {
+    label: "Planned",
+    dot: "bg-muted",
+    body: "Corridor/site under development or acquisition.",
+  },
+];
+
 export function NetworkPage() {
   usePageMeta({
     title: "Our Network — Highway EV Charging Stations | Vega Charge",
@@ -41,9 +60,9 @@ export function NetworkPage() {
         heading="Charging hubs built around the highway journey."
       >
         <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted">
-          Explore Vega Charge locations across our developing highway network. Each
-          station shows its current status, planned or live charging configuration,
-          amenities and route information.
+          Explore Vega Charge locations across our developing highway network.
+          Each station shows its current status, planned or live charging
+          configuration, amenities and route information.
         </p>
       </PageIntro>
 
@@ -61,18 +80,14 @@ export function NetworkPage() {
             <StationMap />
           </div>
           <div className="mt-4 flex flex-wrap gap-6">
-            <div className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-full border-2 border-white bg-mint shadow-[0_0_0_1px_rgba(0,217,165,0.9)]" />
-              <span className="text-[11.5px] text-muted">
-                Opening 2026 &mdash; site secured
-              </span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-full border-2 border-white bg-muted-onink shadow-[0_0_0_1px_rgba(157,180,176,0.9)]" />
-              <span className="text-[11.5px] text-muted">
-                In land acquisition
-              </span>
-            </div>
+            {STATUS_LEGEND.map(({ label, dot, body }) => (
+              <div className="flex items-center gap-1.5">
+                <span
+                  className={`h-2.5 w-2.5 rounded-full border-2 border-white ${dot}`}
+                />
+                <span className="text-[11.5px] text-muted">{label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </Section>
@@ -92,7 +107,11 @@ export function NetworkPage() {
             heading="Own highway-adjacent land?"
             body="Partner with us to host a Vega Charge station on your site."
             buttons={[
-              { href: "/partner?type=site", label: "Host a Station", variant: "mint" },
+              {
+                href: "/partner?type=site",
+                label: "Host a Station",
+                variant: "mint",
+              },
             ]}
           />
         </div>
