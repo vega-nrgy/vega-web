@@ -80,7 +80,7 @@ export function NetworkPage() {
             <StationMap />
           </div>
           <div className="mt-4 flex flex-wrap gap-6">
-            {STATUS_LEGEND.map(({ label, dot, body }) => (
+            {STATUS_LEGEND.map(({ label, dot }) => (
               <div className="flex items-center gap-1.5">
                 <span
                   className={`h-2.5 w-2.5 rounded-full border-2 border-white ${dot}`}

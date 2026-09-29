@@ -10,7 +10,6 @@ const HEADLINE = "Charging India Forward";
 // Forces the wrap after "Charging" so "India Forward" always stays together
 // on its own line, instead of the browser's natural greedy wrap (which pairs
 // "Charging India" and strands "Forward" alone) — keep in sync with HEADLINE.
-const FIRST_LINE_LEN = "Charging".length;
 
 /* Same 4 corners in both states (top-left, top-right, bottom-right,
    bottom-left) so the transition moves each vertex in a straight horizontal
