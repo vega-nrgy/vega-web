@@ -172,9 +172,9 @@
 }
 
 .vc-dot.live {
-  background: var(--color-muted);
+  background: var(--color-mint);
   box-shadow:
-    0 0 0 2px var(--color-muted),
+    0 0 0 2px var(--color-mint),
     0 4px 10px rgb(0 24 25 / 0.35);
 }
 

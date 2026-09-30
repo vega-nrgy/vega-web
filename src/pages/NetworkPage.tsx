@@ -12,20 +12,20 @@ import { getStationBySlug } from "../lib/stations";
 const NARKETPALLY = getStationBySlug("narketpally")!;
 
 const STATUS_LEGEND = [
-  { label: "Live", dot: "bg-mint", body: "Open to public charging." },
+  { label: "Live", dot: " live", body: "Open to public charging." },
   {
     label: "Under construction",
-    dot: "bg-mint-deep",
+    dot: " underconstruction",
     body: "Civil/electrical works underway.",
   },
   {
     label: "Coming soon",
-    dot: "bg-ink-soft",
+    dot: " comingsoon",
     body: "Site secured and launch planned.",
   },
   {
     label: "Planned",
-    dot: "bg-muted",
+    dot: " pending",
     body: "Corridor/site under development or acquisition.",
   },
 ];
@@ -83,7 +83,7 @@ export function NetworkPage() {
             {STATUS_LEGEND.map(({ label, dot }) => (
               <div className="flex items-center gap-1.5">
                 <span
-                  className={`h-2.5 w-2.5 rounded-full border-2 border-white ${dot}`}
+                  className={`h-2.5 w-2.5 rounded-full border-2 border-white vc-dot${dot}`}
                 />
                 <span className="text-[11.5px] text-muted">{label}</span>
               </div>

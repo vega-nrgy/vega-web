@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Button } from "./ui/Button";
 
 const LINKS = [
+  { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/network", label: "Our Network" },
   { to: "/solutions", label: "Solutions" },
@@ -30,7 +31,8 @@ export function Header() {
 
   useEffect(() => {
     if (!menuOpen) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
+    const onKey = (e: KeyboardEvent) =>
+      e.key === "Escape" && setMenuOpen(false);
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [menuOpen]);
@@ -144,7 +146,12 @@ export function Header() {
               {label}
             </NavLink>
           ))}
-          <Button href="/partner" variant="mint" size="md" className="mt-3 w-full">
+          <Button
+            href="/partner"
+            variant="mint"
+            size="md"
+            className="mt-3 w-full"
+          >
             Let's Grow Together
           </Button>
         </nav>
